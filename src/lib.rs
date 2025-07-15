@@ -143,3 +143,38 @@ pub(crate) fn get_lib_name_candidates(lib_name: &str) -> std::vec::Vec<std::stri
     ]
     .into()
 }
+
+use std::sync::atomic::AtomicU64;
+use std::sync::OnceLock;
+
+pub struct RTSigFuel {
+    pub(crate) fuel_used: AtomicU64,
+    pub(crate) runtime_signature: AtomicU64
+}
+
+pub(crate) static REGISTRY: OnceLock<RTSigFuel> = OnceLock::new();
+
+impl RTSigFuel {
+    pub fn get() -> &'static RTSigFuel {
+        REGISTRY.get_or_init(|| RTSigFuel {
+            fuel_used: AtomicU64::new(0),
+            runtime_signature: AtomicU64::new(0),
+        })
+    }
+
+    pub(crate) fn add_fuel(amount: u64) {
+        REGISTRY.get().unwrap().fuel_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
+    }
+
+    pub fn get_total_fuel_used() -> u64 {
+        REGISTRY.get().unwrap().fuel_used.load(std::sync::atomic::Ordering::Relaxed)
+    }
+
+    pub(crate) fn mix_runtime_signature(signature: u64) {
+        REGISTRY.get().unwrap().runtime_signature.fetch_xor(signature, std::sync::atomic::Ordering::Relaxed);
+    }
+
+    pub fn get_runtime_signature() -> u64 {
+        REGISTRY.get().unwrap().runtime_signature.load(std::sync::atomic::Ordering::Relaxed)
+    }
+}

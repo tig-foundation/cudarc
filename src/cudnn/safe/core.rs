@@ -15,30 +15,32 @@ use std::{
 pub struct Cudnn {
     pub handle: sys::cudnnHandle_t,
     pub stream: Arc<CudaStream>,
-    pub(crate) fuel_used: AtomicUsize,
+    //pub(crate) fuel_used: AtomicUsize,
 }
 
-struct SafeHandle(sys::cudnnHandle_t);
+//struct SafeHandle(sys::cudnnHandle_t);
 
-unsafe impl Send for SafeHandle {}
-unsafe impl Sync for SafeHandle {}
+//unsafe impl Send for SafeHandle {}
+//unsafe impl Sync for SafeHandle {}
 
 pub struct CudnnRegistry {
     //handles: RwLock<Vec<SafeHandle>>,
-    pub(crate) fuel_used: AtomicUsize,
-    pub(crate) runtime_signature: AtomicU64
+    //pub(crate) fuel_used: AtomicUsize,
+    //pub(crate) runtime_signature: AtomicU64
 }
 
-pub(crate) static REGISTRY: OnceLock<CudnnRegistry> = OnceLock::new();
+//pub(crate) static REGISTRY: OnceLock<CudnnRegistry> = OnceLock::new();
+
+use crate::RTSigFuel;
 
 impl CudnnRegistry {
-    pub fn get() -> &'static CudnnRegistry {
+    /*pub fn get() -> &'static CudnnRegistry {
         REGISTRY.get_or_init(|| CudnnRegistry {
             //handles: RwLock::new(Vec::new()),
             fuel_used: AtomicUsize::new(0),
             runtime_signature: AtomicU64::new(0),
         })
-    }
+    }*/
 
     /*pub fn register(handle: SafeHandle) {
         if REGISTRY.get().unwrap().handles.read().unwrap().iter().any(|c| c.0 == handle.0) {
@@ -52,21 +54,25 @@ impl CudnnRegistry {
         REGISTRY.get().unwrap().handles.write().unwrap().retain(|c| c.0 != handle.0);
     }*/
 
-    pub(crate) fn add_fuel(amount: usize) {
-        REGISTRY.get().unwrap().fuel_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
+    pub(crate) fn add_fuel(amount: u64) {
+        //REGISTRY.get().unwrap().fuel_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
+        RTSigFuel::add_fuel(amount);
     }
 
-    pub fn get_total_fuel_used() -> usize {
-        REGISTRY.get().unwrap().fuel_used.load(std::sync::atomic::Ordering::Relaxed)
-    }
+    /*pub fn get_total_fuel_used() -> usize {
+        //REGISTRY.get().unwrap().fuel_used.load(std::sync::atomic::Ordering::Relaxed)
+        RTSigFuel::get_total_fuel_used() as usize
+    }*/
 
     pub(crate) fn mix_runtime_signature(signature: u64) {
-        REGISTRY.get().unwrap().runtime_signature.fetch_xor(signature, std::sync::atomic::Ordering::Relaxed);
+        //REGISTRY.get().unwrap().runtime_signature.fetch_xor(signature, std::sync::atomic::Ordering::Relaxed);
+        RTSigFuel::mix_runtime_signature(signature);
     }
 
-    pub fn get_runtime_signature() -> u64 {
-        REGISTRY.get().unwrap().runtime_signature.load(std::sync::atomic::Ordering::Relaxed)
-    }
+    /*pub fn get_runtime_signature() -> u64 {
+        //REGISTRY.get().unwrap().runtime_signature.load(std::sync::atomic::Ordering::Relaxed)
+        RTSigFuel::get_runtime_signature()
+    }*/
 }
 
 impl Cudnn {
@@ -79,7 +85,7 @@ impl Cudnn {
         let cudnn = Arc::new(Self {
             handle,
             stream,
-            fuel_used: AtomicUsize::new(0),
+            //fuel_used: AtomicUsize::new(0),
         });
 
         //CudnnRegistry::register(SafeHandle(handle));
@@ -98,9 +104,9 @@ impl Cudnn {
         unsafe { result::set_stream(self.handle, self.stream.cu_stream as *mut _) }
     }
 
-    pub fn get_fuel_used(&self) -> usize {
+    /*pub fn get_fuel_used(&self) -> usize {
         self.fuel_used.load(std::sync::atomic::Ordering::Relaxed)
-    }
+    }*/
 }
 
 
