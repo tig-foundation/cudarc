@@ -51,7 +51,7 @@ impl<T> Drop for UnifiedSlice<T> {
 
         if self.stream.ctx.initial_memory_lock.load(Ordering::Relaxed) && *self.stream.ctx.memory_usage.read().unwrap() > 0 {
             *self.stream.ctx.memory_usage.write().unwrap() -= self.len * std::mem::size_of::<T>();
-            RTSigFuel::remove_host_memory_used(self.len * std::mem::size_of::<T>() as u64);
+            RTSigFuel::remove_device_memory_used(self.len as u64 * std::mem::size_of::<T>() as u64);
         }
     }
 }
@@ -102,7 +102,7 @@ impl CudaContext {
 
         if self.initial_memory_lock.load(Ordering::Relaxed) {
             *self.memory_usage.write().unwrap() += len * std::mem::size_of::<T>();
-            RTSigFuel::add_host_memory_used(len * std::mem::size_of::<T>() as u64);
+            RTSigFuel::add_device_memory_used(len as u64 * std::mem::size_of::<T>() as u64);
         }
 
         Ok(UnifiedSlice {

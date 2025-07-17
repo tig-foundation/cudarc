@@ -1102,7 +1102,7 @@ impl CudaContext {
 
         if self.initial_memory_lock.load(Ordering::Relaxed) {
             *self.host_memory_usage.write().unwrap() += len * std::mem::size_of::<T>();
-            RTSigFuel::add_host_memory_used(len * std::mem::size_of::<T>() as u64);
+            RTSigFuel::add_host_memory_used(len as u64 * std::mem::size_of::<T>() as u64);
         }
 
         Ok(PinnedHostSlice { ptr, len, event })
@@ -1240,7 +1240,7 @@ impl CudaStream {
 
         if self.ctx.initial_memory_lock.load(Ordering::Relaxed) {
             *self.ctx.memory_usage.write().unwrap() += len * std::mem::size_of::<T>();
-            RTSigFuel::add_device_memory_used(len * std::mem::size_of::<T>() as u64);
+            RTSigFuel::add_device_memory_used(len as u64 * std::mem::size_of::<T>() as u64);
         }
 
         let (read, write) = if self.ctx.is_event_tracking() {
