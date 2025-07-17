@@ -167,42 +167,42 @@ impl RTSigFuel {
     }
 
     pub(crate) fn add_fuel(amount: u64) {
-        REGISTRY.get().unwrap().fuel_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
+        Self::get().fuel_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub fn get_total_fuel_used() -> u64 {
-        REGISTRY.get().unwrap().fuel_used.load(std::sync::atomic::Ordering::Relaxed)
+        Self::get().fuel_used.load(std::sync::atomic::Ordering::Relaxed)
     }
 
     pub(crate) fn mix_runtime_signature(signature: u64) {
-        REGISTRY.get().unwrap().runtime_signature.fetch_xor(signature, std::sync::atomic::Ordering::Relaxed);
+        Self::get().runtime_signature.fetch_xor(signature, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub fn get_runtime_signature() -> u64 {
-        REGISTRY.get().unwrap().runtime_signature.load(std::sync::atomic::Ordering::Relaxed)
+        Self::get().runtime_signature.load(std::sync::atomic::Ordering::Relaxed)
     }
 
     pub fn get_host_memory_used() -> u64 {
-        REGISTRY.get().unwrap().host_memory_used.load(std::sync::atomic::Ordering::Relaxed)
+        Self::get().host_memory_used.load(std::sync::atomic::Ordering::Relaxed)
     }
 
     pub(crate) fn add_host_memory_used(amount: u64) {
-        REGISTRY.get().unwrap().host_memory_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
+        Self::get().host_memory_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub(crate) fn remove_host_memory_used(amount: u64) {
-        REGISTRY.get().unwrap().host_memory_used.fetch_sub(amount, std::sync::atomic::Ordering::Relaxed);
+        Self::get().host_memory_used.fetch_sub(amount, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub fn get_device_memory_used() -> u64 {
-        REGISTRY.get().unwrap().device_memory_used.load(std::sync::atomic::Ordering::Relaxed)
+        Self::get().device_memory_used.load(std::sync::atomic::Ordering::Relaxed)
     }
 
     pub(crate) fn add_device_memory_used(amount: u64) {
-        REGISTRY.get().unwrap().device_memory_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
+        Self::get().device_memory_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub(crate) fn remove_device_memory_used(amount: u64) {
-        REGISTRY.get().unwrap().device_memory_used.fetch_sub(amount, std::sync::atomic::Ordering::Relaxed);
+        Self::get().device_memory_used.fetch_sub(amount, std::sync::atomic::Ordering::Relaxed);
     }
 }
