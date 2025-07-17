@@ -10594,15 +10594,15 @@ extern "C" {
     ) -> CUresult;
     #[cfg(any(feature = "cuda-12090"))]
     pub fn cuLogsUnregisterCallback(callback: CUlogsCallbackHandle) -> CUresult;
-    pub fn cuMemAddressFree(ptr: CUdeviceptr, size: usize) -> CUresult;
-    pub fn cuMemAddressReserve(
+    pub(crate) fn cuMemAddressFree(ptr: CUdeviceptr, size: usize) -> CUresult;
+    pub(crate) fn cuMemAddressReserve(
         ptr: *mut CUdeviceptr,
         size: usize,
         alignment: usize,
         addr: CUdeviceptr,
         flags: ::core::ffi::c_ulonglong,
     ) -> CUresult;
-    pub fn cuMemAdvise(
+    pub(crate) fn cuMemAdvise(
         devPtr: CUdeviceptr,
         count: usize,
         advice: CUmem_advise,
@@ -10617,72 +10617,72 @@ extern "C" {
         feature = "cuda-12080",
         feature = "cuda-12090"
     ))]
-    pub fn cuMemAdvise_v2(
+    pub(crate) fn cuMemAdvise_v2(
         devPtr: CUdeviceptr,
         count: usize,
         advice: CUmem_advise,
         location: CUmemLocation,
     ) -> CUresult;
-    pub fn cuMemAllocAsync(dptr: *mut CUdeviceptr, bytesize: usize, hStream: CUstream) -> CUresult;
-    pub fn cuMemAllocFromPoolAsync(
+    pub(crate) fn cuMemAllocAsync(dptr: *mut CUdeviceptr, bytesize: usize, hStream: CUstream) -> CUresult;
+    pub(crate) fn cuMemAllocFromPoolAsync(
         dptr: *mut CUdeviceptr,
         bytesize: usize,
         pool: CUmemoryPool,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemAllocHost_v2(pp: *mut *mut ::core::ffi::c_void, bytesize: usize) -> CUresult;
-    pub fn cuMemAllocManaged(
+    pub(crate) fn cuMemAllocHost_v2(pp: *mut *mut ::core::ffi::c_void, bytesize: usize) -> CUresult;
+    pub(crate) fn cuMemAllocManaged(
         dptr: *mut CUdeviceptr,
         bytesize: usize,
         flags: ::core::ffi::c_uint,
     ) -> CUresult;
-    pub fn cuMemAllocPitch_v2(
+    pub(crate) fn cuMemAllocPitch_v2(
         dptr: *mut CUdeviceptr,
         pPitch: *mut usize,
         WidthInBytes: usize,
         Height: usize,
         ElementSizeBytes: ::core::ffi::c_uint,
     ) -> CUresult;
-    pub fn cuMemAlloc_v2(dptr: *mut CUdeviceptr, bytesize: usize) -> CUresult;
+    pub(crate) fn cuMemAlloc_v2(dptr: *mut CUdeviceptr, bytesize: usize) -> CUresult;
     #[cfg(any(feature = "cuda-12080", feature = "cuda-12090"))]
-    pub fn cuMemBatchDecompressAsync(
+    pub(crate) fn cuMemBatchDecompressAsync(
         paramsArray: *mut CUmemDecompressParams,
         count: usize,
         flags: ::core::ffi::c_uint,
         errorIndex: *mut usize,
         stream: CUstream,
     ) -> CUresult;
-    pub fn cuMemCreate(
+    pub(crate) fn cuMemCreate(
         handle: *mut CUmemGenericAllocationHandle,
         size: usize,
         prop: *const CUmemAllocationProp,
         flags: ::core::ffi::c_ulonglong,
     ) -> CUresult;
-    pub fn cuMemExportToShareableHandle(
+    pub(crate) fn cuMemExportToShareableHandle(
         shareableHandle: *mut ::core::ffi::c_void,
         handle: CUmemGenericAllocationHandle,
         handleType: CUmemAllocationHandleType,
         flags: ::core::ffi::c_ulonglong,
     ) -> CUresult;
-    pub fn cuMemFreeAsync(dptr: CUdeviceptr, hStream: CUstream) -> CUresult;
-    pub fn cuMemFreeHost(p: *mut ::core::ffi::c_void) -> CUresult;
-    pub fn cuMemFree_v2(dptr: CUdeviceptr) -> CUresult;
-    pub fn cuMemGetAccess(
+    pub(crate) fn cuMemFreeAsync(dptr: CUdeviceptr, hStream: CUstream) -> CUresult;
+    pub(crate) fn cuMemFreeHost(p: *mut ::core::ffi::c_void) -> CUresult;
+    pub(crate) fn cuMemFree_v2(dptr: CUdeviceptr) -> CUresult;
+    pub(crate) fn cuMemGetAccess(
         flags: *mut ::core::ffi::c_ulonglong,
         location: *const CUmemLocation,
         ptr: CUdeviceptr,
     ) -> CUresult;
-    pub fn cuMemGetAddressRange_v2(
+    pub(crate) fn cuMemGetAddressRange_v2(
         pbase: *mut CUdeviceptr,
         psize: *mut usize,
         dptr: CUdeviceptr,
     ) -> CUresult;
-    pub fn cuMemGetAllocationGranularity(
+    pub(crate) fn cuMemGetAllocationGranularity(
         granularity: *mut usize,
         prop: *const CUmemAllocationProp,
         option: CUmemAllocationGranularity_flags,
     ) -> CUresult;
-    pub fn cuMemGetAllocationPropertiesFromHandle(
+    pub(crate) fn cuMemGetAllocationPropertiesFromHandle(
         prop: *mut CUmemAllocationProp,
         handle: CUmemGenericAllocationHandle,
     ) -> CUresult;
@@ -10699,96 +10699,96 @@ extern "C" {
         feature = "cuda-12080",
         feature = "cuda-12090"
     ))]
-    pub fn cuMemGetHandleForAddressRange(
+    pub(crate) fn cuMemGetHandleForAddressRange(
         handle: *mut ::core::ffi::c_void,
         dptr: CUdeviceptr,
         size: usize,
         handleType: CUmemRangeHandleType,
         flags: ::core::ffi::c_ulonglong,
     ) -> CUresult;
-    pub fn cuMemGetInfo_v2(free: *mut usize, total: *mut usize) -> CUresult;
-    pub fn cuMemHostAlloc(
+    pub(crate) fn cuMemGetInfo_v2(free: *mut usize, total: *mut usize) -> CUresult;
+    pub(crate) fn cuMemHostAlloc(
         pp: *mut *mut ::core::ffi::c_void,
         bytesize: usize,
         Flags: ::core::ffi::c_uint,
     ) -> CUresult;
-    pub fn cuMemHostGetDevicePointer_v2(
+    pub(crate) fn cuMemHostGetDevicePointer_v2(
         pdptr: *mut CUdeviceptr,
         p: *mut ::core::ffi::c_void,
         Flags: ::core::ffi::c_uint,
     ) -> CUresult;
-    pub fn cuMemHostGetFlags(
+    pub(crate) fn cuMemHostGetFlags(
         pFlags: *mut ::core::ffi::c_uint,
         p: *mut ::core::ffi::c_void,
     ) -> CUresult;
-    pub fn cuMemHostRegister_v2(
+    pub(crate) fn cuMemHostRegister_v2(
         p: *mut ::core::ffi::c_void,
         bytesize: usize,
         Flags: ::core::ffi::c_uint,
     ) -> CUresult;
-    pub fn cuMemHostUnregister(p: *mut ::core::ffi::c_void) -> CUresult;
-    pub fn cuMemImportFromShareableHandle(
+    pub(crate) fn cuMemHostUnregister(p: *mut ::core::ffi::c_void) -> CUresult;
+    pub(crate) fn cuMemImportFromShareableHandle(
         handle: *mut CUmemGenericAllocationHandle,
         osHandle: *mut ::core::ffi::c_void,
         shHandleType: CUmemAllocationHandleType,
     ) -> CUresult;
-    pub fn cuMemMap(
+    pub(crate) fn cuMemMap(
         ptr: CUdeviceptr,
         size: usize,
         offset: usize,
         handle: CUmemGenericAllocationHandle,
         flags: ::core::ffi::c_ulonglong,
     ) -> CUresult;
-    pub fn cuMemMapArrayAsync(
+    pub(crate) fn cuMemMapArrayAsync(
         mapInfoList: *mut CUarrayMapInfo,
         count: ::core::ffi::c_uint,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemPoolCreate(pool: *mut CUmemoryPool, poolProps: *const CUmemPoolProps) -> CUresult;
-    pub fn cuMemPoolDestroy(pool: CUmemoryPool) -> CUresult;
-    pub fn cuMemPoolExportPointer(
+    pub(crate) fn cuMemPoolCreate(pool: *mut CUmemoryPool, poolProps: *const CUmemPoolProps) -> CUresult;
+    pub(crate) fn cuMemPoolDestroy(pool: CUmemoryPool) -> CUresult;
+    pub(crate) fn cuMemPoolExportPointer(
         shareData_out: *mut CUmemPoolPtrExportData,
         ptr: CUdeviceptr,
     ) -> CUresult;
-    pub fn cuMemPoolExportToShareableHandle(
+    pub(crate) fn cuMemPoolExportToShareableHandle(
         handle_out: *mut ::core::ffi::c_void,
         pool: CUmemoryPool,
         handleType: CUmemAllocationHandleType,
         flags: ::core::ffi::c_ulonglong,
     ) -> CUresult;
-    pub fn cuMemPoolGetAccess(
+    pub(crate) fn cuMemPoolGetAccess(
         flags: *mut CUmemAccess_flags,
         memPool: CUmemoryPool,
         location: *mut CUmemLocation,
     ) -> CUresult;
-    pub fn cuMemPoolGetAttribute(
+    pub(crate) fn cuMemPoolGetAttribute(
         pool: CUmemoryPool,
         attr: CUmemPool_attribute,
         value: *mut ::core::ffi::c_void,
     ) -> CUresult;
-    pub fn cuMemPoolImportFromShareableHandle(
+    pub(crate) fn cuMemPoolImportFromShareableHandle(
         pool_out: *mut CUmemoryPool,
         handle: *mut ::core::ffi::c_void,
         handleType: CUmemAllocationHandleType,
         flags: ::core::ffi::c_ulonglong,
     ) -> CUresult;
-    pub fn cuMemPoolImportPointer(
+    pub(crate) fn cuMemPoolImportPointer(
         ptr_out: *mut CUdeviceptr,
         pool: CUmemoryPool,
         shareData: *mut CUmemPoolPtrExportData,
     ) -> CUresult;
-    pub fn cuMemPoolSetAccess(
+    pub(crate) fn cuMemPoolSetAccess(
         pool: CUmemoryPool,
         map: *const CUmemAccessDesc,
         count: usize,
     ) -> CUresult;
-    pub fn cuMemPoolSetAttribute(
+    pub(crate) fn cuMemPoolSetAttribute(
         pool: CUmemoryPool,
         attr: CUmemPool_attribute,
         value: *mut ::core::ffi::c_void,
     ) -> CUresult;
-    pub fn cuMemPoolTrimTo(pool: CUmemoryPool, minBytesToKeep: usize) -> CUresult;
-    pub fn cuMemPrefetchAsync(
+    pub(crate) fn cuMemPoolTrimTo(pool: CUmemoryPool, minBytesToKeep: usize) -> CUresult;
+    pub(crate) fn cuMemPrefetchAsync(
         devPtr: CUdeviceptr,
         count: usize,
         dstDevice: CUdevice,
@@ -10803,21 +10803,21 @@ extern "C" {
         feature = "cuda-12080",
         feature = "cuda-12090"
     ))]
-    pub fn cuMemPrefetchAsync_v2(
+    pub(crate) fn cuMemPrefetchAsync_v2(
         devPtr: CUdeviceptr,
         count: usize,
         location: CUmemLocation,
         flags: ::core::ffi::c_uint,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemRangeGetAttribute(
+    pub(crate) fn cuMemRangeGetAttribute(
         data: *mut ::core::ffi::c_void,
         dataSize: usize,
         attribute: CUmem_range_attribute,
         devPtr: CUdeviceptr,
         count: usize,
     ) -> CUresult;
-    pub fn cuMemRangeGetAttributes(
+    pub(crate) fn cuMemRangeGetAttributes(
         data: *mut *mut ::core::ffi::c_void,
         dataSizes: *mut usize,
         attributes: *mut CUmem_range_attribute,
@@ -10825,68 +10825,68 @@ extern "C" {
         devPtr: CUdeviceptr,
         count: usize,
     ) -> CUresult;
-    pub fn cuMemRelease(handle: CUmemGenericAllocationHandle) -> CUresult;
-    pub fn cuMemRetainAllocationHandle(
+    pub(crate) fn cuMemRelease(handle: CUmemGenericAllocationHandle) -> CUresult;
+    pub(crate) fn cuMemRetainAllocationHandle(
         handle: *mut CUmemGenericAllocationHandle,
         addr: *mut ::core::ffi::c_void,
     ) -> CUresult;
-    pub fn cuMemSetAccess(
+    pub(crate) fn cuMemSetAccess(
         ptr: CUdeviceptr,
         size: usize,
         desc: *const CUmemAccessDesc,
         count: usize,
     ) -> CUresult;
-    pub fn cuMemUnmap(ptr: CUdeviceptr, size: usize) -> CUresult;
-    pub fn cuMemcpy(dst: CUdeviceptr, src: CUdeviceptr, ByteCount: usize) -> CUresult;
-    pub fn cuMemcpy2DAsync_v2(pCopy: *const CUDA_MEMCPY2D, hStream: CUstream) -> CUresult;
-    pub fn cuMemcpy2DUnaligned_v2(pCopy: *const CUDA_MEMCPY2D) -> CUresult;
-    pub fn cuMemcpy2D_v2(pCopy: *const CUDA_MEMCPY2D) -> CUresult;
-    pub fn cuMemcpy3DAsync_v2(pCopy: *const CUDA_MEMCPY3D, hStream: CUstream) -> CUresult;
+    pub(crate) fn cuMemUnmap(ptr: CUdeviceptr, size: usize) -> CUresult;
+    pub(crate) fn cuMemcpy(dst: CUdeviceptr, src: CUdeviceptr, ByteCount: usize) -> CUresult;
+    pub(crate) fn cuMemcpy2DAsync_v2(pCopy: *const CUDA_MEMCPY2D, hStream: CUstream) -> CUresult;
+    pub(crate) fn cuMemcpy2DUnaligned_v2(pCopy: *const CUDA_MEMCPY2D) -> CUresult;
+    pub(crate) fn cuMemcpy2D_v2(pCopy: *const CUDA_MEMCPY2D) -> CUresult;
+    pub(crate) fn cuMemcpy3DAsync_v2(pCopy: *const CUDA_MEMCPY3D, hStream: CUstream) -> CUresult;
     #[cfg(any(feature = "cuda-12080", feature = "cuda-12090"))]
-    pub fn cuMemcpy3DBatchAsync(
+    pub(crate) fn cuMemcpy3DBatchAsync(
         numOps: usize,
         opList: *mut CUDA_MEMCPY3D_BATCH_OP,
         failIdx: *mut usize,
         flags: ::core::ffi::c_ulonglong,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemcpy3DPeer(pCopy: *const CUDA_MEMCPY3D_PEER) -> CUresult;
-    pub fn cuMemcpy3DPeerAsync(pCopy: *const CUDA_MEMCPY3D_PEER, hStream: CUstream) -> CUresult;
-    pub fn cuMemcpy3D_v2(pCopy: *const CUDA_MEMCPY3D) -> CUresult;
-    pub fn cuMemcpyAsync(
+    pub(crate) fn cuMemcpy3DPeer(pCopy: *const CUDA_MEMCPY3D_PEER) -> CUresult;
+    pub(crate) fn cuMemcpy3DPeerAsync(pCopy: *const CUDA_MEMCPY3D_PEER, hStream: CUstream) -> CUresult;
+    pub(crate) fn cuMemcpy3D_v2(pCopy: *const CUDA_MEMCPY3D) -> CUresult;
+    pub(crate) fn cuMemcpyAsync(
         dst: CUdeviceptr,
         src: CUdeviceptr,
         ByteCount: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemcpyAtoA_v2(
+    pub(crate) fn cuMemcpyAtoA_v2(
         dstArray: CUarray,
         dstOffset: usize,
         srcArray: CUarray,
         srcOffset: usize,
         ByteCount: usize,
     ) -> CUresult;
-    pub fn cuMemcpyAtoD_v2(
+    pub(crate) fn cuMemcpyAtoD_v2(
         dstDevice: CUdeviceptr,
         srcArray: CUarray,
         srcOffset: usize,
         ByteCount: usize,
     ) -> CUresult;
-    pub fn cuMemcpyAtoHAsync_v2(
+    pub(crate) fn cuMemcpyAtoHAsync_v2(
         dstHost: *mut ::core::ffi::c_void,
         srcArray: CUarray,
         srcOffset: usize,
         ByteCount: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemcpyAtoH_v2(
+    pub(crate) fn cuMemcpyAtoH_v2(
         dstHost: *mut ::core::ffi::c_void,
         srcArray: CUarray,
         srcOffset: usize,
         ByteCount: usize,
     ) -> CUresult;
     #[cfg(any(feature = "cuda-12080", feature = "cuda-12090"))]
-    pub fn cuMemcpyBatchAsync(
+    pub(crate) fn cuMemcpyBatchAsync(
         dsts: *mut CUdeviceptr,
         srcs: *mut CUdeviceptr,
         sizes: *mut usize,
@@ -10897,66 +10897,66 @@ extern "C" {
         failIdx: *mut usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemcpyDtoA_v2(
+    pub(crate) fn cuMemcpyDtoA_v2(
         dstArray: CUarray,
         dstOffset: usize,
         srcDevice: CUdeviceptr,
         ByteCount: usize,
     ) -> CUresult;
-    pub fn cuMemcpyDtoDAsync_v2(
+    pub(crate) fn cuMemcpyDtoDAsync_v2(
         dstDevice: CUdeviceptr,
         srcDevice: CUdeviceptr,
         ByteCount: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemcpyDtoD_v2(
+    pub(crate) fn cuMemcpyDtoD_v2(
         dstDevice: CUdeviceptr,
         srcDevice: CUdeviceptr,
         ByteCount: usize,
     ) -> CUresult;
-    pub fn cuMemcpyDtoHAsync_v2(
+    pub(crate) fn cuMemcpyDtoHAsync_v2(
         dstHost: *mut ::core::ffi::c_void,
         srcDevice: CUdeviceptr,
         ByteCount: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemcpyDtoH_v2(
+    pub(crate) fn cuMemcpyDtoH_v2(
         dstHost: *mut ::core::ffi::c_void,
         srcDevice: CUdeviceptr,
         ByteCount: usize,
     ) -> CUresult;
-    pub fn cuMemcpyHtoAAsync_v2(
+    pub(crate) fn cuMemcpyHtoAAsync_v2(
         dstArray: CUarray,
         dstOffset: usize,
         srcHost: *const ::core::ffi::c_void,
         ByteCount: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemcpyHtoA_v2(
+    pub(crate) fn cuMemcpyHtoA_v2(
         dstArray: CUarray,
         dstOffset: usize,
         srcHost: *const ::core::ffi::c_void,
         ByteCount: usize,
     ) -> CUresult;
-    pub fn cuMemcpyHtoDAsync_v2(
+    pub(crate) fn cuMemcpyHtoDAsync_v2(
         dstDevice: CUdeviceptr,
         srcHost: *const ::core::ffi::c_void,
         ByteCount: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemcpyHtoD_v2(
+    pub(crate) fn cuMemcpyHtoD_v2(
         dstDevice: CUdeviceptr,
         srcHost: *const ::core::ffi::c_void,
         ByteCount: usize,
     ) -> CUresult;
-    pub fn cuMemcpyPeer(
+    pub(crate) fn cuMemcpyPeer(
         dstDevice: CUdeviceptr,
         dstContext: CUcontext,
         srcDevice: CUdeviceptr,
         srcContext: CUcontext,
         ByteCount: usize,
     ) -> CUresult;
-    pub fn cuMemcpyPeerAsync(
+    pub(crate) fn cuMemcpyPeerAsync(
         dstDevice: CUdeviceptr,
         dstContext: CUcontext,
         srcDevice: CUdeviceptr,
@@ -10964,14 +10964,14 @@ extern "C" {
         ByteCount: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemsetD16Async(
+    pub(crate) fn cuMemsetD16Async(
         dstDevice: CUdeviceptr,
         us: ::core::ffi::c_ushort,
         N: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemsetD16_v2(dstDevice: CUdeviceptr, us: ::core::ffi::c_ushort, N: usize) -> CUresult;
-    pub fn cuMemsetD2D16Async(
+    pub(crate) fn cuMemsetD16_v2(dstDevice: CUdeviceptr, us: ::core::ffi::c_ushort, N: usize) -> CUresult;
+    pub(crate) fn cuMemsetD2D16Async(
         dstDevice: CUdeviceptr,
         dstPitch: usize,
         us: ::core::ffi::c_ushort,
@@ -10979,14 +10979,14 @@ extern "C" {
         Height: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemsetD2D16_v2(
+    pub(crate) fn cuMemsetD2D16_v2(
         dstDevice: CUdeviceptr,
         dstPitch: usize,
         us: ::core::ffi::c_ushort,
         Width: usize,
         Height: usize,
     ) -> CUresult;
-    pub fn cuMemsetD2D32Async(
+    pub(crate) fn cuMemsetD2D32Async(
         dstDevice: CUdeviceptr,
         dstPitch: usize,
         ui: ::core::ffi::c_uint,
@@ -10994,14 +10994,14 @@ extern "C" {
         Height: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemsetD2D32_v2(
+    pub(crate) fn cuMemsetD2D32_v2(
         dstDevice: CUdeviceptr,
         dstPitch: usize,
         ui: ::core::ffi::c_uint,
         Width: usize,
         Height: usize,
     ) -> CUresult;
-    pub fn cuMemsetD2D8Async(
+    pub(crate) fn cuMemsetD2D8Async(
         dstDevice: CUdeviceptr,
         dstPitch: usize,
         uc: ::core::ffi::c_uchar,
@@ -11009,27 +11009,27 @@ extern "C" {
         Height: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemsetD2D8_v2(
+    pub(crate) fn cuMemsetD2D8_v2(
         dstDevice: CUdeviceptr,
         dstPitch: usize,
         uc: ::core::ffi::c_uchar,
         Width: usize,
         Height: usize,
     ) -> CUresult;
-    pub fn cuMemsetD32Async(
+    pub(crate) fn cuMemsetD32Async(
         dstDevice: CUdeviceptr,
         ui: ::core::ffi::c_uint,
         N: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemsetD32_v2(dstDevice: CUdeviceptr, ui: ::core::ffi::c_uint, N: usize) -> CUresult;
-    pub fn cuMemsetD8Async(
+    pub(crate) fn cuMemsetD32_v2(dstDevice: CUdeviceptr, ui: ::core::ffi::c_uint, N: usize) -> CUresult;
+    pub(crate) fn cuMemsetD8Async(
         dstDevice: CUdeviceptr,
         uc: ::core::ffi::c_uchar,
         N: usize,
         hStream: CUstream,
     ) -> CUresult;
-    pub fn cuMemsetD8_v2(dstDevice: CUdeviceptr, uc: ::core::ffi::c_uchar, N: usize) -> CUresult;
+    pub(crate) fn cuMemsetD8_v2(dstDevice: CUdeviceptr, uc: ::core::ffi::c_uchar, N: usize) -> CUresult;
     pub fn cuMipmappedArrayCreate(
         pHandle: *mut CUmipmappedArray,
         pMipmappedArrayDesc: *const CUDA_ARRAY3D_DESCRIPTOR,
@@ -14213,10 +14213,10 @@ mod loaded {
     pub unsafe fn cuLogsUnregisterCallback(callback: CUlogsCallbackHandle) -> CUresult {
         (culib().cuLogsUnregisterCallback)(callback)
     }
-    pub unsafe fn cuMemAddressFree(ptr: CUdeviceptr, size: usize) -> CUresult {
+    pub(crate) unsafe fn cuMemAddressFree(ptr: CUdeviceptr, size: usize) -> CUresult {
         (culib().cuMemAddressFree)(ptr, size)
     }
-    pub unsafe fn cuMemAddressReserve(
+    pub(crate) unsafe fn cuMemAddressReserve(
         ptr: *mut CUdeviceptr,
         size: usize,
         alignment: usize,
@@ -14225,7 +14225,7 @@ mod loaded {
     ) -> CUresult {
         (culib().cuMemAddressReserve)(ptr, size, alignment, addr, flags)
     }
-    pub unsafe fn cuMemAdvise(
+    pub(crate) unsafe fn cuMemAdvise(
         devPtr: CUdeviceptr,
         count: usize,
         advice: CUmem_advise,
@@ -14242,7 +14242,7 @@ mod loaded {
         feature = "cuda-12080",
         feature = "cuda-12090"
     ))]
-    pub unsafe fn cuMemAdvise_v2(
+    pub(crate) unsafe fn cuMemAdvise_v2(
         devPtr: CUdeviceptr,
         count: usize,
         advice: CUmem_advise,
@@ -14250,14 +14250,14 @@ mod loaded {
     ) -> CUresult {
         (culib().cuMemAdvise_v2)(devPtr, count, advice, location)
     }
-    pub unsafe fn cuMemAllocAsync(
+    pub(crate) unsafe fn cuMemAllocAsync(
         dptr: *mut CUdeviceptr,
         bytesize: usize,
         hStream: CUstream,
     ) -> CUresult {
         (culib().cuMemAllocAsync)(dptr, bytesize, hStream)
     }
-    pub unsafe fn cuMemAllocFromPoolAsync(
+    pub(crate) unsafe fn cuMemAllocFromPoolAsync(
         dptr: *mut CUdeviceptr,
         bytesize: usize,
         pool: CUmemoryPool,
@@ -14265,20 +14265,20 @@ mod loaded {
     ) -> CUresult {
         (culib().cuMemAllocFromPoolAsync)(dptr, bytesize, pool, hStream)
     }
-    pub unsafe fn cuMemAllocHost_v2(
+    pub(crate) unsafe fn cuMemAllocHost_v2(
         pp: *mut *mut ::core::ffi::c_void,
         bytesize: usize,
     ) -> CUresult {
         (culib().cuMemAllocHost_v2)(pp, bytesize)
     }
-    pub unsafe fn cuMemAllocManaged(
+    pub(crate) unsafe fn cuMemAllocManaged(
         dptr: *mut CUdeviceptr,
         bytesize: usize,
         flags: ::core::ffi::c_uint,
     ) -> CUresult {
         (culib().cuMemAllocManaged)(dptr, bytesize, flags)
     }
-    pub unsafe fn cuMemAllocPitch_v2(
+    pub(crate) unsafe fn cuMemAllocPitch_v2(
         dptr: *mut CUdeviceptr,
         pPitch: *mut usize,
         WidthInBytes: usize,
@@ -14287,7 +14287,7 @@ mod loaded {
     ) -> CUresult {
         (culib().cuMemAllocPitch_v2)(dptr, pPitch, WidthInBytes, Height, ElementSizeBytes)
     }
-    pub unsafe fn cuMemAlloc_v2(dptr: *mut CUdeviceptr, bytesize: usize) -> CUresult {
+    pub(crate) unsafe fn cuMemAlloc_v2(dptr: *mut CUdeviceptr, bytesize: usize) -> CUresult {
         (culib().cuMemAlloc_v2)(dptr, bytesize)
     }
     #[cfg(any(feature = "cuda-12080", feature = "cuda-12090"))]
@@ -14300,7 +14300,7 @@ mod loaded {
     ) -> CUresult {
         (culib().cuMemBatchDecompressAsync)(paramsArray, count, flags, errorIndex, stream)
     }
-    pub unsafe fn cuMemCreate(
+    pub(crate) unsafe fn cuMemCreate(
         handle: *mut CUmemGenericAllocationHandle,
         size: usize,
         prop: *const CUmemAllocationProp,
@@ -14308,7 +14308,7 @@ mod loaded {
     ) -> CUresult {
         (culib().cuMemCreate)(handle, size, prop, flags)
     }
-    pub unsafe fn cuMemExportToShareableHandle(
+    pub(crate) unsafe fn cuMemExportToShareableHandle(
         shareableHandle: *mut ::core::ffi::c_void,
         handle: CUmemGenericAllocationHandle,
         handleType: CUmemAllocationHandleType,
@@ -14316,13 +14316,13 @@ mod loaded {
     ) -> CUresult {
         (culib().cuMemExportToShareableHandle)(shareableHandle, handle, handleType, flags)
     }
-    pub unsafe fn cuMemFreeAsync(dptr: CUdeviceptr, hStream: CUstream) -> CUresult {
+    pub(crate) unsafe fn cuMemFreeAsync(dptr: CUdeviceptr, hStream: CUstream) -> CUresult {
         (culib().cuMemFreeAsync)(dptr, hStream)
     }
-    pub unsafe fn cuMemFreeHost(p: *mut ::core::ffi::c_void) -> CUresult {
+    pub(crate) unsafe fn cuMemFreeHost(p: *mut ::core::ffi::c_void) -> CUresult {
         (culib().cuMemFreeHost)(p)
     }
-    pub unsafe fn cuMemFree_v2(dptr: CUdeviceptr) -> CUresult {
+    pub(crate) unsafe fn cuMemFree_v2(dptr: CUdeviceptr) -> CUresult {
         (culib().cuMemFree_v2)(dptr)
     }
     pub unsafe fn cuMemGetAccess(
