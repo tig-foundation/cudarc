@@ -528,6 +528,7 @@ impl<T> Drop for CudaSlice<T> {
 
         if ctx.initial_memory_lock.load(Ordering::Relaxed) && *ctx.memory_usage.read().unwrap() > 0 {
             *ctx.memory_usage.write().unwrap() -= self.len * std::mem::size_of::<T>();
+            RTSigFuel::remove_device_memory_used(self.len * std::mem::size_of::<T>() as u64);
         }
     }
 }
@@ -1061,7 +1062,10 @@ impl<T> Drop for PinnedHostSlice<T> {
             *ctx.memory_usage.write().unwrap() -= self.len * std::mem::size_of::<T>();
         }*/
 
-        *ctx.host_memory_usage.write().unwrap() -= self.len * std::mem::size_of::<T>();
+        if ctx.initial_memory_lock.load(Ordering::Relaxed) && *ctx.host_memory_usage.read().unwrap() > 0 {
+            *ctx.host_memory_usage.write().unwrap() -= self.len * std::mem::size_of::<T>();
+            RTSigFuel::remove_host_memory_used(self.len * std::mem::size_of::<T>() as u64);
+        }
     }
 }
 
@@ -1096,7 +1100,10 @@ impl CudaContext {
             *self.memory_usage.write().unwrap() += len * std::mem::size_of::<T>();
         }*/
 
-        *self.host_memory_usage.write().unwrap() += len * std::mem::size_of::<T>();
+        if self.initial_memory_lock.load(Ordering::Relaxed) {
+            *self.host_memory_usage.write().unwrap() += len * std::mem::size_of::<T>();
+            RTSigFuel::add_host_memory_used(len * std::mem::size_of::<T>() as u64);
+        }
 
         Ok(PinnedHostSlice { ptr, len, event })
     }
@@ -1233,6 +1240,7 @@ impl CudaStream {
 
         if self.ctx.initial_memory_lock.load(Ordering::Relaxed) {
             *self.ctx.memory_usage.write().unwrap() += len * std::mem::size_of::<T>();
+            RTSigFuel::add_device_memory_used(len * std::mem::size_of::<T>() as u64);
         }
 
         let (read, write) = if self.ctx.is_event_tracking() {
