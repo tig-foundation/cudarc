@@ -13,6 +13,8 @@ use std::{
     vec::Vec,
 };
 
+use crate::RTSigFuel;
+
 /// Represents a primary cuda context on a certain device. When created with [CudaContext::new()] it will
 /// push a new primary context onto the stack.
 ///
@@ -528,7 +530,7 @@ impl<T> Drop for CudaSlice<T> {
 
         if ctx.initial_memory_lock.load(Ordering::Relaxed) && *ctx.memory_usage.read().unwrap() > 0 {
             *ctx.memory_usage.write().unwrap() -= self.len * std::mem::size_of::<T>();
-            RTSigFuel::remove_device_memory_used(self.len * std::mem::size_of::<T>() as u64);
+            RTSigFuel::remove_device_memory_used(self.len as u64 * std::mem::size_of::<T>() as u64);
         }
     }
 }
@@ -1064,7 +1066,7 @@ impl<T> Drop for PinnedHostSlice<T> {
 
         if ctx.initial_memory_lock.load(Ordering::Relaxed) && *ctx.host_memory_usage.read().unwrap() > 0 {
             *ctx.host_memory_usage.write().unwrap() -= self.len * std::mem::size_of::<T>();
-            RTSigFuel::remove_host_memory_used(self.len * std::mem::size_of::<T>() as u64);
+            RTSigFuel::remove_host_memory_used(self.len as u64 * std::mem::size_of::<T>() as u64);
         }
     }
 }

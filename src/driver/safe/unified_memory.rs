@@ -8,6 +8,8 @@ use super::{
     DriverError, HostSlice, LaunchArgs, PushKernelArg, ValidAsZeroBits,
 };
 
+use crate::RTSigFuel;
+
 /// Unified memory allocated with [CudaContext::alloc_unified()] (via [cuMemAllocManaged](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MEM.html#group__CUDA__MEM_1gb347ded34dc326af404aa02af5388a32)).
 ///
 /// This is memory that can be accessed by host side (rust code) AND device side kernels. For host side access you can read/write using
