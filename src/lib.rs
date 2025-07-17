@@ -148,61 +148,60 @@ use std::sync::atomic::AtomicU64;
 use std::sync::OnceLock;
 
 pub struct RTSigFuel {
-    pub(crate) fuel_used: AtomicU64,
-    pub(crate) host_memory_used: AtomicU64,
-    pub(crate) device_memory_used: AtomicU64,
-    pub(crate) runtime_signature: AtomicU64
+    pub(crate) fuel_used: &'static AtomicU64,
+    pub(crate) host_memory_used: &'static AtomicU64,
+    pub(crate) device_memory_used: &'static AtomicU64,
+    pub(crate) runtime_signature: &'static AtomicU64
 }
 
-pub(crate) static REGISTRY: OnceLock<RTSigFuel> = OnceLock::new();
+
+#[no_mangle]
+static __cudarc_fuel_used: AtomicU64 = AtomicU64::new(0);
+#[no_mangle]
+static __cudarc_host_memory_used: AtomicU64 = AtomicU64::new(0);
+#[no_mangle]
+static __cudarc_device_memory_used: AtomicU64 = AtomicU64::new(0);
+#[no_mangle]
+static __cudarc_runtime_signature: AtomicU64 = AtomicU64::new(0);
 
 impl RTSigFuel {
-    pub fn get() -> &'static RTSigFuel {
-        REGISTRY.get_or_init(|| RTSigFuel {
-            fuel_used: AtomicU64::new(0),
-            host_memory_used: AtomicU64::new(0),
-            device_memory_used: AtomicU64::new(0),
-            runtime_signature: AtomicU64::new(0),
-        })
-    }
-
     pub(crate) fn add_fuel(amount: u64) {
-        Self::get().fuel_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
+        __cudarc_fuel_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub fn get_total_fuel_used() -> u64 {
-        Self::get().fuel_used.load(std::sync::atomic::Ordering::Relaxed)
+        __cudarc_fuel_used.load(std::sync::atomic::Ordering::Relaxed)
     }
 
     pub(crate) fn mix_runtime_signature(signature: u64) {
-        Self::get().runtime_signature.fetch_xor(signature, std::sync::atomic::Ordering::Relaxed);
+        __cudarc_runtime_signature.fetch_xor(signature, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub fn get_runtime_signature() -> u64 {
-        Self::get().runtime_signature.load(std::sync::atomic::Ordering::Relaxed)
+        __cudarc_runtime_signature.load(std::sync::atomic::Ordering::Relaxed)
     }
 
     pub fn get_host_memory_used() -> u64 {
-        Self::get().host_memory_used.load(std::sync::atomic::Ordering::Relaxed)
+        __cudarc_host_memory_used.load(std::sync::atomic::Ordering::Relaxed)
     }
 
     pub(crate) fn add_host_memory_used(amount: u64) {
-        Self::get().host_memory_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
+        __cudarc_host_memory_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub(crate) fn remove_host_memory_used(amount: u64) {
-        Self::get().host_memory_used.fetch_sub(amount, std::sync::atomic::Ordering::Relaxed);
+        __cudarc_host_memory_used.fetch_sub(amount, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub fn get_device_memory_used() -> u64 {
-        Self::get().device_memory_used.load(std::sync::atomic::Ordering::Relaxed)
+        __cudarc_device_memory_used.load(std::sync::atomic::Ordering::Relaxed)
     }
 
     pub(crate) fn add_device_memory_used(amount: u64) {
-        Self::get().device_memory_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
+        __cudarc_device_memory_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub(crate) fn remove_device_memory_used(amount: u64) {
-        Self::get().device_memory_used.fetch_sub(amount, std::sync::atomic::Ordering::Relaxed);
+        __cudarc_device_memory_used.fetch_sub(amount, std::sync::atomic::Ordering::Relaxed);
     }
 }
