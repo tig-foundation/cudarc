@@ -7,6 +7,7 @@ extern crate alloc;
 #[cfg(feature = "no-std")]
 extern crate no_std_compat as std;
 pub use self::libraryPropertyType_t as libraryPropertyType;
+use super::result::CudnnError;
 pub type cudaGraph_t = *mut CUgraph_st;
 pub type cudaStream_t = *mut CUstream_st;
 pub type cudnnActivationDescriptor_t = *mut cudnnActivationStruct;
