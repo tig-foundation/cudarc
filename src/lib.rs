@@ -164,7 +164,7 @@ static __cudarc_runtime_signature: AtomicU64 = AtomicU64::new(0);
 
 impl RTSigFuel {
     pub(crate) fn add_fuel_used(amount: u64) {
-        __cudarc_fuel_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
+        __cudarc_fuel_used.fetch_add(amount * 20, std::sync::atomic::Ordering::Relaxed);
     }
 
     pub fn take_fuel_used() -> u64 {
