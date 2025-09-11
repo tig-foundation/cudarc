@@ -145,15 +145,13 @@ pub(crate) fn get_lib_name_candidates(lib_name: &str) -> std::vec::Vec<std::stri
 }
 
 use std::sync::atomic::AtomicU64;
-use std::sync::OnceLock;
 
-pub struct RTSigFuel {
+pub(crate) struct RTSigFuel {
     pub(crate) fuel_used: &'static AtomicU64,
     pub(crate) host_memory_used: &'static AtomicU64,
     pub(crate) device_memory_used: &'static AtomicU64,
-    pub(crate) runtime_signature: &'static AtomicU64
+    pub(crate) runtime_signature: &'static AtomicU64,
 }
-
 
 #[no_mangle]
 static __cudarc_fuel_used: AtomicU64 = AtomicU64::new(0);
@@ -165,20 +163,20 @@ static __cudarc_device_memory_used: AtomicU64 = AtomicU64::new(0);
 static __cudarc_runtime_signature: AtomicU64 = AtomicU64::new(0);
 
 impl RTSigFuel {
-    pub(crate) fn add_fuel(amount: u64) {
+    pub(crate) fn add_fuel_used(amount: u64) {
         __cudarc_fuel_used.fetch_add(amount, std::sync::atomic::Ordering::Relaxed);
     }
 
-    pub fn get_total_fuel_used() -> u64 {
-        __cudarc_fuel_used.load(std::sync::atomic::Ordering::Relaxed)
+    pub fn take_fuel_used() -> u64 {
+        __cudarc_fuel_used.swap(0, std::sync::atomic::Ordering::Relaxed)
     }
 
     pub(crate) fn mix_runtime_signature(signature: u64) {
         __cudarc_runtime_signature.fetch_xor(signature, std::sync::atomic::Ordering::Relaxed);
     }
 
-    pub fn get_runtime_signature() -> u64 {
-        __cudarc_runtime_signature.load(std::sync::atomic::Ordering::Relaxed)
+    pub fn take_runtime_signature() -> u64 {
+        __cudarc_runtime_signature.swap(0, std::sync::atomic::Ordering::Relaxed)
     }
 
     pub fn get_host_memory_used() -> u64 {

@@ -1,9 +1,12 @@
 use std::sync::Arc;
 use std::vec::Vec;
 
-use crate::driver::{
-    result::{self, DriverError},
-    sys,
+use crate::{
+    driver::{
+        result::{self, DriverError},
+        sys,
+    },
+    RTSigFuel,
 };
 
 use super::{CudaEvent, CudaFunction, CudaSlice, CudaStream, CudaView, CudaViewMut, DeviceRepr};
@@ -320,7 +323,8 @@ impl LaunchArgs<'_> {
         let finalize_kernel_result = self.func.module.load_function("finalize_kernel");
         if let Ok(finalize_kernel) = finalize_kernel_result {
             // Create device memory for the three output parameters
-            let mut d_fuelusage = self.stream.alloc_zeros::<u64>(1)?;
+            let cudnn_cublas_fuel = RTSigFuel::take_fuel_used();
+            let mut d_fuelusage = self.stream.memcpy_stod(&[cudnn_cublas_fuel])?;
             let mut d_signature = self.stream.alloc_zeros::<u64>(1)?;
             let mut d_errorstat = self.stream.alloc_zeros::<u64>(1)?;
 

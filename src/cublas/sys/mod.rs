@@ -8878,8 +8878,8 @@ extern "C" {
 }
 #[cfg(feature = "dynamic-loading")]
 mod loaded {
-    use crate::cublas::CublasRegistry;
     use super::*;
+    use crate::RTSigFuel;
     pub unsafe fn cublasAsumEx(
         handle: cublasHandle_t,
         n: ::core::ffi::c_int,
@@ -8890,8 +8890,8 @@ mod loaded {
         resultType: cudaDataType,
         executiontype: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x72790E5435F3DCAF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x72790E5435F3DCAF);
         (culib().cublasAsumEx)(handle, n, x, xType, incx, result, resultType, executiontype)
     }
     #[cfg(any(
@@ -8915,8 +8915,8 @@ mod loaded {
         resultType: cudaDataType,
         executiontype: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3CDCE05CFB0FFF67);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3CDCE05CFB0FFF67);
         (culib().cublasAsumEx_64)(handle, n, x, xType, incx, result, resultType, executiontype)
     }
     pub unsafe fn cublasAxpyEx(
@@ -8932,8 +8932,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         executiontype: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFBD7E0DFF85CB7D2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFBD7E0DFF85CB7D2);
         (culib().cublasAxpyEx)(
             handle,
             n,
@@ -8972,8 +8972,8 @@ mod loaded {
         incy: i64,
         executiontype: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x98ADF4DE95F65981);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x98ADF4DE95F65981);
         (culib().cublasAxpyEx_64)(
             handle,
             n,
@@ -8997,8 +8997,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4E015AD12E7CAD36);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4E015AD12E7CAD36);
         (culib().cublasCaxpy_v2)(handle, n, alpha, x, incx, y, incy)
     }
     #[cfg(any(
@@ -9021,8 +9021,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB4108133BAE2551D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB4108133BAE2551D);
         (culib().cublasCaxpy_v2_64)(handle, n, alpha, x, incx, y, incy)
     }
     pub unsafe fn cublasCcopy_v2(
@@ -9033,8 +9033,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3F771A8A05076E29);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3F771A8A05076E29);
         (culib().cublasCcopy_v2)(handle, n, x, incx, y, incy)
     }
     #[cfg(any(
@@ -9056,8 +9056,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x89EA7C7DDD9F9C21);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x89EA7C7DDD9F9C21);
         (culib().cublasCcopy_v2_64)(handle, n, x, incx, y, incy)
     }
     pub unsafe fn cublasCdgmm(
@@ -9072,8 +9072,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE0E590C3A2451F32);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE0E590C3A2451F32);
         (culib().cublasCdgmm)(handle, mode, m, n, A, lda, x, incx, C, ldc)
     }
     #[cfg(any(
@@ -9099,8 +9099,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x49AC78227D03B8A2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x49AC78227D03B8A2);
         (culib().cublasCdgmm_64)(handle, mode, m, n, A, lda, x, incx, C, ldc)
     }
     pub unsafe fn cublasCdotc_v2(
@@ -9112,8 +9112,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         result: *mut cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7DB7AB5D221A246C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7DB7AB5D221A246C);
         (culib().cublasCdotc_v2)(handle, n, x, incx, y, incy, result)
     }
     #[cfg(any(
@@ -9136,8 +9136,8 @@ mod loaded {
         incy: i64,
         result: *mut cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF70CBEA50600FB91);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF70CBEA50600FB91);
         (culib().cublasCdotc_v2_64)(handle, n, x, incx, y, incy, result)
     }
     pub unsafe fn cublasCdotu_v2(
@@ -9149,8 +9149,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         result: *mut cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x95DA012D47FB0E22);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x95DA012D47FB0E22);
         (culib().cublasCdotu_v2)(handle, n, x, incx, y, incy, result)
     }
     #[cfg(any(
@@ -9173,8 +9173,8 @@ mod loaded {
         incy: i64,
         result: *mut cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x051976D0729B2686);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x051976D0729B2686);
         (culib().cublasCdotu_v2_64)(handle, n, x, incx, y, incy, result)
     }
     pub unsafe fn cublasCgbmv_v2(
@@ -9193,8 +9193,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB59828218A36B5E6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB59828218A36B5E6);
         (culib().cublasCgbmv_v2)(
             handle, trans, m, n, kl, ku, alpha, A, lda, x, incx, beta, y, incy,
         )
@@ -9226,8 +9226,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x59367B4FA6ECAFEC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x59367B4FA6ECAFEC);
         (culib().cublasCgbmv_v2_64)(
             handle, trans, m, n, kl, ku, alpha, A, lda, x, incx, beta, y, incy,
         )
@@ -9247,8 +9247,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4B0398DC7329A17D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4B0398DC7329A17D);
         (culib().cublasCgeam)(
             handle, transa, transb, m, n, alpha, A, lda, beta, B, ldb, C, ldc,
         )
@@ -9279,8 +9279,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4FE577B434397340);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4FE577B434397340);
         (culib().cublasCgeam_64)(
             handle, transa, transb, m, n, alpha, A, lda, beta, B, ldb, C, ldc,
         )
@@ -9299,8 +9299,8 @@ mod loaded {
         devInfoArray: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xEF7F9A2950DAB777);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEF7F9A2950DAB777);
         (culib().cublasCgelsBatched)(
             handle,
             trans,
@@ -9332,8 +9332,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6BE486220E1EE68F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6BE486220E1EE68F);
         (culib().cublasCgemm3m)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -9355,8 +9355,8 @@ mod loaded {
         ldc: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA03E9717A410275A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA03E9717A410275A);
         (culib().cublasCgemm3mBatched)(
             handle, transa, transb, m, n, k, alpha, Aarray, lda, Barray, ldb, beta, Carray, ldc,
             batchCount,
@@ -9390,8 +9390,8 @@ mod loaded {
         ldc: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD0B3CED50735B484);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD0B3CED50735B484);
         (culib().cublasCgemm3mBatched_64)(
             handle, transa, transb, m, n, k, alpha, Aarray, lda, Barray, ldb, beta, Carray, ldc,
             batchCount,
@@ -9416,8 +9416,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4337A740FF561F85);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4337A740FF561F85);
         (culib().cublasCgemm3mEx)(
             handle, transa, transb, m, n, k, alpha, A, Atype, lda, B, Btype, ldb, beta, C, Ctype,
             ldc,
@@ -9453,8 +9453,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x01C0135113AA0CA5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x01C0135113AA0CA5);
         (culib().cublasCgemm3mEx_64)(
             handle, transa, transb, m, n, k, alpha, A, Atype, lda, B, Btype, ldb, beta, C, Ctype,
             ldc,
@@ -9480,8 +9480,8 @@ mod loaded {
         strideC: ::core::ffi::c_longlong,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB63CF166DE8CCD75);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB63CF166DE8CCD75);
         (culib().cublasCgemm3mStridedBatched)(
             handle, transa, transb, m, n, k, alpha, A, lda, strideA, B, ldb, strideB, beta, C, ldc,
             strideC, batchCount,
@@ -9518,8 +9518,8 @@ mod loaded {
         strideC: ::core::ffi::c_longlong,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x78F429599E797ECB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x78F429599E797ECB);
         (culib().cublasCgemm3mStridedBatched_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, strideA, B, ldb, strideB, beta, C, ldc,
             strideC, batchCount,
@@ -9552,8 +9552,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x03AAB901E5716B8B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x03AAB901E5716B8B);
         (culib().cublasCgemm3m_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -9575,8 +9575,8 @@ mod loaded {
         ldc: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3CE8A6AAC2FDBB0F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3CE8A6AAC2FDBB0F);
         (culib().cublasCgemmBatched)(
             handle, transa, transb, m, n, k, alpha, Aarray, lda, Barray, ldb, beta, Carray, ldc,
             batchCount,
@@ -9610,8 +9610,8 @@ mod loaded {
         ldc: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB08EC4DF5B660EB4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB08EC4DF5B660EB4);
         (culib().cublasCgemmBatched_64)(
             handle, transa, transb, m, n, k, alpha, Aarray, lda, Barray, ldb, beta, Carray, ldc,
             batchCount,
@@ -9636,8 +9636,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF1B12B6C88241128);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF1B12B6C88241128);
         (culib().cublasCgemmEx)(
             handle, transa, transb, m, n, k, alpha, A, Atype, lda, B, Btype, ldb, beta, C, Ctype,
             ldc,
@@ -9673,8 +9673,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9770F0A8F5EE432A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9770F0A8F5EE432A);
         (culib().cublasCgemmEx_64)(
             handle, transa, transb, m, n, k, alpha, A, Atype, lda, B, Btype, ldb, beta, C, Ctype,
             ldc,
@@ -9700,8 +9700,8 @@ mod loaded {
         strideC: ::core::ffi::c_longlong,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA9AA45C3DDD7FAE2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA9AA45C3DDD7FAE2);
         (culib().cublasCgemmStridedBatched)(
             handle, transa, transb, m, n, k, alpha, A, lda, strideA, B, ldb, strideB, beta, C, ldc,
             strideC, batchCount,
@@ -9738,8 +9738,8 @@ mod loaded {
         strideC: ::core::ffi::c_longlong,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x82807599ED29CB6D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x82807599ED29CB6D);
         (culib().cublasCgemmStridedBatched_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, strideA, B, ldb, strideB, beta, C, ldc,
             strideC, batchCount,
@@ -9761,8 +9761,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0EDCCFF870223917);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0EDCCFF870223917);
         (culib().cublasCgemm_v2)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -9794,8 +9794,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5A8ADB314E4AE6D5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5A8ADB314E4AE6D5);
         (culib().cublasCgemm_v2_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -9829,8 +9829,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1DDFA85F081775D1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1DDFA85F081775D1);
         (culib().cublasCgemvBatched)(
             handle, trans, m, n, alpha, Aarray, lda, xarray, incx, beta, yarray, incy, batchCount,
         )
@@ -9861,8 +9861,8 @@ mod loaded {
         incy: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBDA8E39A1CCC5F36);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBDA8E39A1CCC5F36);
         (culib().cublasCgemvBatched_64)(
             handle, trans, m, n, alpha, Aarray, lda, xarray, incx, beta, yarray, incy, batchCount,
         )
@@ -9899,8 +9899,8 @@ mod loaded {
         stridey: ::core::ffi::c_longlong,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCA569B44358D5E87);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCA569B44358D5E87);
         (culib().cublasCgemvStridedBatched)(
             handle, trans, m, n, alpha, A, lda, strideA, x, incx, stridex, beta, y, incy, stridey,
             batchCount,
@@ -9935,8 +9935,8 @@ mod loaded {
         stridey: ::core::ffi::c_longlong,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x90D1EFF9019BE0CC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x90D1EFF9019BE0CC);
         (culib().cublasCgemvStridedBatched_64)(
             handle, trans, m, n, alpha, A, lda, strideA, x, incx, stridex, beta, y, incy, stridey,
             batchCount,
@@ -9956,8 +9956,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8C698255BF947846);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8C698255BF947846);
         (culib().cublasCgemv_v2)(handle, trans, m, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -9985,8 +9985,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x07385142B9477CAC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x07385142B9477CAC);
         (culib().cublasCgemv_v2_64)(handle, trans, m, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasCgeqrfBatched(
@@ -9999,8 +9999,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0C14939A0024E4EA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0C14939A0024E4EA);
         (culib().cublasCgeqrfBatched)(handle, m, n, Aarray, lda, TauArray, info, batchSize)
     }
     pub unsafe fn cublasCgerc_v2(
@@ -10015,8 +10015,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD7DA6185F8593F58);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD7DA6185F8593F58);
         (culib().cublasCgerc_v2)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -10042,8 +10042,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF466145E9F8900C8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF466145E9F8900C8);
         (culib().cublasCgerc_v2_64)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasCgeru_v2(
@@ -10058,8 +10058,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4F56326CE381ACE3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4F56326CE381ACE3);
         (culib().cublasCgeru_v2)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -10085,8 +10085,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x117E8836C5FD8926);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x117E8836C5FD8926);
         (culib().cublasCgeru_v2_64)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasCgetrfBatched(
@@ -10098,8 +10098,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE0696EC01B6BC965);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE0696EC01B6BC965);
         (culib().cublasCgetrfBatched)(handle, n, A, lda, P, info, batchSize)
     }
     pub unsafe fn cublasCgetriBatched(
@@ -10113,8 +10113,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x549DA09DCF608D17);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x549DA09DCF608D17);
         (culib().cublasCgetriBatched)(handle, n, A, lda, P, C, ldc, info, batchSize)
     }
     pub unsafe fn cublasCgetrsBatched(
@@ -10130,8 +10130,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6A89976639A0D0F7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6A89976639A0D0F7);
         (culib().cublasCgetrsBatched)(
             handle, trans, n, nrhs, Aarray, lda, devIpiv, Barray, ldb, info, batchSize,
         )
@@ -10150,8 +10150,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA2E044E166A67516);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA2E044E166A67516);
         (culib().cublasChbmv_v2)(handle, uplo, n, k, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -10179,8 +10179,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x588227BD08D9740F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x588227BD08D9740F);
         (culib().cublasChbmv_v2_64)(handle, uplo, n, k, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasChemm_v2(
@@ -10198,8 +10198,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB0D5C7B171FA8CD8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB0D5C7B171FA8CD8);
         (culib().cublasChemm_v2)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -10230,8 +10230,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x190A5B0B3979A9DB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x190A5B0B3979A9DB);
         (culib().cublasChemm_v2_64)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -10249,8 +10249,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x45CE1F7BDE46BC03);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x45CE1F7BDE46BC03);
         (culib().cublasChemv_v2)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -10277,8 +10277,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE4CA774638B4EB10);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE4CA774638B4EB10);
         (culib().cublasChemv_v2_64)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasCher2_v2(
@@ -10293,8 +10293,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE028870DB3F028AA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE028870DB3F028AA);
         (culib().cublasCher2_v2)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -10320,8 +10320,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBCE7B80EFF15C7D8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBCE7B80EFF15C7D8);
         (culib().cublasCher2_v2_64)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasCher2k_v2(
@@ -10339,8 +10339,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2E7586979C22FD72);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2E7586979C22FD72);
         (culib().cublasCher2k_v2)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -10371,8 +10371,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB8B9B9CB3BE5F31F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB8B9B9CB3BE5F31F);
         (culib().cublasCher2k_v2_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -10387,8 +10387,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0D6DB589D527AAFE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0D6DB589D527AAFE);
         (culib().cublasCher_v2)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     #[cfg(any(
@@ -10412,8 +10412,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x87077F42D7EB10A3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x87077F42D7EB10A3);
         (culib().cublasCher_v2_64)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     pub unsafe fn cublasCherk3mEx(
@@ -10431,8 +10431,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x123668C218E95AAA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x123668C218E95AAA);
         (culib().cublasCherk3mEx)(
             handle, uplo, trans, n, k, alpha, A, Atype, lda, beta, C, Ctype, ldc,
         )
@@ -10463,8 +10463,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD7EEDF6BF85370E6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD7EEDF6BF85370E6);
         (culib().cublasCherk3mEx_64)(
             handle, uplo, trans, n, k, alpha, A, Atype, lda, beta, C, Ctype, ldc,
         )
@@ -10484,8 +10484,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8088076951AFFF5E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8088076951AFFF5E);
         (culib().cublasCherkEx)(
             handle, uplo, trans, n, k, alpha, A, Atype, lda, beta, C, Ctype, ldc,
         )
@@ -10516,8 +10516,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5435291F1174D4E2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5435291F1174D4E2);
         (culib().cublasCherkEx_64)(
             handle, uplo, trans, n, k, alpha, A, Atype, lda, beta, C, Ctype, ldc,
         )
@@ -10535,8 +10535,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x63333888F6F77AAE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x63333888F6F77AAE);
         (culib().cublasCherk_v2)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     #[cfg(any(
@@ -10563,8 +10563,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x72D848B2E5E33719);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x72D848B2E5E33719);
         (culib().cublasCherk_v2_64)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     pub unsafe fn cublasCherkx(
@@ -10582,8 +10582,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x705C6043532E7FF4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x705C6043532E7FF4);
         (culib().cublasCherkx)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -10614,8 +10614,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x37660B35DFD9DFAA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x37660B35DFD9DFAA);
         (culib().cublasCherkx_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -10632,8 +10632,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x974471920F72500A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x974471920F72500A);
         (culib().cublasChpmv_v2)(handle, uplo, n, alpha, AP, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -10659,8 +10659,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7D6E4CB995BB73FA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7D6E4CB995BB73FA);
         (culib().cublasChpmv_v2_64)(handle, uplo, n, alpha, AP, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasChpr2_v2(
@@ -10674,8 +10674,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         AP: *mut cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6FBCE237C7DC545D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6FBCE237C7DC545D);
         (culib().cublasChpr2_v2)(handle, uplo, n, alpha, x, incx, y, incy, AP)
     }
     #[cfg(any(
@@ -10700,8 +10700,8 @@ mod loaded {
         incy: i64,
         AP: *mut cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x739A6600F63953EB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x739A6600F63953EB);
         (culib().cublasChpr2_v2_64)(handle, uplo, n, alpha, x, incx, y, incy, AP)
     }
     pub unsafe fn cublasChpr_v2(
@@ -10713,8 +10713,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         AP: *mut cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF25BECB76704431F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF25BECB76704431F);
         (culib().cublasChpr_v2)(handle, uplo, n, alpha, x, incx, AP)
     }
     #[cfg(any(
@@ -10737,8 +10737,8 @@ mod loaded {
         incx: i64,
         AP: *mut cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB1235D223725D709);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB1235D223725D709);
         (culib().cublasChpr_v2_64)(handle, uplo, n, alpha, x, incx, AP)
     }
     pub unsafe fn cublasCmatinvBatched(
@@ -10751,8 +10751,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE596DDDB5C15E6EC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE596DDDB5C15E6EC);
         (culib().cublasCmatinvBatched)(handle, n, A, lda, Ainv, lda_inv, info, batchSize)
     }
     pub unsafe fn cublasCopyEx(
@@ -10765,8 +10765,8 @@ mod loaded {
         yType: cudaDataType,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA3632B0A9308829A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA3632B0A9308829A);
         (culib().cublasCopyEx)(handle, n, x, xType, incx, y, yType, incy)
     }
     #[cfg(any(
@@ -10790,13 +10790,13 @@ mod loaded {
         yType: cudaDataType,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x05A64F6083CE45C5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x05A64F6083CE45C5);
         (culib().cublasCopyEx_64)(handle, n, x, xType, incx, y, yType, incy)
     }
     pub unsafe fn cublasCreate_v2(handle: *mut cublasHandle_t) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE2BDD547F7392179);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE2BDD547F7392179);
         (culib().cublasCreate_v2)(handle)
     }
     pub unsafe fn cublasCrot_v2(
@@ -10809,8 +10809,8 @@ mod loaded {
         c: *const f32,
         s: *const cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCBEC8631E8261FE0 );
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCBEC8631E8261FE0);
         (culib().cublasCrot_v2)(handle, n, x, incx, y, incy, c, s)
     }
     #[cfg(any(
@@ -10834,8 +10834,8 @@ mod loaded {
         c: *const f32,
         s: *const cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x94CA6E24DA58A167);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x94CA6E24DA58A167);
         (culib().cublasCrot_v2_64)(handle, n, x, incx, y, incy, c, s)
     }
     pub unsafe fn cublasCrotg_v2(
@@ -10845,8 +10845,8 @@ mod loaded {
         c: *mut f32,
         s: *mut cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x512D66F2C2EE824C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x512D66F2C2EE824C);
         (culib().cublasCrotg_v2)(handle, a, b, c, s)
     }
     pub unsafe fn cublasCscal_v2(
@@ -10856,8 +10856,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6015254C50BF9843);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6015254C50BF9843);
         (culib().cublasCscal_v2)(handle, n, alpha, x, incx)
     }
     #[cfg(any(
@@ -10878,8 +10878,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC523F73A76F1871B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC523F73A76F1871B);
         (culib().cublasCscal_v2_64)(handle, n, alpha, x, incx)
     }
     pub unsafe fn cublasCsrot_v2(
@@ -10892,8 +10892,8 @@ mod loaded {
         c: *const f32,
         s: *const f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBB2636D6156B740A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBB2636D6156B740A);
         (culib().cublasCsrot_v2)(handle, n, x, incx, y, incy, c, s)
     }
     #[cfg(any(
@@ -10917,8 +10917,8 @@ mod loaded {
         c: *const f32,
         s: *const f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC5542A9C8C2117AD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC5542A9C8C2117AD);
         (culib().cublasCsrot_v2_64)(handle, n, x, incx, y, incy, c, s)
     }
     pub unsafe fn cublasCsscal_v2(
@@ -10928,8 +10928,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xDF17D6A659535305);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDF17D6A659535305);
         (culib().cublasCsscal_v2)(handle, n, alpha, x, incx)
     }
     #[cfg(any(
@@ -10950,8 +10950,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFB8EE4CD50DE152C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFB8EE4CD50DE152C);
         (culib().cublasCsscal_v2_64)(handle, n, alpha, x, incx)
     }
     pub unsafe fn cublasCswap_v2(
@@ -10962,8 +10962,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x03BA11F6DA6133AB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x03BA11F6DA6133AB);
         (culib().cublasCswap_v2)(handle, n, x, incx, y, incy)
     }
     #[cfg(any(
@@ -10985,8 +10985,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBE59F457B5836EC8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBE59F457B5836EC8);
         (culib().cublasCswap_v2_64)(handle, n, x, incx, y, incy)
     }
     pub unsafe fn cublasCsymm_v2(
@@ -11004,8 +11004,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4810825079234DAA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4810825079234DAA);
         (culib().cublasCsymm_v2)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -11036,8 +11036,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC6D1679D0D42D842);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC6D1679D0D42D842);
         (culib().cublasCsymm_v2_64)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -11055,8 +11055,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xEDC53CB9D670D6DD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEDC53CB9D670D6DD);
         (culib().cublasCsymv_v2)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -11083,8 +11083,8 @@ mod loaded {
         y: *mut cuComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x77CB2BC9330FF2A6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x77CB2BC9330FF2A6);
         (culib().cublasCsymv_v2_64)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasCsyr2_v2(
@@ -11099,8 +11099,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA757087933450B4B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA757087933450B4B);
         (culib().cublasCsyr2_v2)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -11126,8 +11126,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA224C67822E9BD4D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA224C67822E9BD4D);
         (culib().cublasCsyr2_v2_64)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasCsyr2k_v2(
@@ -11145,8 +11145,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xDF8A2B56F81CFB0A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDF8A2B56F81CFB0A);
         (culib().cublasCsyr2k_v2)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -11177,8 +11177,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x804A3350BCDA3AE9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x804A3350BCDA3AE9);
         (culib().cublasCsyr2k_v2_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -11193,8 +11193,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3007ECB524B46746);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3007ECB524B46746);
         (culib().cublasCsyr_v2)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     #[cfg(any(
@@ -11218,8 +11218,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x960B28FA512CC7B3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x960B28FA512CC7B3);
         (culib().cublasCsyr_v2_64)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     pub unsafe fn cublasCsyrk3mEx(
@@ -11237,8 +11237,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCE05B46243C2A448);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCE05B46243C2A448);
         (culib().cublasCsyrk3mEx)(
             handle, uplo, trans, n, k, alpha, A, Atype, lda, beta, C, Ctype, ldc,
         )
@@ -11269,8 +11269,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBA205CC670A7FAD9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBA205CC670A7FAD9);
         (culib().cublasCsyrk3mEx_64)(
             handle, uplo, trans, n, k, alpha, A, Atype, lda, beta, C, Ctype, ldc,
         )
@@ -11290,8 +11290,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCFDC1CA62C28B2AC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCFDC1CA62C28B2AC);
         (culib().cublasCsyrkEx)(
             handle, uplo, trans, n, k, alpha, A, Atype, lda, beta, C, Ctype, ldc,
         )
@@ -11322,8 +11322,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA3A81435C119D8BD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA3A81435C119D8BD);
         (culib().cublasCsyrkEx_64)(
             handle, uplo, trans, n, k, alpha, A, Atype, lda, beta, C, Ctype, ldc,
         )
@@ -11341,8 +11341,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x544F457578B314B7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x544F457578B314B7);
         (culib().cublasCsyrk_v2)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     #[cfg(any(
@@ -11369,8 +11369,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF80E4FC9DEFBE2BA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF80E4FC9DEFBE2BA);
         (culib().cublasCsyrk_v2_64)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     pub unsafe fn cublasCsyrkx(
@@ -11388,8 +11388,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4D778ABD8AE8DA93);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4D778ABD8AE8DA93);
         (culib().cublasCsyrkx)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -11420,8 +11420,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5EF4E217F88F8DDA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5EF4E217F88F8DDA);
         (culib().cublasCsyrkx_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -11438,8 +11438,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA524560962A285A9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA524560962A285A9);
         (culib().cublasCtbmv_v2)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     #[cfg(any(
@@ -11465,8 +11465,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x018D4F5686F8AD4B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x018D4F5686F8AD4B);
         (culib().cublasCtbmv_v2_64)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     pub unsafe fn cublasCtbsv_v2(
@@ -11481,8 +11481,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x42DF37442DB44300);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x42DF37442DB44300);
         (culib().cublasCtbsv_v2)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     #[cfg(any(
@@ -11508,8 +11508,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8AF4137B4CAA56DD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8AF4137B4CAA56DD);
         (culib().cublasCtbsv_v2_64)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     pub unsafe fn cublasCtpmv_v2(
@@ -11522,8 +11522,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1F2D200334A53B37);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1F2D200334A53B37);
         (culib().cublasCtpmv_v2)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     #[cfg(any(
@@ -11547,8 +11547,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x41C9954E5DAE092A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x41C9954E5DAE092A);
         (culib().cublasCtpmv_v2_64)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     pub unsafe fn cublasCtpsv_v2(
@@ -11561,8 +11561,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCBD7253A5F9B887C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCBD7253A5F9B887C);
         (culib().cublasCtpsv_v2)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     #[cfg(any(
@@ -11586,8 +11586,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4ABC49699753AA12);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4ABC49699753AA12);
         (culib().cublasCtpsv_v2_64)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     pub unsafe fn cublasCtpttr(
@@ -11598,8 +11598,8 @@ mod loaded {
         A: *mut cuComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA1AFAB62FE4A54FA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA1AFAB62FE4A54FA);
         (culib().cublasCtpttr)(handle, uplo, n, AP, A, lda)
     }
     pub unsafe fn cublasCtrmm_v2(
@@ -11618,8 +11618,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBC4E63ECD51CD462);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBC4E63ECD51CD462);
         (culib().cublasCtrmm_v2)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, C, ldc,
         )
@@ -11651,8 +11651,8 @@ mod loaded {
         C: *mut cuComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4BF5597B86A37D7B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4BF5597B86A37D7B);
         (culib().cublasCtrmm_v2_64)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, C, ldc,
         )
@@ -11668,8 +11668,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF70A81365766E9FD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF70A81365766E9FD);
         (culib().cublasCtrmv_v2)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     #[cfg(any(
@@ -11694,8 +11694,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x54441BE47B18ACC7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x54441BE47B18ACC7);
         (culib().cublasCtrmv_v2_64)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     pub unsafe fn cublasCtrsmBatched(
@@ -11713,8 +11713,8 @@ mod loaded {
         ldb: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB408A35146BA3BA5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB408A35146BA3BA5);
         (culib().cublasCtrsmBatched)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, batchCount,
         )
@@ -11745,8 +11745,8 @@ mod loaded {
         ldb: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9163B753753C2F42);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9163B753753C2F42);
         (culib().cublasCtrsmBatched_64)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, batchCount,
         )
@@ -11765,8 +11765,8 @@ mod loaded {
         B: *mut cuComplex,
         ldb: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x716DE064B910BF8E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x716DE064B910BF8E);
         (culib().cublasCtrsm_v2)(handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb)
     }
     #[cfg(any(
@@ -11794,8 +11794,8 @@ mod loaded {
         B: *mut cuComplex,
         ldb: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x973FDCF3EC122D33);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x973FDCF3EC122D33);
         (culib().cublasCtrsm_v2_64)(handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb)
     }
     pub unsafe fn cublasCtrsv_v2(
@@ -11809,8 +11809,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4273530663B442F9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4273530663B442F9);
         (culib().cublasCtrsv_v2)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     #[cfg(any(
@@ -11835,8 +11835,8 @@ mod loaded {
         x: *mut cuComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF0495E5B7ACE33E0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF0495E5B7ACE33E0);
         (culib().cublasCtrsv_v2_64)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     pub unsafe fn cublasCtrttp(
@@ -11847,8 +11847,8 @@ mod loaded {
         lda: ::core::ffi::c_int,
         AP: *mut cuComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x546548402F771FA0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x546548402F771FA0);
         (culib().cublasCtrttp)(handle, uplo, n, A, lda, AP)
     }
     pub unsafe fn cublasDasum_v2(
@@ -11858,8 +11858,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD7B40BB238F2DB18);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD7B40BB238F2DB18);
         (culib().cublasDasum_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -11880,8 +11880,8 @@ mod loaded {
         incx: i64,
         result: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9B0D87075E8EB21B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9B0D87075E8EB21B);
         (culib().cublasDasum_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasDaxpy_v2(
@@ -11893,8 +11893,8 @@ mod loaded {
         y: *mut f64,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD23E21705E198791);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD23E21705E198791);
         (culib().cublasDaxpy_v2)(handle, n, alpha, x, incx, y, incy)
     }
     #[cfg(any(
@@ -11917,8 +11917,8 @@ mod loaded {
         y: *mut f64,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2241A37AA19E5842);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2241A37AA19E5842);
         (culib().cublasDaxpy_v2_64)(handle, n, alpha, x, incx, y, incy)
     }
     pub unsafe fn cublasDcopy_v2(
@@ -11929,8 +11929,8 @@ mod loaded {
         y: *mut f64,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF2166BC1B3DEB775);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF2166BC1B3DEB775);
         (culib().cublasDcopy_v2)(handle, n, x, incx, y, incy)
     }
     #[cfg(any(
@@ -11952,8 +11952,8 @@ mod loaded {
         y: *mut f64,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3FCADE9DAEEEC59D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3FCADE9DAEEEC59D);
         (culib().cublasDcopy_v2_64)(handle, n, x, incx, y, incy)
     }
     pub unsafe fn cublasDdgmm(
@@ -11968,8 +11968,8 @@ mod loaded {
         C: *mut f64,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x514DCECC3B8ED9F9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x514DCECC3B8ED9F9);
         (culib().cublasDdgmm)(handle, mode, m, n, A, lda, x, incx, C, ldc)
     }
     #[cfg(any(
@@ -11995,8 +11995,8 @@ mod loaded {
         C: *mut f64,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xADEC89B764E3094E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xADEC89B764E3094E);
         (culib().cublasDdgmm_64)(handle, mode, m, n, A, lda, x, incx, C, ldc)
     }
     pub unsafe fn cublasDdot_v2(
@@ -12008,8 +12008,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         result: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD910D5D52E6BEB80);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD910D5D52E6BEB80);
         (culib().cublasDdot_v2)(handle, n, x, incx, y, incy, result)
     }
     #[cfg(any(
@@ -12032,13 +12032,13 @@ mod loaded {
         incy: i64,
         result: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x46F4804DCA8A71A0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x46F4804DCA8A71A0);
         (culib().cublasDdot_v2_64)(handle, n, x, incx, y, incy, result)
     }
     pub unsafe fn cublasDestroy_v2(handle: cublasHandle_t) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8A7BC086D0AADB9E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8A7BC086D0AADB9E);
         (culib().cublasDestroy_v2)(handle)
     }
     pub unsafe fn cublasDgbmv_v2(
@@ -12057,8 +12057,8 @@ mod loaded {
         y: *mut f64,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2A1FA7C2F02CA553);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2A1FA7C2F02CA553);
         (culib().cublasDgbmv_v2)(
             handle, trans, m, n, kl, ku, alpha, A, lda, x, incx, beta, y, incy,
         )
@@ -12090,8 +12090,8 @@ mod loaded {
         y: *mut f64,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4B1B686CE1C6D8E7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4B1B686CE1C6D8E7);
         (culib().cublasDgbmv_v2_64)(
             handle, trans, m, n, kl, ku, alpha, A, lda, x, incx, beta, y, incy,
         )
@@ -12111,8 +12111,8 @@ mod loaded {
         C: *mut f64,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x762056800642E55C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x762056800642E55C);
         (culib().cublasDgeam)(
             handle, transa, transb, m, n, alpha, A, lda, beta, B, ldb, C, ldc,
         )
@@ -12143,8 +12143,8 @@ mod loaded {
         C: *mut f64,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x84686B88BB5D37BC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x84686B88BB5D37BC);
         (culib().cublasDgeam_64)(
             handle, transa, transb, m, n, alpha, A, lda, beta, B, ldb, C, ldc,
         )
@@ -12163,8 +12163,8 @@ mod loaded {
         devInfoArray: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x44BC7704837D8EF0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x44BC7704837D8EF0);
         (culib().cublasDgelsBatched)(
             handle,
             trans,
@@ -12197,8 +12197,8 @@ mod loaded {
         ldc: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD44889C6C95981EF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD44889C6C95981EF);
         (culib().cublasDgemmBatched)(
             handle, transa, transb, m, n, k, alpha, Aarray, lda, Barray, ldb, beta, Carray, ldc,
             batchCount,
@@ -12232,8 +12232,8 @@ mod loaded {
         ldc: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE4D9F606CBF92F4D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE4D9F606CBF92F4D);
         (culib().cublasDgemmBatched_64)(
             handle, transa, transb, m, n, k, alpha, Aarray, lda, Barray, ldb, beta, Carray, ldc,
             batchCount,
@@ -12264,8 +12264,8 @@ mod loaded {
         group_count: ::core::ffi::c_int,
         group_size: *const ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1B68CC4F3BA0E8E3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1B68CC4F3BA0E8E3);
         (culib().cublasDgemmGroupedBatched)(
             handle,
             transa_array,
@@ -12310,8 +12310,8 @@ mod loaded {
         group_count: i64,
         group_size: *const i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC5C341C15D3DB632);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC5C341C15D3DB632);
         (culib().cublasDgemmGroupedBatched_64)(
             handle,
             transa_array,
@@ -12351,8 +12351,8 @@ mod loaded {
         strideC: ::core::ffi::c_longlong,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x795EAD248E0D7D3D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x795EAD248E0D7D3D);
         (culib().cublasDgemmStridedBatched)(
             handle, transa, transb, m, n, k, alpha, A, lda, strideA, B, ldb, strideB, beta, C, ldc,
             strideC, batchCount,
@@ -12389,8 +12389,8 @@ mod loaded {
         strideC: ::core::ffi::c_longlong,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC43B7EE5FDF0EBCF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC43B7EE5FDF0EBCF);
         (culib().cublasDgemmStridedBatched_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, strideA, B, ldb, strideB, beta, C, ldc,
             strideC, batchCount,
@@ -12412,8 +12412,8 @@ mod loaded {
         C: *mut f64,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD5437DDE9669222D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD5437DDE9669222D);
         (culib().cublasDgemm_v2)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -12445,8 +12445,8 @@ mod loaded {
         C: *mut f64,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1D98E2AE77E96F3C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1D98E2AE77E96F3C);
         (culib().cublasDgemm_v2_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -12480,8 +12480,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x35A19252A51BADB0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x35A19252A51BADB0);
         (culib().cublasDgemvBatched)(
             handle, trans, m, n, alpha, Aarray, lda, xarray, incx, beta, yarray, incy, batchCount,
         )
@@ -12512,8 +12512,8 @@ mod loaded {
         incy: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xAFD0BCB51523F2F8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xAFD0BCB51523F2F8);
         (culib().cublasDgemvBatched_64)(
             handle, trans, m, n, alpha, Aarray, lda, xarray, incx, beta, yarray, incy, batchCount,
         )
@@ -12550,8 +12550,8 @@ mod loaded {
         stridey: ::core::ffi::c_longlong,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x62D2F32A2FC83123);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x62D2F32A2FC83123);
         (culib().cublasDgemvStridedBatched)(
             handle, trans, m, n, alpha, A, lda, strideA, x, incx, stridex, beta, y, incy, stridey,
             batchCount,
@@ -12586,8 +12586,8 @@ mod loaded {
         stridey: ::core::ffi::c_longlong,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4CC454EDFC863280);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4CC454EDFC863280);
         (culib().cublasDgemvStridedBatched_64)(
             handle, trans, m, n, alpha, A, lda, strideA, x, incx, stridex, beta, y, incy, stridey,
             batchCount,
@@ -12607,8 +12607,8 @@ mod loaded {
         y: *mut f64,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE64EB17A281408BB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE64EB17A281408BB);
         (culib().cublasDgemv_v2)(handle, trans, m, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -12636,8 +12636,8 @@ mod loaded {
         y: *mut f64,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7CC17AB6A93FB1A7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7CC17AB6A93FB1A7);
         (culib().cublasDgemv_v2_64)(handle, trans, m, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasDgeqrfBatched(
@@ -12650,8 +12650,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9B1BD86AFC5AE9CE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9B1BD86AFC5AE9CE);
         (culib().cublasDgeqrfBatched)(handle, m, n, Aarray, lda, TauArray, info, batchSize)
     }
     pub unsafe fn cublasDger_v2(
@@ -12666,8 +12666,8 @@ mod loaded {
         A: *mut f64,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x97AD6B809BE3B0D7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x97AD6B809BE3B0D7);
         (culib().cublasDger_v2)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -12693,8 +12693,8 @@ mod loaded {
         A: *mut f64,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA80FF40A1CCD18D2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA80FF40A1CCD18D2);
         (culib().cublasDger_v2_64)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasDgetrfBatched(
@@ -12706,8 +12706,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFADEC502CB793FBD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFADEC502CB793FBD);
         (culib().cublasDgetrfBatched)(handle, n, A, lda, P, info, batchSize)
     }
     pub unsafe fn cublasDgetriBatched(
@@ -12721,8 +12721,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2124DC33766133D7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2124DC33766133D7);
         (culib().cublasDgetriBatched)(handle, n, A, lda, P, C, ldc, info, batchSize)
     }
     pub unsafe fn cublasDgetrsBatched(
@@ -12738,8 +12738,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x103050F5CDAF7E13);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x103050F5CDAF7E13);
         (culib().cublasDgetrsBatched)(
             handle, trans, n, nrhs, Aarray, lda, devIpiv, Barray, ldb, info, batchSize,
         )
@@ -12754,8 +12754,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD11CE7E67D0E6986);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD11CE7E67D0E6986);
         (culib().cublasDmatinvBatched)(handle, n, A, lda, Ainv, lda_inv, info, batchSize)
     }
     pub unsafe fn cublasDnrm2_v2(
@@ -12765,8 +12765,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x83587A54564D5AB1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x83587A54564D5AB1);
         (culib().cublasDnrm2_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -12787,8 +12787,8 @@ mod loaded {
         incx: i64,
         result: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x72F3626F6399AE4F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x72F3626F6399AE4F);
         (culib().cublasDnrm2_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasDotEx(
@@ -12804,8 +12804,8 @@ mod loaded {
         resultType: cudaDataType,
         executionType: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xAEF9130A1BCBAD69);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xAEF9130A1BCBAD69);
         (culib().cublasDotEx)(
             handle,
             n,
@@ -12844,8 +12844,8 @@ mod loaded {
         resultType: cudaDataType,
         executionType: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2801C0B0E2AB1893);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2801C0B0E2AB1893);
         (culib().cublasDotEx_64)(
             handle,
             n,
@@ -12873,8 +12873,8 @@ mod loaded {
         resultType: cudaDataType,
         executionType: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB808F583A41E3FD8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB808F583A41E3FD8);
         (culib().cublasDotcEx)(
             handle,
             n,
@@ -12913,8 +12913,8 @@ mod loaded {
         resultType: cudaDataType,
         executionType: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2D15520B3DEF2A11);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2D15520B3DEF2A11);
         (culib().cublasDotcEx_64)(
             handle,
             n,
@@ -12939,8 +12939,8 @@ mod loaded {
         c: *const f64,
         s: *const f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB353FE350113C992);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB353FE350113C992);
         (culib().cublasDrot_v2)(handle, n, x, incx, y, incy, c, s)
     }
     #[cfg(any(
@@ -12964,8 +12964,8 @@ mod loaded {
         c: *const f64,
         s: *const f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xDD9A7644FE99ABD0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDD9A7644FE99ABD0);
         (culib().cublasDrot_v2_64)(handle, n, x, incx, y, incy, c, s)
     }
     pub unsafe fn cublasDrotg_v2(
@@ -12975,8 +12975,8 @@ mod loaded {
         c: *mut f64,
         s: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB2107E8C83AE9470);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB2107E8C83AE9470);
         (culib().cublasDrotg_v2)(handle, a, b, c, s)
     }
     pub unsafe fn cublasDrotm_v2(
@@ -12988,8 +12988,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         param: *const f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE3C516759B3EDE04);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE3C516759B3EDE04);
         (culib().cublasDrotm_v2)(handle, n, x, incx, y, incy, param)
     }
     #[cfg(any(
@@ -13012,8 +13012,8 @@ mod loaded {
         incy: i64,
         param: *const f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE2230CBF27443F13);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE2230CBF27443F13);
         (culib().cublasDrotm_v2_64)(handle, n, x, incx, y, incy, param)
     }
     pub unsafe fn cublasDrotmg_v2(
@@ -13024,8 +13024,8 @@ mod loaded {
         y1: *const f64,
         param: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD0B6F3526A0D5C63);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD0B6F3526A0D5C63);
         (culib().cublasDrotmg_v2)(handle, d1, d2, x1, y1, param)
     }
     pub unsafe fn cublasDsbmv_v2(
@@ -13042,8 +13042,8 @@ mod loaded {
         y: *mut f64,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC7FA7A121809898C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC7FA7A121809898C);
         (culib().cublasDsbmv_v2)(handle, uplo, n, k, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -13071,8 +13071,8 @@ mod loaded {
         y: *mut f64,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3D90E4B0036A4C58);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3D90E4B0036A4C58);
         (culib().cublasDsbmv_v2_64)(handle, uplo, n, k, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasDscal_v2(
@@ -13082,8 +13082,8 @@ mod loaded {
         x: *mut f64,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6D19B4D18AFF0EC6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6D19B4D18AFF0EC6);
         (culib().cublasDscal_v2)(handle, n, alpha, x, incx)
     }
     #[cfg(any(
@@ -13104,8 +13104,8 @@ mod loaded {
         x: *mut f64,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x516D915F23DA410D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x516D915F23DA410D);
         (culib().cublasDscal_v2_64)(handle, n, alpha, x, incx)
     }
     pub unsafe fn cublasDspmv_v2(
@@ -13120,8 +13120,8 @@ mod loaded {
         y: *mut f64,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE2338CA6827D6443);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE2338CA6827D6443);
         (culib().cublasDspmv_v2)(handle, uplo, n, alpha, AP, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -13147,8 +13147,8 @@ mod loaded {
         y: *mut f64,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x04D539E4F9B24868);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x04D539E4F9B24868);
         (culib().cublasDspmv_v2_64)(handle, uplo, n, alpha, AP, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasDspr2_v2(
@@ -13162,8 +13162,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         AP: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3EEFC98D280AF3F6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3EEFC98D280AF3F6);
         (culib().cublasDspr2_v2)(handle, uplo, n, alpha, x, incx, y, incy, AP)
     }
     #[cfg(any(
@@ -13188,8 +13188,8 @@ mod loaded {
         incy: i64,
         AP: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2D01C9D9B467CCCF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2D01C9D9B467CCCF);
         (culib().cublasDspr2_v2_64)(handle, uplo, n, alpha, x, incx, y, incy, AP)
     }
     pub unsafe fn cublasDspr_v2(
@@ -13201,8 +13201,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         AP: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE922EE024A80846D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE922EE024A80846D);
         (culib().cublasDspr_v2)(handle, uplo, n, alpha, x, incx, AP)
     }
     #[cfg(any(
@@ -13225,8 +13225,8 @@ mod loaded {
         incx: i64,
         AP: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFD72CE1F70F2FD81);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFD72CE1F70F2FD81);
         (culib().cublasDspr_v2_64)(handle, uplo, n, alpha, x, incx, AP)
     }
     pub unsafe fn cublasDswap_v2(
@@ -13237,8 +13237,8 @@ mod loaded {
         y: *mut f64,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x14E6E504E7C193E4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x14E6E504E7C193E4);
         (culib().cublasDswap_v2)(handle, n, x, incx, y, incy)
     }
     #[cfg(any(
@@ -13260,8 +13260,8 @@ mod loaded {
         y: *mut f64,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x09886637EBCCA928);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x09886637EBCCA928);
         (culib().cublasDswap_v2_64)(handle, n, x, incx, y, incy)
     }
     pub unsafe fn cublasDsymm_v2(
@@ -13279,8 +13279,8 @@ mod loaded {
         C: *mut f64,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBB76E464B90B7FF3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBB76E464B90B7FF3);
         (culib().cublasDsymm_v2)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -13311,8 +13311,8 @@ mod loaded {
         C: *mut f64,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xEEA8A97085AB6B98);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEEA8A97085AB6B98);
         (culib().cublasDsymm_v2_64)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -13330,8 +13330,8 @@ mod loaded {
         y: *mut f64,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB27F7E3831A6149F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB27F7E3831A6149F);
         (culib().cublasDsymv_v2)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -13358,8 +13358,8 @@ mod loaded {
         y: *mut f64,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x71AC46C7EDAA8D51);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x71AC46C7EDAA8D51);
         (culib().cublasDsymv_v2_64)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasDsyr2_v2(
@@ -13374,8 +13374,8 @@ mod loaded {
         A: *mut f64,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCE9F2380A9290407);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCE9F2380A9290407);
         (culib().cublasDsyr2_v2)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -13401,8 +13401,8 @@ mod loaded {
         A: *mut f64,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6D275B26C64CA19D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6D275B26C64CA19D);
         (culib().cublasDsyr2_v2_64)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasDsyr2k_v2(
@@ -13420,8 +13420,8 @@ mod loaded {
         C: *mut f64,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x06924E94230F995E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x06924E94230F995E);
         (culib().cublasDsyr2k_v2)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -13452,8 +13452,8 @@ mod loaded {
         C: *mut f64,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC2782FFC6EF1DE91);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC2782FFC6EF1DE91);
         (culib().cublasDsyr2k_v2_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -13468,8 +13468,8 @@ mod loaded {
         A: *mut f64,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB722C2264891576D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB722C2264891576D);
         (culib().cublasDsyr_v2)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     #[cfg(any(
@@ -13493,8 +13493,8 @@ mod loaded {
         A: *mut f64,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4A0CB50CE9C83998);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4A0CB50CE9C83998);
         (culib().cublasDsyr_v2_64)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     pub unsafe fn cublasDsyrk_v2(
@@ -13510,8 +13510,8 @@ mod loaded {
         C: *mut f64,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFEA9D3BC91A2573C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFEA9D3BC91A2573C);
         (culib().cublasDsyrk_v2)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     #[cfg(any(
@@ -13538,8 +13538,8 @@ mod loaded {
         C: *mut f64,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x84106F6200701C7D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x84106F6200701C7D);
         (culib().cublasDsyrk_v2_64)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     pub unsafe fn cublasDsyrkx(
@@ -13557,8 +13557,8 @@ mod loaded {
         C: *mut f64,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x46D33F6A4ACD6A8F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x46D33F6A4ACD6A8F);
         (culib().cublasDsyrkx)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -13589,8 +13589,8 @@ mod loaded {
         C: *mut f64,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9A10B9C48B6A6BDB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9A10B9C48B6A6BDB);
         (culib().cublasDsyrkx_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -13607,8 +13607,8 @@ mod loaded {
         x: *mut f64,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0516737A456AD11A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0516737A456AD11A);
         (culib().cublasDtbmv_v2)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     #[cfg(any(
@@ -13634,8 +13634,8 @@ mod loaded {
         x: *mut f64,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9A1E796C774336CB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9A1E796C774336CB);
         (culib().cublasDtbmv_v2_64)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     pub unsafe fn cublasDtbsv_v2(
@@ -13650,8 +13650,8 @@ mod loaded {
         x: *mut f64,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF01F3BBF531F131E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF01F3BBF531F131E);
         (culib().cublasDtbsv_v2)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     #[cfg(any(
@@ -13677,8 +13677,8 @@ mod loaded {
         x: *mut f64,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD4B3E6652995208A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD4B3E6652995208A);
         (culib().cublasDtbsv_v2_64)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     pub unsafe fn cublasDtpmv_v2(
@@ -13691,8 +13691,8 @@ mod loaded {
         x: *mut f64,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9A9E3C4D3EA300A4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9A9E3C4D3EA300A4);
         (culib().cublasDtpmv_v2)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     #[cfg(any(
@@ -13716,8 +13716,8 @@ mod loaded {
         x: *mut f64,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8AC14060DF248EE9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8AC14060DF248EE9);
         (culib().cublasDtpmv_v2_64)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     pub unsafe fn cublasDtpsv_v2(
@@ -13730,8 +13730,8 @@ mod loaded {
         x: *mut f64,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x40AABF3E21986425);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x40AABF3E21986425);
         (culib().cublasDtpsv_v2)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     #[cfg(any(
@@ -13755,8 +13755,8 @@ mod loaded {
         x: *mut f64,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF2EE2258106D4E84);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF2EE2258106D4E84);
         (culib().cublasDtpsv_v2_64)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     pub unsafe fn cublasDtpttr(
@@ -13767,8 +13767,8 @@ mod loaded {
         A: *mut f64,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB83566EF48B826A8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB83566EF48B826A8);
         (culib().cublasDtpttr)(handle, uplo, n, AP, A, lda)
     }
     pub unsafe fn cublasDtrmm_v2(
@@ -13787,8 +13787,8 @@ mod loaded {
         C: *mut f64,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC9F0E337791EF2A9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC9F0E337791EF2A9);
         (culib().cublasDtrmm_v2)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, C, ldc,
         )
@@ -13820,8 +13820,8 @@ mod loaded {
         C: *mut f64,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5F9420950AF810D7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5F9420950AF810D7);
         (culib().cublasDtrmm_v2_64)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, C, ldc,
         )
@@ -13837,8 +13837,8 @@ mod loaded {
         x: *mut f64,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCDF159E5F6291660);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCDF159E5F6291660);
         (culib().cublasDtrmv_v2)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     #[cfg(any(
@@ -13863,8 +13863,8 @@ mod loaded {
         x: *mut f64,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x46D9842CF11854D5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x46D9842CF11854D5);
         (culib().cublasDtrmv_v2_64)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     pub unsafe fn cublasDtrsmBatched(
@@ -13882,8 +13882,8 @@ mod loaded {
         ldb: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x04B2B90002394948);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x04B2B90002394948);
         (culib().cublasDtrsmBatched)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, batchCount,
         )
@@ -13914,8 +13914,8 @@ mod loaded {
         ldb: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x837A3AB239172FA1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x837A3AB239172FA1);
         (culib().cublasDtrsmBatched_64)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, batchCount,
         )
@@ -13934,8 +13934,8 @@ mod loaded {
         B: *mut f64,
         ldb: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5B773FAE3A0F1EA4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5B773FAE3A0F1EA4);
         (culib().cublasDtrsm_v2)(handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb)
     }
     #[cfg(any(
@@ -13963,8 +13963,8 @@ mod loaded {
         B: *mut f64,
         ldb: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFC7B35B889831724);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFC7B35B889831724);
         (culib().cublasDtrsm_v2_64)(handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb)
     }
     pub unsafe fn cublasDtrsv_v2(
@@ -13978,8 +13978,8 @@ mod loaded {
         x: *mut f64,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBC49F2E59E2821D8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBC49F2E59E2821D8);
         (culib().cublasDtrsv_v2)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     #[cfg(any(
@@ -14004,8 +14004,8 @@ mod loaded {
         x: *mut f64,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x34053E066405B188);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x34053E066405B188);
         (culib().cublasDtrsv_v2_64)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     pub unsafe fn cublasDtrttp(
@@ -14016,8 +14016,8 @@ mod loaded {
         lda: ::core::ffi::c_int,
         AP: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD87D6342CD6C5DDF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD87D6342CD6C5DDF);
         (culib().cublasDtrttp)(handle, uplo, n, A, lda, AP)
     }
     pub unsafe fn cublasDzasum_v2(
@@ -14027,8 +14027,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA7608BC98D9E8132);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA7608BC98D9E8132);
         (culib().cublasDzasum_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -14049,8 +14049,8 @@ mod loaded {
         incx: i64,
         result: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9BE5CF0C90615EE9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9BE5CF0C90615EE9);
         (culib().cublasDzasum_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasDznrm2_v2(
@@ -14060,8 +14060,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x83737A3D60F1D0F5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x83737A3D60F1D0F5);
         (culib().cublasDznrm2_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -14082,8 +14082,8 @@ mod loaded {
         incx: i64,
         result: *mut f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC7CBE4FB1FB6834C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC7CBE4FB1FB6834C);
         (culib().cublasDznrm2_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasGemmBatchedEx(
@@ -14108,8 +14108,8 @@ mod loaded {
         computeType: cublasComputeType_t,
         algo: cublasGemmAlgo_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4E185B060A17B1EC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4E185B060A17B1EC);
         (culib().cublasGemmBatchedEx)(
             handle,
             transa,
@@ -14166,8 +14166,8 @@ mod loaded {
         computeType: cublasComputeType_t,
         algo: cublasGemmAlgo_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x805E79F8A5B04257);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x805E79F8A5B04257);
         (culib().cublasGemmBatchedEx_64)(
             handle,
             transa,
@@ -14212,8 +14212,8 @@ mod loaded {
         computeType: cublasComputeType_t,
         algo: cublasGemmAlgo_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFA2B3BC2238583D4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFA2B3BC2238583D4);
         (culib().cublasGemmEx)(
             handle,
             transa,
@@ -14268,8 +14268,8 @@ mod loaded {
         computeType: cublasComputeType_t,
         algo: cublasGemmAlgo_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6E3FC83F726ED6A8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6E3FC83F726ED6A8);
         (culib().cublasGemmEx_64)(
             handle,
             transa,
@@ -14320,8 +14320,8 @@ mod loaded {
         group_size: *const ::core::ffi::c_int,
         computeType: cublasComputeType_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0F7B436136C38717);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0F7B436136C38717);
         (culib().cublasGemmGroupedBatchedEx)(
             handle,
             transa_array,
@@ -14373,8 +14373,8 @@ mod loaded {
         group_size: *const i64,
         computeType: cublasComputeType_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC5808E234976334B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC5808E234976334B);
         (culib().cublasGemmGroupedBatchedEx_64)(
             handle,
             transa_array,
@@ -14423,8 +14423,8 @@ mod loaded {
         computeType: cublasComputeType_t,
         algo: cublasGemmAlgo_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3C95DCB5DDBB84EA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3C95DCB5DDBB84EA);
         (culib().cublasGemmStridedBatchedEx)(
             handle,
             transa,
@@ -14487,8 +14487,8 @@ mod loaded {
         computeType: cublasComputeType_t,
         algo: cublasGemmAlgo_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC0C7B92381A6A74F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC0C7B92381A6A74F);
         (culib().cublasGemmStridedBatchedEx_64)(
             handle,
             transa,
@@ -14519,13 +14519,13 @@ mod loaded {
         handle: cublasHandle_t,
         mode: *mut cublasAtomicsMode_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x93DA9F068293D19F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x93DA9F068293D19F);
         (culib().cublasGetAtomicsMode)(handle, mode)
     }
     pub unsafe fn cublasGetCudartVersion() -> usize {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x68C9D4514AC87B8A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x68C9D4514AC87B8A);
         (culib().cublasGetCudartVersion)()
     }
     #[cfg(any(feature = "cuda-12090"))]
@@ -14533,21 +14533,21 @@ mod loaded {
         handle: cublasHandle_t,
         emulationStrategy: *mut cublasEmulationStrategy_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5F67AEC4B6F38CFE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5F67AEC4B6F38CFE);
         (culib().cublasGetEmulationStrategy)(handle, emulationStrategy)
     }
     pub unsafe fn cublasGetLoggerCallback(userCallback: *mut cublasLogCallback) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x20020F8C5FF424A5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x20020F8C5FF424A5);
         (culib().cublasGetLoggerCallback)(userCallback)
     }
     pub unsafe fn cublasGetMathMode(
         handle: cublasHandle_t,
         mode: *mut cublasMath_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7F16FA50499254B1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7F16FA50499254B1);
         (culib().cublasGetMathMode)(handle, mode)
     }
     pub unsafe fn cublasGetMatrix(
@@ -14559,8 +14559,8 @@ mod loaded {
         B: *mut ::core::ffi::c_void,
         ldb: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xDF1B74F570D0C043);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDF1B74F570D0C043);
         (culib().cublasGetMatrix)(rows, cols, elemSize, A, lda, B, ldb)
     }
     pub unsafe fn cublasGetMatrixAsync(
@@ -14573,8 +14573,8 @@ mod loaded {
         ldb: ::core::ffi::c_int,
         stream: cudaStream_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6AA3047EF23D6146);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6AA3047EF23D6146);
         (culib().cublasGetMatrixAsync)(rows, cols, elemSize, A, lda, B, ldb, stream)
     }
     #[cfg(any(
@@ -14598,8 +14598,8 @@ mod loaded {
         ldb: i64,
         stream: cudaStream_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x70161A7A9B997833);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x70161A7A9B997833);
         (culib().cublasGetMatrixAsync_64)(rows, cols, elemSize, A, lda, B, ldb, stream)
     }
     #[cfg(any(
@@ -14622,50 +14622,50 @@ mod loaded {
         B: *mut ::core::ffi::c_void,
         ldb: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x00B27BFAF789C6BA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x00B27BFAF789C6BA);
         (culib().cublasGetMatrix_64)(rows, cols, elemSize, A, lda, B, ldb)
     }
     pub unsafe fn cublasGetPointerMode_v2(
         handle: cublasHandle_t,
         mode: *mut cublasPointerMode_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5DC0A8C464918B4E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5DC0A8C464918B4E);
         (culib().cublasGetPointerMode_v2)(handle, mode)
     }
     pub unsafe fn cublasGetProperty(
         type_: libraryPropertyType,
         value: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x775FCD1F011CEC98);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x775FCD1F011CEC98);
         (culib().cublasGetProperty)(type_, value)
     }
     pub unsafe fn cublasGetSmCountTarget(
         handle: cublasHandle_t,
         smCountTarget: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA098F9EF4F708104);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA098F9EF4F708104);
         (culib().cublasGetSmCountTarget)(handle, smCountTarget)
     }
     pub unsafe fn cublasGetStatusName(status: cublasStatus_t) -> *const ::core::ffi::c_char {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6A8549948F517006);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6A8549948F517006);
         (culib().cublasGetStatusName)(status)
     }
     pub unsafe fn cublasGetStatusString(status: cublasStatus_t) -> *const ::core::ffi::c_char {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x281AB7FB2EA79A89);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x281AB7FB2EA79A89);
         (culib().cublasGetStatusString)(status)
     }
     pub unsafe fn cublasGetStream_v2(
         handle: cublasHandle_t,
         streamId: *mut cudaStream_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x05A6B3C9C2B78426);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x05A6B3C9C2B78426);
         (culib().cublasGetStream_v2)(handle, streamId)
     }
     pub unsafe fn cublasGetVector(
@@ -14676,8 +14676,8 @@ mod loaded {
         y: *mut ::core::ffi::c_void,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1); 
-        CublasRegistry::mix_runtime_signature(0x7D80F2969EFF9860);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7D80F2969EFF9860);
         (culib().cublasGetVector)(n, elemSize, x, incx, y, incy)
     }
     pub unsafe fn cublasGetVectorAsync(
@@ -14689,8 +14689,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         stream: cudaStream_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x51499187CAE70119);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x51499187CAE70119);
         (culib().cublasGetVectorAsync)(n, elemSize, devicePtr, incx, hostPtr, incy, stream)
     }
     #[cfg(any(
@@ -14713,8 +14713,8 @@ mod loaded {
         incy: i64,
         stream: cudaStream_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x289345FD584A400A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x289345FD584A400A);
         (culib().cublasGetVectorAsync_64)(n, elemSize, devicePtr, incx, hostPtr, incy, stream)
     }
     #[cfg(any(
@@ -14736,16 +14736,16 @@ mod loaded {
         y: *mut ::core::ffi::c_void,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA8A3BCA78576C92E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA8A3BCA78576C92E);
         (culib().cublasGetVector_64)(n, elemSize, x, incx, y, incy)
     }
     pub unsafe fn cublasGetVersion_v2(
         handle: cublasHandle_t,
         version: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x142DDEC1FD00C23C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x142DDEC1FD00C23C);
         (culib().cublasGetVersion_v2)(handle, version)
     }
     pub unsafe fn cublasIamaxEx(
@@ -14756,8 +14756,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x64985D11AD0110D9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x64985D11AD0110D9);
         (culib().cublasIamaxEx)(handle, n, x, xType, incx, result)
     }
     #[cfg(any(
@@ -14779,8 +14779,8 @@ mod loaded {
         incx: i64,
         result: *mut i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x719C85FC9239BFE2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x719C85FC9239BFE2);
         (culib().cublasIamaxEx_64)(handle, n, x, xType, incx, result)
     }
     pub unsafe fn cublasIaminEx(
@@ -14791,8 +14791,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xEA57CDA9ABC047A8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEA57CDA9ABC047A8);
         (culib().cublasIaminEx)(handle, n, x, xType, incx, result)
     }
     #[cfg(any(
@@ -14814,8 +14814,8 @@ mod loaded {
         incx: i64,
         result: *mut i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x63BFDEEDE1424D5C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x63BFDEEDE1424D5C);
         (culib().cublasIaminEx_64)(handle, n, x, xType, incx, result)
     }
     pub unsafe fn cublasIcamax_v2(
@@ -14825,8 +14825,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x44AC7380BD48BE10);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x44AC7380BD48BE10);
         (culib().cublasIcamax_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -14847,8 +14847,8 @@ mod loaded {
         incx: i64,
         result: *mut i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7018FF4AF5059547);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7018FF4AF5059547);
         (culib().cublasIcamax_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasIcamin_v2(
@@ -14858,8 +14858,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA31E30AD2CD6ECDD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA31E30AD2CD6ECDD);
         (culib().cublasIcamin_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -14880,8 +14880,8 @@ mod loaded {
         incx: i64,
         result: *mut i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8219BEAEECA9B394);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8219BEAEECA9B394);
         (culib().cublasIcamin_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasIdamax_v2(
@@ -14891,8 +14891,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA3534B946B94AFF8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA3534B946B94AFF8);
         (culib().cublasIdamax_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -14913,8 +14913,8 @@ mod loaded {
         incx: i64,
         result: *mut i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2823E29A53E5F197);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2823E29A53E5F197);
         (culib().cublasIdamax_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasIdamin_v2(
@@ -14924,8 +14924,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9FC24CD0CB8CE53B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9FC24CD0CB8CE53B);
         (culib().cublasIdamin_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -14946,8 +14946,8 @@ mod loaded {
         incx: i64,
         result: *mut i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0E72275B4D7E4054);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0E72275B4D7E4054);
         (culib().cublasIdamin_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasIsamax_v2(
@@ -14957,8 +14957,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xAA520150F63E7536);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xAA520150F63E7536);
         (culib().cublasIsamax_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -14979,8 +14979,8 @@ mod loaded {
         incx: i64,
         result: *mut i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x06887E49A78B77A5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x06887E49A78B77A5);
         (culib().cublasIsamax_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasIsamin_v2(
@@ -14990,8 +14990,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA8D738B8645512D8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA8D738B8645512D8);
         (culib().cublasIsamin_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -15012,8 +15012,8 @@ mod loaded {
         incx: i64,
         result: *mut i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE7A70E52D3CDA4FB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE7A70E52D3CDA4FB);
         (culib().cublasIsamin_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasIzamax_v2(
@@ -15023,8 +15023,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3812BF7F12E4DE9B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3812BF7F12E4DE9B);
         (culib().cublasIzamax_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -15045,8 +15045,8 @@ mod loaded {
         incx: i64,
         result: *mut i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xDB92E09895F5AEA6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDB92E09895F5AEA6);
         (culib().cublasIzamax_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasIzamin_v2(
@@ -15056,8 +15056,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC6A54859633AE77F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC6A54859633AE77F);
         (culib().cublasIzamin_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -15078,8 +15078,8 @@ mod loaded {
         incx: i64,
         result: *mut i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x25092455ED365F34);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x25092455ED365F34);
         (culib().cublasIzamin_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasLoggerConfigure(
@@ -15088,8 +15088,8 @@ mod loaded {
         logToStdErr: ::core::ffi::c_int,
         logFileName: *const ::core::ffi::c_char,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x51D14772D300334A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x51D14772D300334A);
         (culib().cublasLoggerConfigure)(logIsOn, logToStdOut, logToStdErr, logFileName)
     }
     pub unsafe fn cublasNrm2Ex(
@@ -15102,8 +15102,8 @@ mod loaded {
         resultType: cudaDataType,
         executionType: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3D8B35FE7DCFA4CF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3D8B35FE7DCFA4CF);
         (culib().cublasNrm2Ex)(handle, n, x, xType, incx, result, resultType, executionType)
     }
     #[cfg(any(
@@ -15127,8 +15127,8 @@ mod loaded {
         resultType: cudaDataType,
         executionType: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0D08B5C291DE7D58);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0D08B5C291DE7D58);
         (culib().cublasNrm2Ex_64)(handle, n, x, xType, incx, result, resultType, executionType)
     }
     pub unsafe fn cublasRotEx(
@@ -15145,8 +15145,8 @@ mod loaded {
         csType: cudaDataType,
         executiontype: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF431689C1A437F75);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF431689C1A437F75);
         (culib().cublasRotEx)(
             handle,
             n,
@@ -15187,8 +15187,8 @@ mod loaded {
         csType: cudaDataType,
         executiontype: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0D21FB87F2B564B1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0D21FB87F2B564B1);
         (culib().cublasRotEx_64)(
             handle,
             n,
@@ -15214,8 +15214,8 @@ mod loaded {
         csType: cudaDataType,
         executiontype: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE8AA9C5A8C13944C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE8AA9C5A8C13944C);
         (culib().cublasRotgEx)(handle, a, b, abType, c, s, csType, executiontype)
     }
     pub unsafe fn cublasRotmEx(
@@ -15231,8 +15231,8 @@ mod loaded {
         paramType: cudaDataType,
         executiontype: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5E26FEB21DBF6653);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5E26FEB21DBF6653);
         (culib().cublasRotmEx)(
             handle,
             n,
@@ -15271,8 +15271,8 @@ mod loaded {
         paramType: cudaDataType,
         executiontype: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC5DA730BC34AA02B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC5DA730BC34AA02B);
         (culib().cublasRotmEx_64)(
             handle,
             n,
@@ -15301,8 +15301,8 @@ mod loaded {
         paramType: cudaDataType,
         executiontype: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE67F732194EE0DBE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE67F732194EE0DBE);
         (culib().cublasRotmgEx)(
             handle,
             d1,
@@ -15325,8 +15325,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5056170B3B07EF66);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5056170B3B07EF66);
         (culib().cublasSasum_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -15347,8 +15347,8 @@ mod loaded {
         incx: i64,
         result: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x717E8A151959A7C0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x717E8A151959A7C0);
         (culib().cublasSasum_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasSaxpy_v2(
@@ -15360,8 +15360,8 @@ mod loaded {
         y: *mut f32,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF40198F4CE9E5E8E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF40198F4CE9E5E8E);
         (culib().cublasSaxpy_v2)(handle, n, alpha, x, incx, y, incy)
     }
     #[cfg(any(
@@ -15384,8 +15384,8 @@ mod loaded {
         y: *mut f32,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x015254DCD9C1BBCE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x015254DCD9C1BBCE);
         (culib().cublasSaxpy_v2_64)(handle, n, alpha, x, incx, y, incy)
     }
     pub unsafe fn cublasScalEx(
@@ -15398,8 +15398,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         executionType: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xDE1E62DCFB03CF97);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDE1E62DCFB03CF97);
         (culib().cublasScalEx)(handle, n, alpha, alphaType, x, xType, incx, executionType)
     }
     #[cfg(any(
@@ -15423,8 +15423,8 @@ mod loaded {
         incx: i64,
         executionType: cudaDataType,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2C91300BD53AFBF1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2C91300BD53AFBF1);
         (culib().cublasScalEx_64)(handle, n, alpha, alphaType, x, xType, incx, executionType)
     }
     pub unsafe fn cublasScasum_v2(
@@ -15434,8 +15434,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7745B2037BD9742F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7745B2037BD9742F);
         (culib().cublasScasum_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -15456,8 +15456,8 @@ mod loaded {
         incx: i64,
         result: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x370B280F5CF15089);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x370B280F5CF15089);
         (culib().cublasScasum_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasScnrm2_v2(
@@ -15467,8 +15467,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9DC80FA341A0483D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9DC80FA341A0483D);
         (culib().cublasScnrm2_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -15489,8 +15489,8 @@ mod loaded {
         incx: i64,
         result: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE4033D58583FD4EF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE4033D58583FD4EF);
         (culib().cublasScnrm2_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasScopy_v2(
@@ -15501,8 +15501,8 @@ mod loaded {
         y: *mut f32,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD4BF686913A1523D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD4BF686913A1523D);
         (culib().cublasScopy_v2)(handle, n, x, incx, y, incy)
     }
     #[cfg(any(
@@ -15524,8 +15524,8 @@ mod loaded {
         y: *mut f32,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFBD1FD249CC9C04A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFBD1FD249CC9C04A);
         (culib().cublasScopy_v2_64)(handle, n, x, incx, y, incy)
     }
     pub unsafe fn cublasSdgmm(
@@ -15540,8 +15540,8 @@ mod loaded {
         C: *mut f32,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4337A740FF561F85);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4337A740FF561F85);
         (culib().cublasSdgmm)(handle, mode, m, n, A, lda, x, incx, C, ldc)
     }
     #[cfg(any(
@@ -15567,8 +15567,8 @@ mod loaded {
         C: *mut f32,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0F25F71DE4B3926F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0F25F71DE4B3926F);
         (culib().cublasSdgmm_64)(handle, mode, m, n, A, lda, x, incx, C, ldc)
     }
     pub unsafe fn cublasSdot_v2(
@@ -15580,8 +15580,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         result: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD447C21D3CD00073);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD447C21D3CD00073);
         (culib().cublasSdot_v2)(handle, n, x, incx, y, incy, result)
     }
     #[cfg(any(
@@ -15604,16 +15604,16 @@ mod loaded {
         incy: i64,
         result: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x95C6CEB3D4BAC193);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x95C6CEB3D4BAC193);
         (culib().cublasSdot_v2_64)(handle, n, x, incx, y, incy, result)
     }
     pub unsafe fn cublasSetAtomicsMode(
         handle: cublasHandle_t,
         mode: cublasAtomicsMode_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8AA83C99099443F8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8AA83C99099443F8);
         (culib().cublasSetAtomicsMode)(handle, mode)
     }
     #[cfg(any(feature = "cuda-12090"))]
@@ -15621,18 +15621,18 @@ mod loaded {
         handle: cublasHandle_t,
         emulationStrategy: cublasEmulationStrategy_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8269CD579F55ED29);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8269CD579F55ED29);
         (culib().cublasSetEmulationStrategy)(handle, emulationStrategy)
     }
     pub unsafe fn cublasSetLoggerCallback(userCallback: cublasLogCallback) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCAFD93E13873E2CD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCAFD93E13873E2CD);
         (culib().cublasSetLoggerCallback)(userCallback)
     }
     pub unsafe fn cublasSetMathMode(handle: cublasHandle_t, mode: cublasMath_t) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB8F08316607E38AD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB8F08316607E38AD);
         (culib().cublasSetMathMode)(handle, mode)
     }
     pub unsafe fn cublasSetMatrix(
@@ -15644,8 +15644,8 @@ mod loaded {
         B: *mut ::core::ffi::c_void,
         ldb: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x988A5E966872ECCC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x988A5E966872ECCC);
         (culib().cublasSetMatrix)(rows, cols, elemSize, A, lda, B, ldb)
     }
     pub unsafe fn cublasSetMatrixAsync(
@@ -15658,8 +15658,8 @@ mod loaded {
         ldb: ::core::ffi::c_int,
         stream: cudaStream_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE555E363C58C9167);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE555E363C58C9167);
         (culib().cublasSetMatrixAsync)(rows, cols, elemSize, A, lda, B, ldb, stream)
     }
     #[cfg(any(
@@ -15683,8 +15683,8 @@ mod loaded {
         ldb: i64,
         stream: cudaStream_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8E78E1680C58FFFC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8E78E1680C58FFFC);
         (culib().cublasSetMatrixAsync_64)(rows, cols, elemSize, A, lda, B, ldb, stream)
     }
     #[cfg(any(
@@ -15707,32 +15707,32 @@ mod loaded {
         B: *mut ::core::ffi::c_void,
         ldb: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF9021F973EC9519A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF9021F973EC9519A);
         (culib().cublasSetMatrix_64)(rows, cols, elemSize, A, lda, B, ldb)
     }
     pub unsafe fn cublasSetPointerMode_v2(
         handle: cublasHandle_t,
         mode: cublasPointerMode_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2D6062D9C093AFE2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2D6062D9C093AFE2);
         (culib().cublasSetPointerMode_v2)(handle, mode)
     }
     pub unsafe fn cublasSetSmCountTarget(
         handle: cublasHandle_t,
         smCountTarget: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4D06AC41D2651C8B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4D06AC41D2651C8B);
         (culib().cublasSetSmCountTarget)(handle, smCountTarget)
     }
     pub unsafe fn cublasSetStream_v2(
         handle: cublasHandle_t,
         streamId: cudaStream_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1EAC85E3BF6C374E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1EAC85E3BF6C374E);
         (culib().cublasSetStream_v2)(handle, streamId)
     }
     pub unsafe fn cublasSetVector(
@@ -15743,8 +15743,8 @@ mod loaded {
         devicePtr: *mut ::core::ffi::c_void,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x94EC09DF4E76E8E7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x94EC09DF4E76E8E7);
         (culib().cublasSetVector)(n, elemSize, x, incx, devicePtr, incy)
     }
     pub unsafe fn cublasSetVectorAsync(
@@ -15756,8 +15756,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         stream: cudaStream_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCD98150C51C99A9D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCD98150C51C99A9D);
         (culib().cublasSetVectorAsync)(n, elemSize, hostPtr, incx, devicePtr, incy, stream)
     }
     #[cfg(any(
@@ -15780,8 +15780,8 @@ mod loaded {
         incy: i64,
         stream: cudaStream_t,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD070EAFF0FE243A9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD070EAFF0FE243A9);
         (culib().cublasSetVectorAsync_64)(n, elemSize, hostPtr, incx, devicePtr, incy, stream)
     }
     #[cfg(any(
@@ -15803,8 +15803,8 @@ mod loaded {
         devicePtr: *mut ::core::ffi::c_void,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBCB2116EC971862C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBCB2116EC971862C);
         (culib().cublasSetVector_64)(n, elemSize, x, incx, devicePtr, incy)
     }
     pub unsafe fn cublasSetWorkspace_v2(
@@ -15812,8 +15812,8 @@ mod loaded {
         workspace: *mut ::core::ffi::c_void,
         workspaceSizeInBytes: usize,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC7DD199E45851B65);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC7DD199E45851B65);
         (culib().cublasSetWorkspace_v2)(handle, workspace, workspaceSizeInBytes)
     }
     pub unsafe fn cublasSgbmv_v2(
@@ -15832,8 +15832,8 @@ mod loaded {
         y: *mut f32,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9B997DF6F1D83387);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9B997DF6F1D83387);
         (culib().cublasSgbmv_v2)(
             handle, trans, m, n, kl, ku, alpha, A, lda, x, incx, beta, y, incy,
         )
@@ -15865,8 +15865,8 @@ mod loaded {
         y: *mut f32,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x833F7525CC10E600);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x833F7525CC10E600);
         (culib().cublasSgbmv_v2_64)(
             handle, trans, m, n, kl, ku, alpha, A, lda, x, incx, beta, y, incy,
         )
@@ -15886,8 +15886,8 @@ mod loaded {
         C: *mut f32,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x318985E032AAB168);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x318985E032AAB168);
         (culib().cublasSgeam)(
             handle, transa, transb, m, n, alpha, A, lda, beta, B, ldb, C, ldc,
         )
@@ -15918,8 +15918,8 @@ mod loaded {
         C: *mut f32,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x07E19A1B92730070);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x07E19A1B92730070);
         (culib().cublasSgeam_64)(
             handle, transa, transb, m, n, alpha, A, lda, beta, B, ldb, C, ldc,
         )
@@ -15938,8 +15938,8 @@ mod loaded {
         devInfoArray: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x30B03A6F82B4F251);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x30B03A6F82B4F251);
         (culib().cublasSgelsBatched)(
             handle,
             trans,
@@ -15972,8 +15972,8 @@ mod loaded {
         ldc: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA35D41F364B6BA30);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA35D41F364B6BA30);
         (culib().cublasSgemmBatched)(
             handle, transa, transb, m, n, k, alpha, Aarray, lda, Barray, ldb, beta, Carray, ldc,
             batchCount,
@@ -16007,8 +16007,8 @@ mod loaded {
         ldc: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB1B0E8CB9C183FFA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB1B0E8CB9C183FFA);
         (culib().cublasSgemmBatched_64)(
             handle, transa, transb, m, n, k, alpha, Aarray, lda, Barray, ldb, beta, Carray, ldc,
             batchCount,
@@ -16033,8 +16033,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x81C250113D5D9ADD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x81C250113D5D9ADD);
         (culib().cublasSgemmEx)(
             handle, transa, transb, m, n, k, alpha, A, Atype, lda, B, Btype, ldb, beta, C, Ctype,
             ldc,
@@ -16070,8 +16070,8 @@ mod loaded {
         Ctype: cudaDataType,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x706A0B9E19B15CC1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x706A0B9E19B15CC1);
         (culib().cublasSgemmEx_64)(
             handle, transa, transb, m, n, k, alpha, A, Atype, lda, B, Btype, ldb, beta, C, Ctype,
             ldc,
@@ -16102,8 +16102,8 @@ mod loaded {
         group_count: ::core::ffi::c_int,
         group_size: *const ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x07AA622B560D95F8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x07AA622B560D95F8);
         (culib().cublasSgemmGroupedBatched)(
             handle,
             transa_array,
@@ -16148,8 +16148,8 @@ mod loaded {
         group_count: i64,
         group_size: *const i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC1B3D1AB291ABF12);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC1B3D1AB291ABF12);
         (culib().cublasSgemmGroupedBatched_64)(
             handle,
             transa_array,
@@ -16189,8 +16189,8 @@ mod loaded {
         strideC: ::core::ffi::c_longlong,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFB3D0F6F7A5ED579);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFB3D0F6F7A5ED579);
         (culib().cublasSgemmStridedBatched)(
             handle, transa, transb, m, n, k, alpha, A, lda, strideA, B, ldb, strideB, beta, C, ldc,
             strideC, batchCount,
@@ -16227,8 +16227,8 @@ mod loaded {
         strideC: ::core::ffi::c_longlong,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8A2BDDC5513364A1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8A2BDDC5513364A1);
         (culib().cublasSgemmStridedBatched_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, strideA, B, ldb, strideB, beta, C, ldc,
             strideC, batchCount,
@@ -16250,8 +16250,8 @@ mod loaded {
         C: *mut f32,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9BA28F54D3299160);
+        RTSigFuel::add_fuel_used(m as u64 * n as u64 * k as u64);
+        RTSigFuel::mix_runtime_signature(0x9BA28F54D3299160);
         (culib().cublasSgemm_v2)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -16283,8 +16283,8 @@ mod loaded {
         C: *mut f32,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFD95218AB7435357);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFD95218AB7435357);
         (culib().cublasSgemm_v2_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -16318,8 +16318,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6E7B0333360F2D74);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6E7B0333360F2D74);
         (culib().cublasSgemvBatched)(
             handle, trans, m, n, alpha, Aarray, lda, xarray, incx, beta, yarray, incy, batchCount,
         )
@@ -16350,8 +16350,8 @@ mod loaded {
         incy: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8DE61AB2FEA8DD0B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8DE61AB2FEA8DD0B);
         (culib().cublasSgemvBatched_64)(
             handle, trans, m, n, alpha, Aarray, lda, xarray, incx, beta, yarray, incy, batchCount,
         )
@@ -16388,8 +16388,8 @@ mod loaded {
         stridey: ::core::ffi::c_longlong,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8D476F3DEB775021);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8D476F3DEB775021);
         (culib().cublasSgemvStridedBatched)(
             handle, trans, m, n, alpha, A, lda, strideA, x, incx, stridex, beta, y, incy, stridey,
             batchCount,
@@ -16424,8 +16424,8 @@ mod loaded {
         stridey: ::core::ffi::c_longlong,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCFF6BFD039FD4552);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCFF6BFD039FD4552);
         (culib().cublasSgemvStridedBatched_64)(
             handle, trans, m, n, alpha, A, lda, strideA, x, incx, stridex, beta, y, incy, stridey,
             batchCount,
@@ -16445,8 +16445,8 @@ mod loaded {
         y: *mut f32,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x80C083699D73DA4F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x80C083699D73DA4F);
         (culib().cublasSgemv_v2)(handle, trans, m, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -16474,8 +16474,8 @@ mod loaded {
         y: *mut f32,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB0CF63B91646B120);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB0CF63B91646B120);
         (culib().cublasSgemv_v2_64)(handle, trans, m, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasSgeqrfBatched(
@@ -16488,8 +16488,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA4FB652FA9C2D494);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA4FB652FA9C2D494);
         (culib().cublasSgeqrfBatched)(handle, m, n, Aarray, lda, TauArray, info, batchSize)
     }
     pub unsafe fn cublasSger_v2(
@@ -16504,8 +16504,8 @@ mod loaded {
         A: *mut f32,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x422F6C2388129CDD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x422F6C2388129CDD);
         (culib().cublasSger_v2)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -16531,8 +16531,8 @@ mod loaded {
         A: *mut f32,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF126BBDACCC46722);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF126BBDACCC46722);
         (culib().cublasSger_v2_64)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasSgetrfBatched(
@@ -16544,8 +16544,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8223552601B3F489);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8223552601B3F489);
         (culib().cublasSgetrfBatched)(handle, n, A, lda, P, info, batchSize)
     }
     pub unsafe fn cublasSgetriBatched(
@@ -16559,8 +16559,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9A3D08E7CD78DD10);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9A3D08E7CD78DD10);
         (culib().cublasSgetriBatched)(handle, n, A, lda, P, C, ldc, info, batchSize)
     }
     pub unsafe fn cublasSgetrsBatched(
@@ -16576,8 +16576,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6F649D844F603CCE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6F649D844F603CCE);
         (culib().cublasSgetrsBatched)(
             handle, trans, n, nrhs, Aarray, lda, devIpiv, Barray, ldb, info, batchSize,
         )
@@ -16592,8 +16592,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0B6E03C387A4F2D8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0B6E03C387A4F2D8);
         (culib().cublasSmatinvBatched)(handle, n, A, lda, Ainv, lda_inv, info, batchSize)
     }
     pub unsafe fn cublasSnrm2_v2(
@@ -16603,8 +16603,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         result: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x40E5850EC4BA8255);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x40E5850EC4BA8255);
         (culib().cublasSnrm2_v2)(handle, n, x, incx, result)
     }
     #[cfg(any(
@@ -16625,8 +16625,8 @@ mod loaded {
         incx: i64,
         result: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xABC0541598E25A36);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xABC0541598E25A36);
         (culib().cublasSnrm2_v2_64)(handle, n, x, incx, result)
     }
     pub unsafe fn cublasSrot_v2(
@@ -16639,8 +16639,8 @@ mod loaded {
         c: *const f32,
         s: *const f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBA48E1893CFB87EA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBA48E1893CFB87EA);
         (culib().cublasSrot_v2)(handle, n, x, incx, y, incy, c, s)
     }
     #[cfg(any(
@@ -16664,8 +16664,8 @@ mod loaded {
         c: *const f32,
         s: *const f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE4F06CDDF62A27BB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE4F06CDDF62A27BB);
         (culib().cublasSrot_v2_64)(handle, n, x, incx, y, incy, c, s)
     }
     pub unsafe fn cublasSrotg_v2(
@@ -16675,8 +16675,8 @@ mod loaded {
         c: *mut f32,
         s: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x021B7867DD3AA9D5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x021B7867DD3AA9D5);
         (culib().cublasSrotg_v2)(handle, a, b, c, s)
     }
     pub unsafe fn cublasSrotm_v2(
@@ -16688,8 +16688,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         param: *const f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x58267FAFE01D6EFE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x58267FAFE01D6EFE);
         (culib().cublasSrotm_v2)(handle, n, x, incx, y, incy, param)
     }
     #[cfg(any(
@@ -16712,8 +16712,8 @@ mod loaded {
         incy: i64,
         param: *const f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFDE80EEF7A379081);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFDE80EEF7A379081);
         (culib().cublasSrotm_v2_64)(handle, n, x, incx, y, incy, param)
     }
     pub unsafe fn cublasSrotmg_v2(
@@ -16724,8 +16724,8 @@ mod loaded {
         y1: *const f32,
         param: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2D4990C11D168EC7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2D4990C11D168EC7);
         (culib().cublasSrotmg_v2)(handle, d1, d2, x1, y1, param)
     }
     pub unsafe fn cublasSsbmv_v2(
@@ -16742,8 +16742,8 @@ mod loaded {
         y: *mut f32,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x080424EF7F497D93);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x080424EF7F497D93);
         (culib().cublasSsbmv_v2)(handle, uplo, n, k, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -16771,8 +16771,8 @@ mod loaded {
         y: *mut f32,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2E09F5ADC559955F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2E09F5ADC559955F);
         (culib().cublasSsbmv_v2_64)(handle, uplo, n, k, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasSscal_v2(
@@ -16782,8 +16782,8 @@ mod loaded {
         x: *mut f32,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBD3F88B7E4A5F377);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBD3F88B7E4A5F377);
         (culib().cublasSscal_v2)(handle, n, alpha, x, incx)
     }
     #[cfg(any(
@@ -16804,8 +16804,8 @@ mod loaded {
         x: *mut f32,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB8B539C0237728D5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB8B539C0237728D5);
         (culib().cublasSscal_v2_64)(handle, n, alpha, x, incx)
     }
     pub unsafe fn cublasSspmv_v2(
@@ -16820,8 +16820,8 @@ mod loaded {
         y: *mut f32,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xEFA8FB248A9A3DB3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEFA8FB248A9A3DB3);
         (culib().cublasSspmv_v2)(handle, uplo, n, alpha, AP, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -16847,8 +16847,8 @@ mod loaded {
         y: *mut f32,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x61004340721A215F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x61004340721A215F);
         (culib().cublasSspmv_v2_64)(handle, uplo, n, alpha, AP, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasSspr2_v2(
@@ -16862,8 +16862,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         AP: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2546475BE698AAE5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2546475BE698AAE5);
         (culib().cublasSspr2_v2)(handle, uplo, n, alpha, x, incx, y, incy, AP)
     }
     #[cfg(any(
@@ -16888,8 +16888,8 @@ mod loaded {
         incy: i64,
         AP: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBCB9A08D2F00C218);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBCB9A08D2F00C218);
         (culib().cublasSspr2_v2_64)(handle, uplo, n, alpha, x, incx, y, incy, AP)
     }
     pub unsafe fn cublasSspr_v2(
@@ -16901,8 +16901,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         AP: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB3A0C2044B5C490B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB3A0C2044B5C490B);
         (culib().cublasSspr_v2)(handle, uplo, n, alpha, x, incx, AP)
     }
     #[cfg(any(
@@ -16925,8 +16925,8 @@ mod loaded {
         incx: i64,
         AP: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE3A2FA8857C6B087);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE3A2FA8857C6B087);
         (culib().cublasSspr_v2_64)(handle, uplo, n, alpha, x, incx, AP)
     }
     pub unsafe fn cublasSswap_v2(
@@ -16937,8 +16937,8 @@ mod loaded {
         y: *mut f32,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x989A239386B5AD23);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x989A239386B5AD23);
         (culib().cublasSswap_v2)(handle, n, x, incx, y, incy)
     }
     #[cfg(any(
@@ -16960,8 +16960,8 @@ mod loaded {
         y: *mut f32,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5911A05CFE9E3A5D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5911A05CFE9E3A5D);
         (culib().cublasSswap_v2_64)(handle, n, x, incx, y, incy)
     }
     pub unsafe fn cublasSsymm_v2(
@@ -16979,8 +16979,8 @@ mod loaded {
         C: *mut f32,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x87B912C143A882A1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x87B912C143A882A1);
         (culib().cublasSsymm_v2)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -17011,8 +17011,8 @@ mod loaded {
         C: *mut f32,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3C0D14A5242FF505);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3C0D14A5242FF505);
         (culib().cublasSsymm_v2_64)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -17030,8 +17030,8 @@ mod loaded {
         y: *mut f32,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC84B9F11FC3896D2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC84B9F11FC3896D2);
         (culib().cublasSsymv_v2)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -17058,8 +17058,8 @@ mod loaded {
         y: *mut f32,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x957E776E511E85E7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x957E776E511E85E7);
         (culib().cublasSsymv_v2_64)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasSsyr2_v2(
@@ -17074,8 +17074,8 @@ mod loaded {
         A: *mut f32,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xDFE378F48797684C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDFE378F48797684C);
         (culib().cublasSsyr2_v2)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -17101,8 +17101,8 @@ mod loaded {
         A: *mut f32,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCDB2B34EA27E7221);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCDB2B34EA27E7221);
         (culib().cublasSsyr2_v2_64)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasSsyr2k_v2(
@@ -17120,8 +17120,8 @@ mod loaded {
         C: *mut f32,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA8251BA71D4EFAD0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA8251BA71D4EFAD0);
         (culib().cublasSsyr2k_v2)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -17152,8 +17152,8 @@ mod loaded {
         C: *mut f32,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3C0282B6292EE545);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3C0282B6292EE545);
         (culib().cublasSsyr2k_v2_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -17168,8 +17168,8 @@ mod loaded {
         A: *mut f32,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA344B7628609ABC3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA344B7628609ABC3);
         (culib().cublasSsyr_v2)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     #[cfg(any(
@@ -17193,8 +17193,8 @@ mod loaded {
         A: *mut f32,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC3034DDAFB32579D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC3034DDAFB32579D);
         (culib().cublasSsyr_v2_64)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     pub unsafe fn cublasSsyrk_v2(
@@ -17210,8 +17210,8 @@ mod loaded {
         C: *mut f32,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0692AD4B91F5BE11);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0692AD4B91F5BE11);
         (culib().cublasSsyrk_v2)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     #[cfg(any(
@@ -17238,8 +17238,8 @@ mod loaded {
         C: *mut f32,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1FA114AB53762DF7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1FA114AB53762DF7);
         (culib().cublasSsyrk_v2_64)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     pub unsafe fn cublasSsyrkx(
@@ -17257,8 +17257,8 @@ mod loaded {
         C: *mut f32,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x42FEFCA9822F9486);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x42FEFCA9822F9486);
         (culib().cublasSsyrkx)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -17289,8 +17289,8 @@ mod loaded {
         C: *mut f32,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4524FB9D2EBB0C41);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4524FB9D2EBB0C41);
         (culib().cublasSsyrkx_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -17307,8 +17307,8 @@ mod loaded {
         x: *mut f32,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB4E641F17FB04FDF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB4E641F17FB04FDF);
         (culib().cublasStbmv_v2)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     #[cfg(any(
@@ -17334,8 +17334,8 @@ mod loaded {
         x: *mut f32,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD6068A5E2C3D0253);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD6068A5E2C3D0253);
         (culib().cublasStbmv_v2_64)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     pub unsafe fn cublasStbsv_v2(
@@ -17350,8 +17350,8 @@ mod loaded {
         x: *mut f32,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBED1566195C5C012);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBED1566195C5C012);
         (culib().cublasStbsv_v2)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     #[cfg(any(
@@ -17377,8 +17377,8 @@ mod loaded {
         x: *mut f32,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x30C49BEF1AEC5886);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x30C49BEF1AEC5886);
         (culib().cublasStbsv_v2_64)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     pub unsafe fn cublasStpmv_v2(
@@ -17391,8 +17391,8 @@ mod loaded {
         x: *mut f32,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x948A30F49B18E4B6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x948A30F49B18E4B6);
         (culib().cublasStpmv_v2)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     #[cfg(any(
@@ -17416,8 +17416,8 @@ mod loaded {
         x: *mut f32,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x224D759B39DDF344);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x224D759B39DDF344);
         (culib().cublasStpmv_v2_64)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     pub unsafe fn cublasStpsv_v2(
@@ -17430,8 +17430,8 @@ mod loaded {
         x: *mut f32,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3F95C771F491A0A9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3F95C771F491A0A9);
         (culib().cublasStpsv_v2)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     #[cfg(any(
@@ -17455,8 +17455,8 @@ mod loaded {
         x: *mut f32,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1CC8755AB0DACA61);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1CC8755AB0DACA61);
         (culib().cublasStpsv_v2_64)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     pub unsafe fn cublasStpttr(
@@ -17467,8 +17467,8 @@ mod loaded {
         A: *mut f32,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA7ED3D67EE12A034);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA7ED3D67EE12A034);
         (culib().cublasStpttr)(handle, uplo, n, AP, A, lda)
     }
     pub unsafe fn cublasStrmm_v2(
@@ -17487,8 +17487,8 @@ mod loaded {
         C: *mut f32,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCEDBDB2DDDF8857A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCEDBDB2DDDF8857A);
         (culib().cublasStrmm_v2)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, C, ldc,
         )
@@ -17520,8 +17520,8 @@ mod loaded {
         C: *mut f32,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFACAE55E5A197DA7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFACAE55E5A197DA7);
         (culib().cublasStrmm_v2_64)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, C, ldc,
         )
@@ -17537,8 +17537,8 @@ mod loaded {
         x: *mut f32,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6565DDF1A81AAE28);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6565DDF1A81AAE28);
         (culib().cublasStrmv_v2)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     #[cfg(any(
@@ -17563,8 +17563,8 @@ mod loaded {
         x: *mut f32,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9B61BEA31A4CAA0D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9B61BEA31A4CAA0D);
         (culib().cublasStrmv_v2_64)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     pub unsafe fn cublasStrsmBatched(
@@ -17582,8 +17582,8 @@ mod loaded {
         ldb: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB4147CCD29D8F3CB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB4147CCD29D8F3CB);
         (culib().cublasStrsmBatched)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, batchCount,
         )
@@ -17614,8 +17614,8 @@ mod loaded {
         ldb: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8DC96F20C07D1A80);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8DC96F20C07D1A80);
         (culib().cublasStrsmBatched_64)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, batchCount,
         )
@@ -17634,8 +17634,8 @@ mod loaded {
         B: *mut f32,
         ldb: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1C23E2984F0DA80E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1C23E2984F0DA80E);
         (culib().cublasStrsm_v2)(handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb)
     }
     #[cfg(any(
@@ -17663,8 +17663,8 @@ mod loaded {
         B: *mut f32,
         ldb: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x256F6DEEB0555120);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x256F6DEEB0555120);
         (culib().cublasStrsm_v2_64)(handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb)
     }
     pub unsafe fn cublasStrsv_v2(
@@ -17678,8 +17678,8 @@ mod loaded {
         x: *mut f32,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFB2D69C375C00A40);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFB2D69C375C00A40);
         (culib().cublasStrsv_v2)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     #[cfg(any(
@@ -17704,8 +17704,8 @@ mod loaded {
         x: *mut f32,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1CC8755AB0DACA61);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1CC8755AB0DACA61);
         (culib().cublasStrsv_v2_64)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     pub unsafe fn cublasStrttp(
@@ -17716,8 +17716,8 @@ mod loaded {
         lda: ::core::ffi::c_int,
         AP: *mut f32,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xAF58D40B53601A15);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xAF58D40B53601A15);
         (culib().cublasStrttp)(handle, uplo, n, A, lda, AP)
     }
     pub unsafe fn cublasSwapEx(
@@ -17730,8 +17730,8 @@ mod loaded {
         yType: cudaDataType,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC51C56666A44D5CA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC51C56666A44D5CA);
         (culib().cublasSwapEx)(handle, n, x, xType, incx, y, yType, incy)
     }
     #[cfg(any(
@@ -17755,8 +17755,8 @@ mod loaded {
         yType: cudaDataType,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE981D89AA4A77083);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE981D89AA4A77083);
         (culib().cublasSwapEx_64)(handle, n, x, xType, incx, y, yType, incy)
     }
     pub unsafe fn cublasUint8gemmBias(
@@ -17779,16 +17779,16 @@ mod loaded {
         C_mult: ::core::ffi::c_int,
         C_shift: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC1CEB1EB4905499F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC1CEB1EB4905499F);
         (culib().cublasUint8gemmBias)(
             handle, transa, transb, transc, m, n, k, A, A_bias, lda, B, B_bias, ldb, C, C_bias,
             ldc, C_mult, C_shift,
         )
     }
     pub unsafe fn cublasXerbla(srName: *const ::core::ffi::c_char, info: ::core::ffi::c_int) {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x783F762C059F5A43);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x783F762C059F5A43);
         (culib().cublasXerbla)(srName, info)
     }
     pub unsafe fn cublasZaxpy_v2(
@@ -17800,8 +17800,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCB4A97A3B23E3807);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCB4A97A3B23E3807);
         (culib().cublasZaxpy_v2)(handle, n, alpha, x, incx, y, incy)
     }
     #[cfg(any(
@@ -17824,8 +17824,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x11DD1087DC44951E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x11DD1087DC44951E);
         (culib().cublasZaxpy_v2_64)(handle, n, alpha, x, incx, y, incy)
     }
     pub unsafe fn cublasZcopy_v2(
@@ -17836,8 +17836,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB7260B8E2475C80F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB7260B8E2475C80F);
         (culib().cublasZcopy_v2)(handle, n, x, incx, y, incy)
     }
     #[cfg(any(
@@ -17859,8 +17859,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1A837E82DDC3AA3F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1A837E82DDC3AA3F);
         (culib().cublasZcopy_v2_64)(handle, n, x, incx, y, incy)
     }
     pub unsafe fn cublasZdgmm(
@@ -17875,8 +17875,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x70EC648AE46852A2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x70EC648AE46852A2);
         (culib().cublasZdgmm)(handle, mode, m, n, A, lda, x, incx, C, ldc)
     }
     #[cfg(any(
@@ -17902,8 +17902,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD2B89CA6029D28C2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD2B89CA6029D28C2);
         (culib().cublasZdgmm_64)(handle, mode, m, n, A, lda, x, incx, C, ldc)
     }
     pub unsafe fn cublasZdotc_v2(
@@ -17915,8 +17915,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         result: *mut cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3D11CD933D60F95D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3D11CD933D60F95D);
         (culib().cublasZdotc_v2)(handle, n, x, incx, y, incy, result)
     }
     #[cfg(any(
@@ -17939,8 +17939,8 @@ mod loaded {
         incy: i64,
         result: *mut cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x28EB326CBE728D49);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x28EB326CBE728D49);
         (culib().cublasZdotc_v2_64)(handle, n, x, incx, y, incy, result)
     }
     pub unsafe fn cublasZdotu_v2(
@@ -17952,8 +17952,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         result: *mut cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1A76ECE7EF299E33);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1A76ECE7EF299E33);
         (culib().cublasZdotu_v2)(handle, n, x, incx, y, incy, result)
     }
     #[cfg(any(
@@ -17976,8 +17976,8 @@ mod loaded {
         incy: i64,
         result: *mut cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xDDA1387D851C2569);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDDA1387D851C2569);
         (culib().cublasZdotu_v2_64)(handle, n, x, incx, y, incy, result)
     }
     pub unsafe fn cublasZdrot_v2(
@@ -17990,8 +17990,8 @@ mod loaded {
         c: *const f64,
         s: *const f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x77939B098441AD6D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x77939B098441AD6D);
         (culib().cublasZdrot_v2)(handle, n, x, incx, y, incy, c, s)
     }
     #[cfg(any(
@@ -18015,8 +18015,8 @@ mod loaded {
         c: *const f64,
         s: *const f64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x21A13FD466A9F841);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x21A13FD466A9F841);
         (culib().cublasZdrot_v2_64)(handle, n, x, incx, y, incy, c, s)
     }
     pub unsafe fn cublasZdscal_v2(
@@ -18026,8 +18026,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x77B561B2E96F26F2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x77B561B2E96F26F2);
         (culib().cublasZdscal_v2)(handle, n, alpha, x, incx)
     }
     #[cfg(any(
@@ -18048,8 +18048,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x202EA7C8F000EA5E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x202EA7C8F000EA5E);
         (culib().cublasZdscal_v2_64)(handle, n, alpha, x, incx)
     }
     pub unsafe fn cublasZgbmv_v2(
@@ -18068,8 +18068,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3C1DCD834A0B4192);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3C1DCD834A0B4192);
         (culib().cublasZgbmv_v2)(
             handle, trans, m, n, kl, ku, alpha, A, lda, x, incx, beta, y, incy,
         )
@@ -18101,8 +18101,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8F930AF5A64D77A8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8F930AF5A64D77A8);
         (culib().cublasZgbmv_v2_64)(
             handle, trans, m, n, kl, ku, alpha, A, lda, x, incx, beta, y, incy,
         )
@@ -18122,8 +18122,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCA2B78F97CB40968);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCA2B78F97CB40968);
         (culib().cublasZgeam)(
             handle, transa, transb, m, n, alpha, A, lda, beta, B, ldb, C, ldc,
         )
@@ -18154,8 +18154,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1819C56F05CB4A77);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1819C56F05CB4A77);
         (culib().cublasZgeam_64)(
             handle, transa, transb, m, n, alpha, A, lda, beta, B, ldb, C, ldc,
         )
@@ -18174,8 +18174,8 @@ mod loaded {
         devInfoArray: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5DECB1AA9A68FF33);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5DECB1AA9A68FF33);
         (culib().cublasZgelsBatched)(
             handle,
             trans,
@@ -18207,8 +18207,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x4BACAE0D066C3B43);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4BACAE0D066C3B43);
         (culib().cublasZgemm3m)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -18240,8 +18240,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA8CB6A89E1E919A5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA8CB6A89E1E919A5);
         (culib().cublasZgemm3m_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -18263,8 +18263,8 @@ mod loaded {
         ldc: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6214A87DA2FE82EB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6214A87DA2FE82EB);
         (culib().cublasZgemmBatched)(
             handle, transa, transb, m, n, k, alpha, Aarray, lda, Barray, ldb, beta, Carray, ldc,
             batchCount,
@@ -18298,8 +18298,8 @@ mod loaded {
         ldc: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3B751E7E055970C4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3B751E7E055970C4);
         (culib().cublasZgemmBatched_64)(
             handle, transa, transb, m, n, k, alpha, Aarray, lda, Barray, ldb, beta, Carray, ldc,
             batchCount,
@@ -18325,8 +18325,8 @@ mod loaded {
         strideC: ::core::ffi::c_longlong,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA65E5D63BD348ADC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA65E5D63BD348ADC);
         (culib().cublasZgemmStridedBatched)(
             handle, transa, transb, m, n, k, alpha, A, lda, strideA, B, ldb, strideB, beta, C, ldc,
             strideC, batchCount,
@@ -18363,8 +18363,8 @@ mod loaded {
         strideC: ::core::ffi::c_longlong,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xAFC2C01C8FF14BE0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xAFC2C01C8FF14BE0);
         (culib().cublasZgemmStridedBatched_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, strideA, B, ldb, strideB, beta, C, ldc,
             strideC, batchCount,
@@ -18386,8 +18386,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5123A13486AE8AE3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5123A13486AE8AE3);
         (culib().cublasZgemm_v2)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -18419,8 +18419,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x77BADE6CABCC7E5D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x77BADE6CABCC7E5D);
         (culib().cublasZgemm_v2_64)(
             handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -18454,8 +18454,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x945F350AC139671A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x945F350AC139671A);
         (culib().cublasZgemvBatched)(
             handle, trans, m, n, alpha, Aarray, lda, xarray, incx, beta, yarray, incy, batchCount,
         )
@@ -18486,8 +18486,8 @@ mod loaded {
         incy: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7A96CABF3FDBE4EA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7A96CABF3FDBE4EA);
         (culib().cublasZgemvBatched_64)(
             handle, trans, m, n, alpha, Aarray, lda, xarray, incx, beta, yarray, incy, batchCount,
         )
@@ -18524,8 +18524,8 @@ mod loaded {
         stridey: ::core::ffi::c_longlong,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x33F07312325378E7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x33F07312325378E7);
         (culib().cublasZgemvStridedBatched)(
             handle, trans, m, n, alpha, A, lda, strideA, x, incx, stridex, beta, y, incy, stridey,
             batchCount,
@@ -18560,8 +18560,8 @@ mod loaded {
         stridey: ::core::ffi::c_longlong,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF086C2A9F79048A1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF086C2A9F79048A1);
         (culib().cublasZgemvStridedBatched_64)(
             handle, trans, m, n, alpha, A, lda, strideA, x, incx, stridex, beta, y, incy, stridey,
             batchCount,
@@ -18581,8 +18581,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1F0336B66FC38A97);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1F0336B66FC38A97);
         (culib().cublasZgemv_v2)(handle, trans, m, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -18610,8 +18610,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD289E9B3D5EFDEFE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD289E9B3D5EFDEFE);
         (culib().cublasZgemv_v2_64)(handle, trans, m, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasZgeqrfBatched(
@@ -18624,8 +18624,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x62B36812D7AB3BF4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x62B36812D7AB3BF4);
         (culib().cublasZgeqrfBatched)(handle, m, n, Aarray, lda, TauArray, info, batchSize)
     }
     pub unsafe fn cublasZgerc_v2(
@@ -18640,8 +18640,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7DBDAD1E338F2280);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7DBDAD1E338F2280);
         (culib().cublasZgerc_v2)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -18667,8 +18667,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB0CF964BAC7AB5FC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB0CF964BAC7AB5FC);
         (culib().cublasZgerc_v2_64)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasZgeru_v2(
@@ -18683,8 +18683,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xDAF7A8022335783E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDAF7A8022335783E);
         (culib().cublasZgeru_v2)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -18710,8 +18710,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1FB78BD2F196FC61);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1FB78BD2F196FC61);
         (culib().cublasZgeru_v2_64)(handle, m, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasZgetrfBatched(
@@ -18723,8 +18723,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x36427423634FFD68);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x36427423634FFD68);
         (culib().cublasZgetrfBatched)(handle, n, A, lda, P, info, batchSize)
     }
     pub unsafe fn cublasZgetriBatched(
@@ -18738,8 +18738,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA864994E08D6553F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA864994E08D6553F);
         (culib().cublasZgetriBatched)(handle, n, A, lda, P, C, ldc, info, batchSize)
     }
     pub unsafe fn cublasZgetrsBatched(
@@ -18755,8 +18755,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6348C07316F9B513);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6348C07316F9B513);
         (culib().cublasZgetrsBatched)(
             handle, trans, n, nrhs, Aarray, lda, devIpiv, Barray, ldb, info, batchSize,
         )
@@ -18775,8 +18775,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB2C63AE8C0ACC1E0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB2C63AE8C0ACC1E0);
         (culib().cublasZhbmv_v2)(handle, uplo, n, k, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -18804,8 +18804,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC84B9C2C23BCF2BA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC84B9C2C23BCF2BA);
         (culib().cublasZhbmv_v2_64)(handle, uplo, n, k, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasZhemm_v2(
@@ -18823,8 +18823,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7942247E799E56A8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7942247E799E56A8);
         (culib().cublasZhemm_v2)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -18855,8 +18855,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8A85963F639FE809);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8A85963F639FE809);
         (culib().cublasZhemm_v2_64)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -18874,8 +18874,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC1B9D98E331D1AEA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC1B9D98E331D1AEA);
         (culib().cublasZhemv_v2)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -18902,8 +18902,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD092DFC49E6AD81B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD092DFC49E6AD81B);
         (culib().cublasZhemv_v2_64)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasZher2_v2(
@@ -18918,8 +18918,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8A24EBB25D2B4E0C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8A24EBB25D2B4E0C);
         (culib().cublasZher2_v2)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -18945,8 +18945,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBC8B04202A7167FC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBC8B04202A7167FC);
         (culib().cublasZher2_v2_64)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasZher2k_v2(
@@ -18964,8 +18964,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xEC6DCFEB12A34229);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEC6DCFEB12A34229);
         (culib().cublasZher2k_v2)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -18996,8 +18996,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC3742AE67008AC3E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC3742AE67008AC3E);
         (culib().cublasZher2k_v2_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -19012,8 +19012,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6B3DAB8619F0CAAE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6B3DAB8619F0CAAE);
         (culib().cublasZher_v2)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     #[cfg(any(
@@ -19037,8 +19037,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA75AFB40E7756835);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA75AFB40E7756835);
         (culib().cublasZher_v2_64)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     pub unsafe fn cublasZherk_v2(
@@ -19054,8 +19054,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x626922C6577EA76F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x626922C6577EA76F);
         (culib().cublasZherk_v2)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     #[cfg(any(
@@ -19082,8 +19082,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x73A38B2514297E36);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x73A38B2514297E36);
         (culib().cublasZherk_v2_64)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     pub unsafe fn cublasZherkx(
@@ -19101,8 +19101,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBBA4911B3CFB1825);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBBA4911B3CFB1825);
         (culib().cublasZherkx)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -19133,8 +19133,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC29226479A7229FC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC29226479A7229FC);
         (culib().cublasZherkx_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -19151,8 +19151,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF7A8032B23F3BE59);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF7A8032B23F3BE59);
         (culib().cublasZhpmv_v2)(handle, uplo, n, alpha, AP, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -19178,8 +19178,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xA655F32B3F5F2890);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA655F32B3F5F2890);
         (culib().cublasZhpmv_v2_64)(handle, uplo, n, alpha, AP, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasZhpr2_v2(
@@ -19193,8 +19193,8 @@ mod loaded {
         incy: ::core::ffi::c_int,
         AP: *mut cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB86F11A4BED9FC0E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB86F11A4BED9FC0E);
         (culib().cublasZhpr2_v2)(handle, uplo, n, alpha, x, incx, y, incy, AP)
     }
     #[cfg(any(
@@ -19219,8 +19219,8 @@ mod loaded {
         incy: i64,
         AP: *mut cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xCF58F4AA301AAC55);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCF58F4AA301AAC55);
         (culib().cublasZhpr2_v2_64)(handle, uplo, n, alpha, x, incx, y, incy, AP)
     }
     pub unsafe fn cublasZhpr_v2(
@@ -19232,8 +19232,8 @@ mod loaded {
         incx: ::core::ffi::c_int,
         AP: *mut cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x2447EA3058D363A5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2447EA3058D363A5);
         (culib().cublasZhpr_v2)(handle, uplo, n, alpha, x, incx, AP)
     }
     #[cfg(any(
@@ -19256,8 +19256,8 @@ mod loaded {
         incx: i64,
         AP: *mut cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0A2B49935A3A32EC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0A2B49935A3A32EC);
         (culib().cublasZhpr_v2_64)(handle, uplo, n, alpha, x, incx, AP)
     }
     pub unsafe fn cublasZmatinvBatched(
@@ -19270,8 +19270,8 @@ mod loaded {
         info: *mut ::core::ffi::c_int,
         batchSize: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x597A047AD15592C3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x597A047AD15592C3);
         (culib().cublasZmatinvBatched)(handle, n, A, lda, Ainv, lda_inv, info, batchSize)
     }
     pub unsafe fn cublasZrot_v2(
@@ -19284,8 +19284,8 @@ mod loaded {
         c: *const f64,
         s: *const cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xAFFBC684792A4347);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xAFFBC684792A4347);
         (culib().cublasZrot_v2)(handle, n, x, incx, y, incy, c, s)
     }
     #[cfg(any(
@@ -19309,8 +19309,8 @@ mod loaded {
         c: *const f64,
         s: *const cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x1D7A0CA252E06EEB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1D7A0CA252E06EEB);
         (culib().cublasZrot_v2_64)(handle, n, x, incx, y, incy, c, s)
     }
     pub unsafe fn cublasZrotg_v2(
@@ -19320,8 +19320,8 @@ mod loaded {
         c: *mut f64,
         s: *mut cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x200AFFF16ED5D779);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x200AFFF16ED5D779);
         (culib().cublasZrotg_v2)(handle, a, b, c, s)
     }
     pub unsafe fn cublasZscal_v2(
@@ -19331,8 +19331,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xFA0E473499E10702);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFA0E473499E10702);
         (culib().cublasZscal_v2)(handle, n, alpha, x, incx)
     }
     #[cfg(any(
@@ -19353,8 +19353,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x3876039F0648C9B3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3876039F0648C9B3);
         (culib().cublasZscal_v2_64)(handle, n, alpha, x, incx)
     }
     pub unsafe fn cublasZswap_v2(
@@ -19365,8 +19365,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x652BAB002A47AFED);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x652BAB002A47AFED);
         (culib().cublasZswap_v2)(handle, n, x, incx, y, incy)
     }
     #[cfg(any(
@@ -19388,8 +19388,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x6FA8D30E97154B51);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6FA8D30E97154B51);
         (culib().cublasZswap_v2_64)(handle, n, x, incx, y, incy)
     }
     pub unsafe fn cublasZsymm_v2(
@@ -19407,8 +19407,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0DE16780979F96B1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0DE16780979F96B1);
         (culib().cublasZsymm_v2)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -19439,8 +19439,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7B0143DA1D7DC9A6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7B0143DA1D7DC9A6);
         (culib().cublasZsymm_v2_64)(
             handle, side, uplo, m, n, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -19458,8 +19458,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xB32BA2CA57037D1D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB32BA2CA57037D1D);
         (culib().cublasZsymv_v2)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     #[cfg(any(
@@ -19486,8 +19486,8 @@ mod loaded {
         y: *mut cuDoubleComplex,
         incy: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xBB2E534B0CCBB8FC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBB2E534B0CCBB8FC);
         (culib().cublasZsymv_v2_64)(handle, uplo, n, alpha, A, lda, x, incx, beta, y, incy)
     }
     pub unsafe fn cublasZsyr2_v2(
@@ -19502,8 +19502,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8E27944EC4323061);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8E27944EC4323061);
         (culib().cublasZsyr2_v2)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     #[cfg(any(
@@ -19529,8 +19529,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9628DD7DAC3279A4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9628DD7DAC3279A4);
         (culib().cublasZsyr2_v2_64)(handle, uplo, n, alpha, x, incx, y, incy, A, lda)
     }
     pub unsafe fn cublasZsyr2k_v2(
@@ -19548,8 +19548,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x72C1E161C8A33478);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x72C1E161C8A33478);
         (culib().cublasZsyr2k_v2)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -19580,8 +19580,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x36A47905DB36AD50);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x36A47905DB36AD50);
         (culib().cublasZsyr2k_v2_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -19596,8 +19596,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0D0A7EABDD9EA4C7);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0D0A7EABDD9EA4C7);
         (culib().cublasZsyr_v2)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     #[cfg(any(
@@ -19621,8 +19621,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xC68EF5575F79B363);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC68EF5575F79B363);
         (culib().cublasZsyr_v2_64)(handle, uplo, n, alpha, x, incx, A, lda)
     }
     pub unsafe fn cublasZsyrk_v2(
@@ -19638,8 +19638,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x127B2700D8380DB5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x127B2700D8380DB5);
         (culib().cublasZsyrk_v2)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     #[cfg(any(
@@ -19666,8 +19666,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x31EEE6A5270FE928);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x31EEE6A5270FE928);
         (culib().cublasZsyrk_v2_64)(handle, uplo, trans, n, k, alpha, A, lda, beta, C, ldc)
     }
     pub unsafe fn cublasZsyrkx(
@@ -19685,8 +19685,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x23DFF33BF2A72502);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x23DFF33BF2A72502);
         (culib().cublasZsyrkx)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -19717,8 +19717,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x457C470104D5E344);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x457C470104D5E344);
         (culib().cublasZsyrkx_64)(
             handle, uplo, trans, n, k, alpha, A, lda, B, ldb, beta, C, ldc,
         )
@@ -19735,8 +19735,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x82C98A01D62D6C83);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x82C98A01D62D6C83);
         (culib().cublasZtbmv_v2)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     #[cfg(any(
@@ -19762,8 +19762,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x0830F434BDF84C80);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0830F434BDF84C80);
         (culib().cublasZtbmv_v2_64)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     pub unsafe fn cublasZtbsv_v2(
@@ -19778,8 +19778,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5882F4FA32F217C3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5882F4FA32F217C3);
         (culib().cublasZtbsv_v2)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     #[cfg(any(
@@ -19805,8 +19805,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF02B27D3C4D9BB21);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF02B27D3C4D9BB21);
         (culib().cublasZtbsv_v2_64)(handle, uplo, trans, diag, n, k, A, lda, x, incx)
     }
     pub unsafe fn cublasZtpmv_v2(
@@ -19819,8 +19819,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x9EA5824812B62875);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9EA5824812B62875);
         (culib().cublasZtpmv_v2)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     #[cfg(any(
@@ -19844,8 +19844,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x12313C93856ACD80);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x12313C93856ACD80);
         (culib().cublasZtpmv_v2_64)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     pub unsafe fn cublasZtpsv_v2(
@@ -19858,8 +19858,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x7AEB791E4469E2B6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7AEB791E4469E2B6);
         (culib().cublasZtpsv_v2)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     #[cfg(any(
@@ -19883,8 +19883,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xE65BB6B28FEF00CD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE65BB6B28FEF00CD);
         (culib().cublasZtpsv_v2_64)(handle, uplo, trans, diag, n, AP, x, incx)
     }
     pub unsafe fn cublasZtpttr(
@@ -19895,8 +19895,8 @@ mod loaded {
         A: *mut cuDoubleComplex,
         lda: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xF1017BC51B3A45CC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF1017BC51B3A45CC);
         (culib().cublasZtpttr)(handle, uplo, n, AP, A, lda)
     }
     pub unsafe fn cublasZtrmm_v2(
@@ -19915,8 +19915,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x81AD4D96CBF6D025);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x81AD4D96CBF6D025);
         (culib().cublasZtrmm_v2)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, C, ldc,
         )
@@ -19948,8 +19948,8 @@ mod loaded {
         C: *mut cuDoubleComplex,
         ldc: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD6F948B8682617D9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD6F948B8682617D9);
         (culib().cublasZtrmm_v2_64)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, C, ldc,
         )
@@ -19965,8 +19965,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x5A81A3D734DD0AFA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5A81A3D734DD0AFA);
         (culib().cublasZtrmv_v2)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     #[cfg(any(
@@ -19991,8 +19991,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x028BF63A65D00C15);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x028BF63A65D00C15);
         (culib().cublasZtrmv_v2_64)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     pub unsafe fn cublasZtrsmBatched(
@@ -20010,8 +20010,8 @@ mod loaded {
         ldb: ::core::ffi::c_int,
         batchCount: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x20D7B5B214720D3C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x20D7B5B214720D3C);
         (culib().cublasZtrsmBatched)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, batchCount,
         )
@@ -20042,8 +20042,8 @@ mod loaded {
         ldb: i64,
         batchCount: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x590026AB98C88FCD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x590026AB98C88FCD);
         (culib().cublasZtrsmBatched_64)(
             handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb, batchCount,
         )
@@ -20062,8 +20062,8 @@ mod loaded {
         B: *mut cuDoubleComplex,
         ldb: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xD2D8DAFD3EA5D950);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD2D8DAFD3EA5D950);
         (culib().cublasZtrsm_v2)(handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb)
     }
     #[cfg(any(
@@ -20091,8 +20091,8 @@ mod loaded {
         B: *mut cuDoubleComplex,
         ldb: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x8EEE2A570A9EA894);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8EEE2A570A9EA894);
         (culib().cublasZtrsm_v2_64)(handle, side, uplo, trans, diag, m, n, alpha, A, lda, B, ldb)
     }
     pub unsafe fn cublasZtrsv_v2(
@@ -20106,8 +20106,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: ::core::ffi::c_int,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0xEFD9D2CF924C5B66);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEFD9D2CF924C5B66);
         (culib().cublasZtrsv_v2)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     #[cfg(any(
@@ -20132,8 +20132,8 @@ mod loaded {
         x: *mut cuDoubleComplex,
         incx: i64,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x35FA918B86031525);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x35FA918B86031525);
         (culib().cublasZtrsv_v2_64)(handle, uplo, trans, diag, n, A, lda, x, incx)
     }
     pub unsafe fn cublasZtrttp(
@@ -20144,8 +20144,8 @@ mod loaded {
         lda: ::core::ffi::c_int,
         AP: *mut cuDoubleComplex,
     ) -> cublasStatus_t {
-        CublasRegistry::add_fuel(1);
-        CublasRegistry::mix_runtime_signature(0x055805A11BAC17EE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x055805A11BAC17EE);
         (culib().cublasZtrttp)(handle, uplo, n, A, lda, AP)
     }
     pub struct Lib {

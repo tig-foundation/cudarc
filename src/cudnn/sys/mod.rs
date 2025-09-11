@@ -1288,7 +1288,7 @@ impl Default for cudnnDebugStruct {
     }
 }
 
-use crate::cudnn::safe::core::CudnnRegistry;
+use crate::RTSigFuel;
 
 #[cfg(not(feature = "dynamic-loading"))]
 extern "C" {
@@ -3094,8 +3094,8 @@ mod loaded {
         dxDesc: cudnnTensorDescriptor_t,
         dx: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD8567A94EE9EFAA4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD8567A94EE9EFAA4);
         (culib().cudnnActivationBackward)(
             handle,
             activationDesc,
@@ -3121,8 +3121,8 @@ mod loaded {
         yDesc: cudnnTensorDescriptor_t,
         y: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB344BE3E9973A030);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB344BE3E9973A030);
         (culib().cudnnActivationForward)(handle, activationDesc, alpha, xDesc, x, beta, yDesc, y)
     }
     pub unsafe fn cudnnAddTensor(
@@ -3134,28 +3134,28 @@ mod loaded {
         cDesc: cudnnTensorDescriptor_t,
         C: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x8FC958EA98775683);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8FC958EA98775683);
         (culib().cudnnAddTensor)(handle, alpha, aDesc, A, beta, cDesc, C)
     }
     pub unsafe fn cudnnAdvVersionCheck() -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x886EBF486F3BB7D2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x886EBF486F3BB7D2);
         (culib().cudnnAdvVersionCheck)()
     }
     pub unsafe fn cudnnBackendCreateDescriptor(
         descriptorType: cudnnBackendDescriptorType_t,
         descriptor: *mut cudnnBackendDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x78F28030754771FC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x78F28030754771FC);
         (culib().cudnnBackendCreateDescriptor)(descriptorType, descriptor)
     }
     pub unsafe fn cudnnBackendDestroyDescriptor(
         descriptor: cudnnBackendDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x53710EE4C5B5B936);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x53710EE4C5B5B936);
         (culib().cudnnBackendDestroyDescriptor)(descriptor)
     }
     pub unsafe fn cudnnBackendExecute(
@@ -3163,13 +3163,13 @@ mod loaded {
         executionPlan: cudnnBackendDescriptor_t,
         variantPack: cudnnBackendDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x535577912CE0F0F3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x535577912CE0F0F3);
         (culib().cudnnBackendExecute)(handle, executionPlan, variantPack)
     }
     pub unsafe fn cudnnBackendFinalize(descriptor: cudnnBackendDescriptor_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x578383AE88F90A06);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x578383AE88F90A06);
         (culib().cudnnBackendFinalize)(descriptor)
     }
     pub unsafe fn cudnnBackendGetAttribute(
@@ -3180,8 +3180,8 @@ mod loaded {
         elementCount: *mut i64,
         arrayOfElements: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x296A8BD93EFC8792);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x296A8BD93EFC8792);
         (culib().cudnnBackendGetAttribute)(
             descriptor,
             attributeName,
@@ -3192,8 +3192,8 @@ mod loaded {
         )
     }
     pub unsafe fn cudnnBackendInitialize(descriptor: cudnnBackendDescriptor_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x38EF5720D069117F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x38EF5720D069117F);
         (culib().cudnnBackendInitialize)(descriptor)
     }
     pub unsafe fn cudnnBackendPopulateCudaGraph(
@@ -3202,8 +3202,8 @@ mod loaded {
         variantPack: cudnnBackendDescriptor_t,
         graph: cudaGraph_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x3F8D4CB247B3BFAA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3F8D4CB247B3BFAA);
         (culib().cudnnBackendPopulateCudaGraph)(handle, executionPlan, variantPack, graph)
     }
     pub unsafe fn cudnnBackendSetAttribute(
@@ -3213,8 +3213,8 @@ mod loaded {
         elementCount: i64,
         arrayOfElements: *const ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xEAAA944E97982B92);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEAAA944E97982B92);
         (culib().cudnnBackendSetAttribute)(
             descriptor,
             attributeName,
@@ -3229,8 +3229,8 @@ mod loaded {
         variantPack: cudnnBackendDescriptor_t,
         graph: cudaGraph_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x08BD1349F59C6949);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x08BD1349F59C6949);
         (culib().cudnnBackendUpdateCudaGraph)(handle, executionPlan, variantPack, graph)
     }
     pub unsafe fn cudnnBatchNormalizationBackward(
@@ -3254,8 +3254,13 @@ mod loaded {
         savedMean: *const ::core::ffi::c_void,
         savedInvVariance: *const ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x34C16E93BE2C8A33);
+        match get_tensor_nd_info(xDesc) {
+            Ok((_, dims, _)) => {
+                RTSigFuel::add_fuel_used(dims.into_iter().map(|x| x as u64).product::<u64>());
+            }
+            Err(e) => return e.0,
+        };
+        RTSigFuel::mix_runtime_signature(0x34C16E93BE2C8A33);
         (culib().cudnnBatchNormalizationBackward)(
             handle,
             mode,
@@ -3310,8 +3315,8 @@ mod loaded {
         reserveSpace: *mut ::core::ffi::c_void,
         reserveSpaceSizeInBytes: usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x40916595514A950B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x40916595514A950B);
         (culib().cudnnBatchNormalizationBackwardEx)(
             handle,
             mode,
@@ -3361,8 +3366,13 @@ mod loaded {
         estimatedVariance: *const ::core::ffi::c_void,
         epsilon: f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x081AAEB75F8682B1);
+        match get_tensor_nd_info(xDesc) {
+            Ok((_, dims, _)) => {
+                RTSigFuel::add_fuel_used(dims.into_iter().map(|x| x as u64).product::<u64>());
+            }
+            Err(e) => return e.0,
+        };
+        RTSigFuel::mix_runtime_signature(0x081AAEB75F8682B1);
         (culib().cudnnBatchNormalizationForwardInference)(
             handle,
             mode,
@@ -3380,6 +3390,44 @@ mod loaded {
             epsilon,
         )
     }
+    pub unsafe fn get_tensor_nd_info(
+        desc: cudnnTensorDescriptor_t,
+    ) -> Result<(cudnnDataType_t, Vec<i32>, Vec<i32>), CudnnError> {
+        // First, get the number of dimensions
+        let mut nb_dims: i32 = 0;
+        let mut data_type: cudnnDataType_t = cudnnDataType_t::CUDNN_DATA_FLOAT;
+
+        // Call with null pointers to get the number of dimensions
+        match cudnnGetTensorNdDescriptor(
+            desc,
+            0, // nbDimsRequested = 0 to query the actual number of dimensions
+            &mut data_type,
+            &mut nb_dims,
+            std::ptr::null_mut(),
+            std::ptr::null_mut(),
+        ) {
+            cudnnStatus_t::CUDNN_STATUS_SUCCESS => {}
+            e => return Err(CudnnError(e)),
+        }
+
+        // Now allocate vectors for dimensions and strides
+        let mut dims: Vec<i32> = vec![0; nb_dims as usize];
+        let mut strides: Vec<i32> = vec![0; nb_dims as usize];
+
+        // Get the actual data
+        match cudnnGetTensorNdDescriptor(
+            desc,
+            nb_dims,
+            &mut data_type,
+            &mut nb_dims,
+            dims.as_mut_ptr(),
+            strides.as_mut_ptr(),
+        ) {
+            cudnnStatus_t::CUDNN_STATUS_SUCCESS => Ok((data_type, dims, strides)),
+            e => Err(CudnnError(e)),
+        }
+    }
+
     pub unsafe fn cudnnBatchNormalizationForwardTraining(
         handle: cudnnHandle_t,
         mode: cudnnBatchNormMode_t,
@@ -3399,8 +3447,13 @@ mod loaded {
         resultSaveMean: *mut ::core::ffi::c_void,
         resultSaveInvVariance: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x92A6234EDD0FA265);
+        match get_tensor_nd_info(xDesc) {
+            Ok((_, dims, _)) => {
+                RTSigFuel::add_fuel_used(dims.into_iter().map(|x| x as u64).product::<u64>());
+            }
+            Err(e) => return e.0,
+        };
+        RTSigFuel::mix_runtime_signature(0x92A6234EDD0FA265);
         (culib().cudnnBatchNormalizationForwardTraining)(
             handle,
             mode,
@@ -3448,8 +3501,8 @@ mod loaded {
         reserveSpace: *mut ::core::ffi::c_void,
         reserveSpaceSizeInBytes: usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xF426445E1BBD65A8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF426445E1BBD65A8);
         (culib().cudnnBatchNormalizationForwardTrainingEx)(
             handle,
             mode,
@@ -3483,8 +3536,8 @@ mod loaded {
         rnnDesc: cudnnRNNDescriptor_t,
         miniBatch: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x0B902CC405C8374D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0B902CC405C8374D);
         (culib().cudnnBuildRNNDynamic)(handle, rnnDesc, miniBatch)
     }
     pub unsafe fn cudnnCTCLoss(
@@ -3502,8 +3555,8 @@ mod loaded {
         workspace: *mut ::core::ffi::c_void,
         workSpaceSizeInBytes: usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x5E94D09C76D866E1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5E94D09C76D866E1);
         (culib().cudnnCTCLoss)(
             handle,
             probsDesc,
@@ -3535,8 +3588,8 @@ mod loaded {
         workSpaceSizeInBytes: usize,
         workspace: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x0C85F6651CD9FE53);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0C85F6651CD9FE53);
         (culib().cudnnCTCLoss_v8)(
             handle,
             algo,
@@ -3554,8 +3607,8 @@ mod loaded {
         )
     }
     pub unsafe fn cudnnCnnVersionCheck() -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xF444EF6D5B40C885);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF444EF6D5B40C885);
         (culib().cudnnCnnVersionCheck)()
     }
     pub unsafe fn cudnnConvolutionBackwardBias(
@@ -3567,8 +3620,8 @@ mod loaded {
         dbDesc: cudnnTensorDescriptor_t,
         db: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x1093969F455B08F1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1093969F455B08F1);
         (culib().cudnnConvolutionBackwardBias)(handle, alpha, dyDesc, dy, beta, dbDesc, db)
     }
     pub unsafe fn cudnnConvolutionBackwardData(
@@ -3586,8 +3639,8 @@ mod loaded {
         dxDesc: cudnnTensorDescriptor_t,
         dx: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x5B90F2BD008A5F5B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5B90F2BD008A5F5B);
         (culib().cudnnConvolutionBackwardData)(
             handle,
             alpha,
@@ -3619,8 +3672,8 @@ mod loaded {
         dwDesc: cudnnFilterDescriptor_t,
         dw: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x0E0BAE777F4C02F5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0E0BAE777F4C02F5);
         (culib().cudnnConvolutionBackwardFilter)(
             handle,
             alpha,
@@ -3657,8 +3710,8 @@ mod loaded {
         yDesc: cudnnTensorDescriptor_t,
         y: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x4ACD662C84A0C004);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4ACD662C84A0C004);
         (culib().cudnnConvolutionBiasActivationForward)(
             handle,
             alpha1,
@@ -3695,8 +3748,8 @@ mod loaded {
         yDesc: cudnnTensorDescriptor_t,
         y: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xBA70460C0E5CB092);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBA70460C0E5CB092);
         (culib().cudnnConvolutionForward)(
             handle,
             alpha,
@@ -3714,138 +3767,138 @@ mod loaded {
         )
     }
     pub unsafe fn cudnnCreate(handle: *mut cudnnHandle_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x25D07AF2CE19A961);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x25D07AF2CE19A961);
         (culib().cudnnCreate)(handle)
     }
     pub unsafe fn cudnnCreateActivationDescriptor(
         activationDesc: *mut cudnnActivationDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x54A3301C2BD49192);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x54A3301C2BD49192);
         (culib().cudnnCreateActivationDescriptor)(activationDesc)
     }
     pub unsafe fn cudnnCreateAttnDescriptor(attnDesc: *mut cudnnAttnDescriptor_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x905D9C7C84E60420);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x905D9C7C84E60420);
         (culib().cudnnCreateAttnDescriptor)(attnDesc)
     }
     pub unsafe fn cudnnCreateCTCLossDescriptor(
         ctcLossDesc: *mut cudnnCTCLossDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xC2081B6D5EE913B5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC2081B6D5EE913B5);
         (culib().cudnnCreateCTCLossDescriptor)(ctcLossDesc)
     }
     pub unsafe fn cudnnCreateConvolutionDescriptor(
         convDesc: *mut cudnnConvolutionDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD303DC074437F3B8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD303DC074437F3B8);
         (culib().cudnnCreateConvolutionDescriptor)(convDesc)
     }
     pub unsafe fn cudnnCreateDropoutDescriptor(
         dropoutDesc: *mut cudnnDropoutDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x9AE0DE713BE6536B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9AE0DE713BE6536B);
         (culib().cudnnCreateDropoutDescriptor)(dropoutDesc)
     }
     pub unsafe fn cudnnCreateFilterDescriptor(
         filterDesc: *mut cudnnFilterDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x28FDE2992E6CF4ED);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x28FDE2992E6CF4ED);
         (culib().cudnnCreateFilterDescriptor)(filterDesc)
     }
     pub unsafe fn cudnnCreateFusedOpsConstParamPack(
         constPack: *mut cudnnFusedOpsConstParamPack_t,
         ops: cudnnFusedOps_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x493654E1F00FB353);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x493654E1F00FB353);
         (culib().cudnnCreateFusedOpsConstParamPack)(constPack, ops)
     }
     pub unsafe fn cudnnCreateFusedOpsPlan(
         plan: *mut cudnnFusedOpsPlan_t,
         ops: cudnnFusedOps_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x446E06A0F1018C45);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x446E06A0F1018C45);
         (culib().cudnnCreateFusedOpsPlan)(plan, ops)
     }
     pub unsafe fn cudnnCreateFusedOpsVariantParamPack(
         varPack: *mut cudnnFusedOpsVariantParamPack_t,
         ops: cudnnFusedOps_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD6F2B4A45F2895A1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD6F2B4A45F2895A1);
         (culib().cudnnCreateFusedOpsVariantParamPack)(varPack, ops)
     }
     pub unsafe fn cudnnCreateLRNDescriptor(normDesc: *mut cudnnLRNDescriptor_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB5B33C84E1E7905A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB5B33C84E1E7905A);
         (culib().cudnnCreateLRNDescriptor)(normDesc)
     }
     pub unsafe fn cudnnCreateOpTensorDescriptor(
         opTensorDesc: *mut cudnnOpTensorDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x6DF581BBA1E05902);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6DF581BBA1E05902);
         (culib().cudnnCreateOpTensorDescriptor)(opTensorDesc)
     }
     pub unsafe fn cudnnCreatePoolingDescriptor(
         poolingDesc: *mut cudnnPoolingDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x286B7F1FDF1FF950);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x286B7F1FDF1FF950);
         (culib().cudnnCreatePoolingDescriptor)(poolingDesc)
     }
     pub unsafe fn cudnnCreateRNNDataDescriptor(
         rnnDataDesc: *mut cudnnRNNDataDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB1C45032796A4562);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB1C45032796A4562);
         (culib().cudnnCreateRNNDataDescriptor)(rnnDataDesc)
     }
     pub unsafe fn cudnnCreateRNNDescriptor(rnnDesc: *mut cudnnRNNDescriptor_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xC4CECB30FD47AE16);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC4CECB30FD47AE16);
         (culib().cudnnCreateRNNDescriptor)(rnnDesc)
     }
     pub unsafe fn cudnnCreateReduceTensorDescriptor(
         reduceTensorDesc: *mut cudnnReduceTensorDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x2782C5E85E0AAF8C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2782C5E85E0AAF8C);
         (culib().cudnnCreateReduceTensorDescriptor)(reduceTensorDesc)
     }
     pub unsafe fn cudnnCreateSeqDataDescriptor(
         seqDataDesc: *mut cudnnSeqDataDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x874951DBCD776E66);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x874951DBCD776E66);
         (culib().cudnnCreateSeqDataDescriptor)(seqDataDesc)
     }
     pub unsafe fn cudnnCreateSpatialTransformerDescriptor(
         stDesc: *mut cudnnSpatialTransformerDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x2CB1458443F2526D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2CB1458443F2526D);
         (culib().cudnnCreateSpatialTransformerDescriptor)(stDesc)
     }
     pub unsafe fn cudnnCreateTensorDescriptor(
         tensorDesc: *mut cudnnTensorDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x4A32D50DF1F25D24);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4A32D50DF1F25D24);
         (culib().cudnnCreateTensorDescriptor)(tensorDesc)
     }
     pub unsafe fn cudnnCreateTensorTransformDescriptor(
         transformDesc: *mut cudnnTensorTransformDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xF85C60BEDDBDE316);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF85C60BEDDBDE316);
         (culib().cudnnCreateTensorTransformDescriptor)(transformDesc)
     }
     pub unsafe fn cudnnDeriveBNTensorDescriptor(
@@ -3853,8 +3906,8 @@ mod loaded {
         xDesc: cudnnTensorDescriptor_t,
         mode: cudnnBatchNormMode_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x4CF06F9DFF68E8F1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4CF06F9DFF68E8F1);
         (culib().cudnnDeriveBNTensorDescriptor)(derivedBnDesc, xDesc, mode)
     }
     pub unsafe fn cudnnDeriveNormTensorDescriptor(
@@ -3864,8 +3917,8 @@ mod loaded {
         mode: cudnnNormMode_t,
         groupCnt: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xDFE0F98056965D57);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDFE0F98056965D57);
         (culib().cudnnDeriveNormTensorDescriptor)(
             derivedNormScaleBiasDesc,
             derivedNormMeanVarDesc,
@@ -3875,133 +3928,133 @@ mod loaded {
         )
     }
     pub unsafe fn cudnnDestroy(handle: cudnnHandle_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x823C44E529F6FB35);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x823C44E529F6FB35);
         (culib().cudnnDestroy)(handle)
     }
     pub unsafe fn cudnnDestroyActivationDescriptor(
         activationDesc: cudnnActivationDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xCD22A09ED88C51DC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCD22A09ED88C51DC);
         (culib().cudnnDestroyActivationDescriptor)(activationDesc)
     }
     pub unsafe fn cudnnDestroyAttnDescriptor(attnDesc: cudnnAttnDescriptor_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x1F924AE86ACF5226);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1F924AE86ACF5226);
         (culib().cudnnDestroyAttnDescriptor)(attnDesc)
     }
     pub unsafe fn cudnnDestroyCTCLossDescriptor(
         ctcLossDesc: cudnnCTCLossDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x9DE78D65BDAE0841);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9DE78D65BDAE0841);
         (culib().cudnnDestroyCTCLossDescriptor)(ctcLossDesc)
     }
     pub unsafe fn cudnnDestroyConvolutionDescriptor(
         convDesc: cudnnConvolutionDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x3270022ED5787D73);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3270022ED5787D73);
         (culib().cudnnDestroyConvolutionDescriptor)(convDesc)
     }
     pub unsafe fn cudnnDestroyDropoutDescriptor(
         dropoutDesc: cudnnDropoutDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x4B6924E1FD3FC9CD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4B6924E1FD3FC9CD);
         (culib().cudnnDestroyDropoutDescriptor)(dropoutDesc)
     }
     pub unsafe fn cudnnDestroyFilterDescriptor(
         filterDesc: cudnnFilterDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x92B9124619D60F65);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x92B9124619D60F65);
         (culib().cudnnDestroyFilterDescriptor)(filterDesc)
     }
     pub unsafe fn cudnnDestroyFusedOpsConstParamPack(
         constPack: cudnnFusedOpsConstParamPack_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xE3E3923F28219209);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE3E3923F28219209);
         (culib().cudnnDestroyFusedOpsConstParamPack)(constPack)
     }
     pub unsafe fn cudnnDestroyFusedOpsPlan(plan: cudnnFusedOpsPlan_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xEFD0F616480E25CE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEFD0F616480E25CE);
         (culib().cudnnDestroyFusedOpsPlan)(plan)
     }
     pub unsafe fn cudnnDestroyFusedOpsVariantParamPack(
         varPack: cudnnFusedOpsVariantParamPack_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xAB4089406DB8CF30);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xAB4089406DB8CF30);
         (culib().cudnnDestroyFusedOpsVariantParamPack)(varPack)
     }
     pub unsafe fn cudnnDestroyLRNDescriptor(lrnDesc: cudnnLRNDescriptor_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xCCBE6FF3CC359DCB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCCBE6FF3CC359DCB);
         (culib().cudnnDestroyLRNDescriptor)(lrnDesc)
     }
     pub unsafe fn cudnnDestroyOpTensorDescriptor(
         opTensorDesc: cudnnOpTensorDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x57C35486C8908516);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x57C35486C8908516);
         (culib().cudnnDestroyOpTensorDescriptor)(opTensorDesc)
     }
     pub unsafe fn cudnnDestroyPoolingDescriptor(
         poolingDesc: cudnnPoolingDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xCFA1735AA70A0E20);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCFA1735AA70A0E20);
         (culib().cudnnDestroyPoolingDescriptor)(poolingDesc)
     }
     pub unsafe fn cudnnDestroyRNNDataDescriptor(
         rnnDataDesc: cudnnRNNDataDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x29F02575C58803D5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x29F02575C58803D5);
         (culib().cudnnDestroyRNNDataDescriptor)(rnnDataDesc)
     }
     pub unsafe fn cudnnDestroyRNNDescriptor(rnnDesc: cudnnRNNDescriptor_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xDFA5225FF8B4D553);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDFA5225FF8B4D553);
         (culib().cudnnDestroyRNNDescriptor)(rnnDesc)
     }
     pub unsafe fn cudnnDestroyReduceTensorDescriptor(
         reduceTensorDesc: cudnnReduceTensorDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x556DF73FAAF35124);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x556DF73FAAF35124);
         (culib().cudnnDestroyReduceTensorDescriptor)(reduceTensorDesc)
     }
     pub unsafe fn cudnnDestroySeqDataDescriptor(
         seqDataDesc: cudnnSeqDataDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1); 
-        CudnnRegistry::mix_runtime_signature(0x743846556DB4A278);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x743846556DB4A278);
         (culib().cudnnDestroySeqDataDescriptor)(seqDataDesc)
     }
     pub unsafe fn cudnnDestroySpatialTransformerDescriptor(
         stDesc: cudnnSpatialTransformerDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x76084448D83C78CB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x76084448D83C78CB);
         (culib().cudnnDestroySpatialTransformerDescriptor)(stDesc)
     }
     pub unsafe fn cudnnDestroyTensorDescriptor(
         tensorDesc: cudnnTensorDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x8806919860ADEB7E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8806919860ADEB7E);
         (culib().cudnnDestroyTensorDescriptor)(tensorDesc)
     }
     pub unsafe fn cudnnDestroyTensorTransformDescriptor(
         transformDesc: cudnnTensorTransformDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x8184D993DB3B4F1F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8184D993DB3B4F1F);
         (culib().cudnnDestroyTensorTransformDescriptor)(transformDesc)
     }
     pub unsafe fn cudnnDivisiveNormalizationBackward(
@@ -4020,8 +4073,8 @@ mod loaded {
         dx: *mut ::core::ffi::c_void,
         dMeans: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x528041BD5364A114);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x528041BD5364A114);
         (culib().cudnnDivisiveNormalizationBackward)(
             handle,
             normDesc,
@@ -4053,8 +4106,8 @@ mod loaded {
         yDesc: cudnnTensorDescriptor_t,
         y: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xF5188CDC91F266EC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF5188CDC91F266EC);
         (culib().cudnnDivisiveNormalizationForward)(
             handle, normDesc, mode, alpha, xDesc, x, means, temp, temp2, beta, yDesc, y,
         )
@@ -4069,8 +4122,8 @@ mod loaded {
         reserveSpace: *mut ::core::ffi::c_void,
         reserveSpaceSizeInBytes: usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xF7DC20A7BE8A87EF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF7DC20A7BE8A87EF);
         (culib().cudnnDropoutBackward)(
             handle,
             dropoutDesc,
@@ -4092,8 +4145,8 @@ mod loaded {
         reserveSpace: *mut ::core::ffi::c_void,
         reserveSpaceSizeInBytes: usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x123EF07CBD7816BF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x123EF07CBD7816BF);
         (culib().cudnnDropoutForward)(
             handle,
             dropoutDesc,
@@ -4109,16 +4162,16 @@ mod loaded {
         xdesc: cudnnTensorDescriptor_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x3C907C34F6E4172E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3C907C34F6E4172E);
         (culib().cudnnDropoutGetReserveSpaceSize)(xdesc, sizeInBytes)
     }
     pub unsafe fn cudnnDropoutGetStatesSize(
         handle: cudnnHandle_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x46C5190F226B982B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x46C5190F226B982B);
         (culib().cudnnDropoutGetStatesSize)(handle, sizeInBytes)
     }
     pub unsafe fn cudnnFindConvolutionBackwardDataAlgorithm(
@@ -4131,8 +4184,8 @@ mod loaded {
         returnedAlgoCount: *mut ::core::ffi::c_int,
         perfResults: *mut cudnnConvolutionBwdDataAlgoPerf_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xCDF07021E54D50AD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCDF07021E54D50AD);
         (culib().cudnnFindConvolutionBackwardDataAlgorithm)(
             handle,
             wDesc,
@@ -4159,8 +4212,8 @@ mod loaded {
         workSpace: *mut ::core::ffi::c_void,
         workSpaceSizeInBytes: usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x9F0DC49E7498B24B);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9F0DC49E7498B24B);
         (culib().cudnnFindConvolutionBackwardDataAlgorithmEx)(
             handle,
             wDesc,
@@ -4187,8 +4240,8 @@ mod loaded {
         returnedAlgoCount: *mut ::core::ffi::c_int,
         perfResults: *mut cudnnConvolutionBwdFilterAlgoPerf_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xA15F8AABCD63E2D9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA15F8AABCD63E2D9);
         (culib().cudnnFindConvolutionBackwardFilterAlgorithm)(
             handle,
             xDesc,
@@ -4215,8 +4268,8 @@ mod loaded {
         workSpace: *mut ::core::ffi::c_void,
         workSpaceSizeInBytes: usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x01763372BACED371);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x01763372BACED371);
         (culib().cudnnFindConvolutionBackwardFilterAlgorithmEx)(
             handle,
             xDesc,
@@ -4243,8 +4296,8 @@ mod loaded {
         returnedAlgoCount: *mut ::core::ffi::c_int,
         perfResults: *mut cudnnConvolutionFwdAlgoPerf_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x3DC3469E336385D9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3DC3469E336385D9);
         (culib().cudnnFindConvolutionForwardAlgorithm)(
             handle,
             xDesc,
@@ -4271,8 +4324,8 @@ mod loaded {
         workSpace: *mut ::core::ffi::c_void,
         workSpaceSizeInBytes: usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x22CCE6A93D962374);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x22CCE6A93D962374);
         (culib().cudnnFindConvolutionForwardAlgorithmEx)(
             handle,
             xDesc,
@@ -4294,8 +4347,8 @@ mod loaded {
         plan: cudnnFusedOpsPlan_t,
         varPack: cudnnFusedOpsVariantParamPack_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x3989980DD4524F3A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3989980DD4524F3A);
         (culib().cudnnFusedOpsExecute)(handle, plan, varPack)
     }
     pub unsafe fn cudnnGetActivationDescriptor(
@@ -4304,16 +4357,16 @@ mod loaded {
         reluNanOpt: *mut cudnnNanPropagation_t,
         coef: *mut f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x87D8EA135B4538BA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x87D8EA135B4538BA);
         (culib().cudnnGetActivationDescriptor)(activationDesc, mode, reluNanOpt, coef)
     }
     pub unsafe fn cudnnGetActivationDescriptorSwishBeta(
         activationDesc: cudnnActivationDescriptor_t,
         swish_beta: *mut f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xFAC09E1E5C784A4F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFAC09E1E5C784A4F);
         (culib().cudnnGetActivationDescriptorSwishBeta)(activationDesc, swish_beta)
     }
     pub unsafe fn cudnnGetAttnDescriptor(
@@ -4338,8 +4391,8 @@ mod loaded {
         maxBatchSize: *mut ::core::ffi::c_int,
         maxBeamSize: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xA9C0720F4E24D9C3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA9C0720F4E24D9C3);
         (culib().cudnnGetAttnDescriptor)(
             attnDesc,
             attnMode,
@@ -4376,8 +4429,8 @@ mod loaded {
         activationDesc: cudnnActivationDescriptor_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x82CCBE75AE1054F8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x82CCBE75AE1054F8);
         (culib().cudnnGetBatchNormalizationBackwardExWorkspaceSize)(
             handle,
             mode,
@@ -4403,8 +4456,8 @@ mod loaded {
         activationDesc: cudnnActivationDescriptor_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xCF4DA8E0F8BD08AA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCF4DA8E0F8BD08AA);
         (culib().cudnnGetBatchNormalizationForwardTrainingExWorkspaceSize)(
             handle,
             mode,
@@ -4425,8 +4478,8 @@ mod loaded {
         xDesc: cudnnTensorDescriptor_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x229B4EF784CE21B9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x229B4EF784CE21B9);
         (culib().cudnnGetBatchNormalizationTrainingExReserveSpaceSize)(
             handle,
             mode,
@@ -4440,8 +4493,8 @@ mod loaded {
         ctcLossDesc: cudnnCTCLossDescriptor_t,
         compType: *mut cudnnDataType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xA51A9180FB5FF64F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA51A9180FB5FF64F);
         (culib().cudnnGetCTCLossDescriptor)(ctcLossDesc, compType)
     }
     pub unsafe fn cudnnGetCTCLossDescriptorEx(
@@ -4450,8 +4503,8 @@ mod loaded {
         normMode: *mut cudnnLossNormalizationMode_t,
         gradMode: *mut cudnnNanPropagation_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x7F507FDD845FF64F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7F507FDD845FF64F);
         (culib().cudnnGetCTCLossDescriptorEx)(ctcLossDesc, compType, normMode, gradMode)
     }
     pub unsafe fn cudnnGetCTCLossDescriptor_v8(
@@ -4461,8 +4514,8 @@ mod loaded {
         gradMode: *mut cudnnNanPropagation_t,
         maxLabelLength: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x89E7665875DBAE9A);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x89E7665875DBAE9A);
         (culib().cudnnGetCTCLossDescriptor_v8)(
             ctcLossDesc,
             compType,
@@ -4478,8 +4531,8 @@ mod loaded {
         ctcGradMode: *mut cudnnCTCGradMode_t,
         maxLabelLength: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x45BCE14B48460724);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x45BCE14B48460724);
         (culib().cudnnGetCTCLossDescriptor_v9)(
             ctcLossDesc,
             compType,
@@ -4499,8 +4552,8 @@ mod loaded {
         ctcLossDesc: cudnnCTCLossDescriptor_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x9449DA12C27F79EF);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9449DA12C27F79EF);
         (culib().cudnnGetCTCLossWorkspaceSize)(
             handle,
             probsDesc,
@@ -4521,8 +4574,8 @@ mod loaded {
         gradientsDesc: cudnnTensorDescriptor_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xF2EAF5BD3BF56230);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF2EAF5BD3BF56230);
         (culib().cudnnGetCTCLossWorkspaceSize_v8)(
             handle,
             algo,
@@ -4537,8 +4590,8 @@ mod loaded {
         udata: *mut *mut ::core::ffi::c_void,
         fptr: *mut cudnnCallback_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x97D57E4C8CE1A97D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x97D57E4C8CE1A97D);
         (culib().cudnnGetCallback)(mask, udata, fptr)
     }
     pub unsafe fn cudnnGetConvolution2dDescriptor(
@@ -4552,8 +4605,8 @@ mod loaded {
         mode: *mut cudnnConvolutionMode_t,
         computeType: *mut cudnnDataType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x7DC4FBF4224F64C1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7DC4FBF4224F64C1);
         (culib().cudnnGetConvolution2dDescriptor)(
             convDesc,
             pad_h,
@@ -4575,8 +4628,8 @@ mod loaded {
         h: *mut ::core::ffi::c_int,
         w: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x5EF72010FAE548E3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5EF72010FAE548E3);
         (culib().cudnnGetConvolution2dForwardOutputDim)(
             convDesc,
             inputTensorDesc,
@@ -4591,8 +4644,8 @@ mod loaded {
         handle: cudnnHandle_t,
         count: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x3C635ADF8AA9854E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3C635ADF8AA9854E);
         (culib().cudnnGetConvolutionBackwardDataAlgorithmMaxCount)(handle, count)
     }
     pub unsafe fn cudnnGetConvolutionBackwardDataAlgorithm_v7(
@@ -4605,8 +4658,8 @@ mod loaded {
         returnedAlgoCount: *mut ::core::ffi::c_int,
         perfResults: *mut cudnnConvolutionBwdDataAlgoPerf_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x8C40B6F6CD9726AE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8C40B6F6CD9726AE);
         (culib().cudnnGetConvolutionBackwardDataAlgorithm_v7)(
             handle,
             filterDesc,
@@ -4627,8 +4680,8 @@ mod loaded {
         algo: cudnnConvolutionBwdDataAlgo_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x9208507E66F4A0A1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9208507E66F4A0A1);
         (culib().cudnnGetConvolutionBackwardDataWorkspaceSize)(
             handle,
             wDesc,
@@ -4643,8 +4696,8 @@ mod loaded {
         handle: cudnnHandle_t,
         count: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x64FFC8BB5B996B8C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x64FFC8BB5B996B8C);
         (culib().cudnnGetConvolutionBackwardFilterAlgorithmMaxCount)(handle, count)
     }
     pub unsafe fn cudnnGetConvolutionBackwardFilterAlgorithm_v7(
@@ -4657,8 +4710,8 @@ mod loaded {
         returnedAlgoCount: *mut ::core::ffi::c_int,
         perfResults: *mut cudnnConvolutionBwdFilterAlgoPerf_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x79ECD395AA52C023);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x79ECD395AA52C023);
         (culib().cudnnGetConvolutionBackwardFilterAlgorithm_v7)(
             handle,
             srcDesc,
@@ -4679,8 +4732,8 @@ mod loaded {
         algo: cudnnConvolutionBwdFilterAlgo_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB80A38F5AD1F7940);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB80A38F5AD1F7940);
         (culib().cudnnGetConvolutionBackwardFilterWorkspaceSize)(
             handle,
             xDesc,
@@ -4695,8 +4748,8 @@ mod loaded {
         handle: cudnnHandle_t,
         count: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD1ED1312A7E9AD48);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD1ED1312A7E9AD48);
         (culib().cudnnGetConvolutionForwardAlgorithmMaxCount)(handle, count)
     }
     pub unsafe fn cudnnGetConvolutionForwardAlgorithm_v7(
@@ -4709,8 +4762,8 @@ mod loaded {
         returnedAlgoCount: *mut ::core::ffi::c_int,
         perfResults: *mut cudnnConvolutionFwdAlgoPerf_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD5441325A800E013);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD5441325A800E013);
         (culib().cudnnGetConvolutionForwardAlgorithm_v7)(
             handle,
             srcDesc,
@@ -4731,8 +4784,8 @@ mod loaded {
         algo: cudnnConvolutionFwdAlgo_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD75A7E1E3EBE5D4F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD75A7E1E3EBE5D4F);
         (culib().cudnnGetConvolutionForwardWorkspaceSize)(
             handle,
             xDesc,
@@ -4747,16 +4800,16 @@ mod loaded {
         convDesc: cudnnConvolutionDescriptor_t,
         groupCount: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x9A1CE612F9A0C8F9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9A1CE612F9A0C8F9);
         (culib().cudnnGetConvolutionGroupCount)(convDesc, groupCount)
     }
     pub unsafe fn cudnnGetConvolutionMathType(
         convDesc: cudnnConvolutionDescriptor_t,
         mathType: *mut cudnnMathType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x6835E2F869C6C213);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6835E2F869C6C213);
         (culib().cudnnGetConvolutionMathType)(convDesc, mathType)
     }
     pub unsafe fn cudnnGetConvolutionNdDescriptor(
@@ -4769,8 +4822,8 @@ mod loaded {
         mode: *mut cudnnConvolutionMode_t,
         computeType: *mut cudnnDataType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD7AEADF3CE754F19);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD7AEADF3CE754F19);
         (culib().cudnnGetConvolutionNdDescriptor)(
             convDesc,
             arrayLengthRequested,
@@ -4789,8 +4842,8 @@ mod loaded {
         nbDims: ::core::ffi::c_int,
         tensorOuputDimA: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x2CEE324AD660D1E9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2CEE324AD660D1E9);
         (culib().cudnnGetConvolutionNdForwardOutputDim)(
             convDesc,
             inputTensorDesc,
@@ -4803,13 +4856,13 @@ mod loaded {
         convDesc: cudnnConvolutionDescriptor_t,
         reorderType: *mut cudnnReorderType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x95419AE0FA5991CB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x95419AE0FA5991CB);
         (culib().cudnnGetConvolutionReorderType)(convDesc, reorderType)
     }
     pub unsafe fn cudnnGetCudartVersion() -> usize {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xBEBDB53FA70E27CC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBEBDB53FA70E27CC);
         (culib().cudnnGetCudartVersion)()
     }
     pub unsafe fn cudnnGetDropoutDescriptor(
@@ -4819,13 +4872,13 @@ mod loaded {
         states: *mut *mut ::core::ffi::c_void,
         seed: *mut ::core::ffi::c_ulonglong,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x49878BC5F17A6C86);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x49878BC5F17A6C86);
         (culib().cudnnGetDropoutDescriptor)(dropoutDesc, handle, dropout, states, seed)
     }
     pub unsafe fn cudnnGetErrorString(status: cudnnStatus_t) -> *const ::core::ffi::c_char {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD8D6220D1BEAD816);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD8D6220D1BEAD816);
         (culib().cudnnGetErrorString)(status)
     }
     pub unsafe fn cudnnGetFilter4dDescriptor(
@@ -4837,8 +4890,8 @@ mod loaded {
         h: *mut ::core::ffi::c_int,
         w: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xA7F5E4453C91B720);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA7F5E4453C91B720);
         (culib().cudnnGetFilter4dDescriptor)(filterDesc, dataType, format, k, c, h, w)
     }
     pub unsafe fn cudnnGetFilterNdDescriptor(
@@ -4849,8 +4902,8 @@ mod loaded {
         nbDims: *mut ::core::ffi::c_int,
         filterDimA: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xAED1F502CDD96012);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xAED1F502CDD96012);
         (culib().cudnnGetFilterNdDescriptor)(
             filterDesc,
             nbDimsRequested,
@@ -4864,8 +4917,8 @@ mod loaded {
         filterDesc: cudnnFilterDescriptor_t,
         size: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xF167DBD1D2A4E333);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF167DBD1D2A4E333);
         (culib().cudnnGetFilterSizeInBytes)(filterDesc, size)
     }
     pub unsafe fn cudnnGetFoldedConvBackwardDataDescriptors(
@@ -4884,8 +4937,8 @@ mod loaded {
         gradFoldTransDesc: cudnnTensorTransformDescriptor_t,
         gradUnfoldTransDesc: cudnnTensorTransformDescriptor_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB18216F8552773C2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB18216F8552773C2);
         (culib().cudnnGetFoldedConvBackwardDataDescriptors)(
             handle,
             filterDesc,
@@ -4909,8 +4962,8 @@ mod loaded {
         param: *mut ::core::ffi::c_void,
         isNULL: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x3E115A1A60333F04);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3E115A1A60333F04);
         (culib().cudnnGetFusedOpsConstParamPackAttribute)(constPack, paramLabel, param, isNULL)
     }
     pub unsafe fn cudnnGetFusedOpsVariantParamPackAttribute(
@@ -4918,8 +4971,8 @@ mod loaded {
         paramLabel: cudnnFusedOpsVariantParamLabel_t,
         ptr: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x784ACF2AF2ABC5EC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x784ACF2AF2ABC5EC);
         (culib().cudnnGetFusedOpsVariantParamPackAttribute)(varPack, paramLabel, ptr)
     }
     pub unsafe fn cudnnGetLRNDescriptor(
@@ -4929,18 +4982,18 @@ mod loaded {
         lrnBeta: *mut f64,
         lrnK: *mut f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x95AF9D4AC63A0D08);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x95AF9D4AC63A0D08);
         (culib().cudnnGetLRNDescriptor)(normDesc, lrnN, lrnAlpha, lrnBeta, lrnK)
     }
     pub unsafe fn cudnnGetLastErrorString(message: *mut ::core::ffi::c_char, max_size: usize) {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x20D624993E1E977F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x20D624993E1E977F);
         (culib().cudnnGetLastErrorString)(message, max_size)
     }
     pub unsafe fn cudnnGetMaxDeviceVersion() -> usize {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x7B8DA4EAAC1E99EA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x7B8DA4EAAC1E99EA);
         (culib().cudnnGetMaxDeviceVersion)()
     }
     pub unsafe fn cudnnGetMultiHeadAttnBuffers(
@@ -4950,8 +5003,8 @@ mod loaded {
         workSpaceSizeInBytes: *mut usize,
         reserveSpaceSizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xBB474899B5A634CA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBB474899B5A634CA);
         (culib().cudnnGetMultiHeadAttnBuffers)(
             handle,
             attnDesc,
@@ -4969,8 +5022,8 @@ mod loaded {
         wDesc: cudnnTensorDescriptor_t,
         wAddr: *mut *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x339FF95656BD5C3C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x339FF95656BD5C3C);
         (culib().cudnnGetMultiHeadAttnWeights)(
             handle,
             attnDesc,
@@ -4997,8 +5050,8 @@ mod loaded {
         sizeInBytes: *mut usize,
         groupCnt: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x75AC6FF816764331);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x75AC6FF816764331);
         (culib().cudnnGetNormalizationBackwardWorkspaceSize)(
             handle,
             mode,
@@ -5030,8 +5083,8 @@ mod loaded {
         sizeInBytes: *mut usize,
         groupCnt: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x4DECB810B2A54063);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4DECB810B2A54063);
         (culib().cudnnGetNormalizationForwardTrainingWorkspaceSize)(
             handle,
             mode,
@@ -5057,8 +5110,8 @@ mod loaded {
         sizeInBytes: *mut usize,
         groupCnt: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xBA13C0C8BE0B5099);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBA13C0C8BE0B5099);
         (culib().cudnnGetNormalizationTrainingReserveSpaceSize)(
             handle,
             mode,
@@ -5076,8 +5129,8 @@ mod loaded {
         opTensorCompType: *mut cudnnDataType_t,
         opTensorNanOpt: *mut cudnnNanPropagation_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x1ADB595C95E6FA5D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1ADB595C95E6FA5D);
         (culib().cudnnGetOpTensorDescriptor)(
             opTensorDesc,
             opTensorOp,
@@ -5096,8 +5149,8 @@ mod loaded {
         verticalStride: *mut ::core::ffi::c_int,
         horizontalStride: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x58D5A4FDB9D798C3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x58D5A4FDB9D798C3);
         (culib().cudnnGetPooling2dDescriptor)(
             poolingDesc,
             mode,
@@ -5118,8 +5171,8 @@ mod loaded {
         h: *mut ::core::ffi::c_int,
         w: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x04F028C8DFA1FFFA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x04F028C8DFA1FFFA);
         (culib().cudnnGetPooling2dForwardOutputDim)(poolingDesc, inputTensorDesc, n, c, h, w)
     }
     pub unsafe fn cudnnGetPoolingNdDescriptor(
@@ -5132,8 +5185,8 @@ mod loaded {
         paddingA: *mut ::core::ffi::c_int,
         strideA: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB726EE5931513FA5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB726EE5931513FA5);
         (culib().cudnnGetPoolingNdDescriptor)(
             poolingDesc,
             nbDimsRequested,
@@ -5151,8 +5204,8 @@ mod loaded {
         nbDims: ::core::ffi::c_int,
         outputTensorDimA: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xFB32FBABABFACCAB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFB32FBABABFACCAB);
         (culib().cudnnGetPoolingNdForwardOutputDim)(
             poolingDesc,
             inputTensorDesc,
@@ -5164,8 +5217,8 @@ mod loaded {
         type_: libraryPropertyType,
         value: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xED8CE7E5E24D6658);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xED8CE7E5E24D6658);
         (culib().cudnnGetProperty)(type_, value)
     }
     pub unsafe fn cudnnGetRNNDataDescriptor(
@@ -5179,8 +5232,8 @@ mod loaded {
         seqLengthArray: *mut ::core::ffi::c_int,
         paddingFill: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB72A615FCE72ACC3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB72A615FCE72ACC3);
         (culib().cudnnGetRNNDataDescriptor)(
             rnnDataDesc,
             dataType,
@@ -5210,8 +5263,8 @@ mod loaded {
         dropoutDesc: *mut cudnnDropoutDescriptor_t,
         auxFlags: *mut u32,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xEF6D54E6D30F746E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEF6D54E6D30F746E);
         (culib().cudnnGetRNNDescriptor_v8)(
             rnnDesc,
             algo,
@@ -5238,8 +5291,8 @@ mod loaded {
         workSpaceSize: *mut usize,
         reserveSpaceSize: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x77B154F111AD8ECB);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x77B154F111AD8ECB);
         (culib().cudnnGetRNNTempSpaceSizes)(
             handle,
             rnnDesc,
@@ -5261,8 +5314,8 @@ mod loaded {
         bDesc: cudnnTensorDescriptor_t,
         bAddr: *mut *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x5823F2A627936837);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5823F2A627936837);
         (culib().cudnnGetRNNWeightParams)(
             handle,
             rnnDesc,
@@ -5281,8 +5334,8 @@ mod loaded {
         rnnDesc: cudnnRNNDescriptor_t,
         weightSpaceSize: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x943909E665CCFD28);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x943909E665CCFD28);
         (culib().cudnnGetRNNWeightSpaceSize)(handle, rnnDesc, weightSpaceSize)
     }
     pub unsafe fn cudnnGetReduceTensorDescriptor(
@@ -5293,8 +5346,8 @@ mod loaded {
         reduceTensorIndices: *mut cudnnReduceTensorIndices_t,
         reduceTensorIndicesType: *mut cudnnIndicesType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x20CF75D3B1E6F34D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x20CF75D3B1E6F34D);
         (culib().cudnnGetReduceTensorDescriptor)(
             reduceTensorDesc,
             reduceTensorOp,
@@ -5311,8 +5364,8 @@ mod loaded {
         cDesc: cudnnTensorDescriptor_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x1F2E7FCD513B3B38);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1F2E7FCD513B3B38);
         (culib().cudnnGetReductionIndicesSize)(handle, reduceTensorDesc, aDesc, cDesc, sizeInBytes)
     }
     pub unsafe fn cudnnGetReductionWorkspaceSize(
@@ -5322,8 +5375,8 @@ mod loaded {
         cDesc: cudnnTensorDescriptor_t,
         sizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x03737BF32964C0D3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x03737BF32964C0D3);
         (culib().cudnnGetReductionWorkspaceSize)(
             handle,
             reduceTensorDesc,
@@ -5344,8 +5397,8 @@ mod loaded {
         seqLengthArray: *mut ::core::ffi::c_int,
         paddingFill: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x4EA584318E940C30);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4EA584318E940C30);
         (culib().cudnnGetSeqDataDescriptor)(
             seqDataDesc,
             dataType,
@@ -5363,8 +5416,8 @@ mod loaded {
         handle: cudnnHandle_t,
         streamId: *mut cudaStream_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x529019275B3B2B6F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x529019275B3B2B6F);
         (culib().cudnnGetStream)(handle, streamId)
     }
     pub unsafe fn cudnnGetTensor4dDescriptor(
@@ -5379,8 +5432,8 @@ mod loaded {
         hStride: *mut ::core::ffi::c_int,
         wStride: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB3B4D26AC4ADDAF3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB3B4D26AC4ADDAF3);
         (culib().cudnnGetTensor4dDescriptor)(
             tensorDesc, dataType, n, c, h, w, nStride, cStride, hStride, wStride,
         )
@@ -5393,8 +5446,8 @@ mod loaded {
         dimA: *mut ::core::ffi::c_int,
         strideA: *mut ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xC6DF9D5EFF31B834);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC6DF9D5EFF31B834);
         (culib().cudnnGetTensorNdDescriptor)(
             tensorDesc,
             nbDimsRequested,
@@ -5408,8 +5461,8 @@ mod loaded {
         tensorDesc: cudnnTensorDescriptor_t,
         size: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xC191E38E1C707C57);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC191E38E1C707C57);
         (culib().cudnnGetTensorSizeInBytes)(tensorDesc, size)
     }
     pub unsafe fn cudnnGetTensorTransformDescriptor(
@@ -5421,8 +5474,8 @@ mod loaded {
         foldA: *mut u32,
         direction: *mut cudnnFoldingDirection_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x265D93C8FD2CCFD1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x265D93C8FD2CCFD1);
         (culib().cudnnGetTensorTransformDescriptor)(
             transformDesc,
             nbDimsRequested,
@@ -5434,13 +5487,13 @@ mod loaded {
         )
     }
     pub unsafe fn cudnnGetVersion() -> usize {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x1CCE26945CBDFF3C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1CCE26945CBDFF3C);
         (culib().cudnnGetVersion)()
     }
     pub unsafe fn cudnnGraphVersionCheck() -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x69754081D9A2FF8C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x69754081D9A2FF8C);
         (culib().cudnnGraphVersionCheck)()
     }
     pub unsafe fn cudnnIm2Col(
@@ -5451,8 +5504,8 @@ mod loaded {
         convDesc: cudnnConvolutionDescriptor_t,
         colBuffer: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xC7959C9A58DBD6B2);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC7959C9A58DBD6B2);
         (culib().cudnnIm2Col)(handle, xDesc, x, wDesc, convDesc, colBuffer)
     }
     pub unsafe fn cudnnInitTransformDest(
@@ -5461,8 +5514,8 @@ mod loaded {
         destDesc: cudnnTensorDescriptor_t,
         destSizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x1124FD0FCD9BD2DD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x1124FD0FCD9BD2DD);
         (culib().cudnnInitTransformDest)(transformDesc, srcDesc, destDesc, destSizeInBytes)
     }
     pub unsafe fn cudnnLRNCrossChannelBackward(
@@ -5480,8 +5533,8 @@ mod loaded {
         dxDesc: cudnnTensorDescriptor_t,
         dx: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x3232EE037F4D680D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3232EE037F4D680D);
         (culib().cudnnLRNCrossChannelBackward)(
             handle, normDesc, lrnMode, alpha, yDesc, y, dyDesc, dy, xDesc, x, beta, dxDesc, dx,
         )
@@ -5497,8 +5550,8 @@ mod loaded {
         yDesc: cudnnTensorDescriptor_t,
         y: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xAD26AE3FD2151811);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xAD26AE3FD2151811);
         (culib().cudnnLRNCrossChannelForward)(
             handle, normDesc, lrnMode, alpha, xDesc, x, beta, yDesc, y,
         )
@@ -5509,8 +5562,8 @@ mod loaded {
         constPack: cudnnFusedOpsConstParamPack_t,
         workspaceSizeInBytes: *mut usize,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x74987A94987CA41C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x74987A94987CA41C);
         (culib().cudnnMakeFusedOpsPlan)(handle, plan, constPack, workspaceSizeInBytes)
     }
     pub unsafe fn cudnnMultiHeadAttnBackwardData(
@@ -5538,8 +5591,8 @@ mod loaded {
         reserveSpaceSizeInBytes: usize,
         reserveSpace: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xE49DD7419FD4F517);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE49DD7419FD4F517);
         (culib().cudnnMultiHeadAttnBackwardData)(
             handle,
             attnDesc,
@@ -5586,8 +5639,8 @@ mod loaded {
         reserveSpaceSizeInBytes: usize,
         reserveSpace: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xC437AFD333D6028F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC437AFD333D6028F);
         (culib().cudnnMultiHeadAttnBackwardWeights)(
             handle,
             attnDesc,
@@ -5633,8 +5686,8 @@ mod loaded {
         reserveSpaceSizeInBytes: usize,
         reserveSpace: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x3D07619E86C10D69);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3D07619E86C10D69);
         (culib().cudnnMultiHeadAttnForward)(
             handle,
             attnDesc,
@@ -5695,8 +5748,8 @@ mod loaded {
         reserveSpaceSizeInBytes: usize,
         groupCnt: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xF59AFC2B7FE4C67C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF59AFC2B7FE4C67C);
         (culib().cudnnNormalizationBackward)(
             handle,
             mode,
@@ -5756,8 +5809,8 @@ mod loaded {
         epsilon: f64,
         groupCnt: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD6DE6E4CB16A6FF0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD6DE6E4CB16A6FF0);
         (culib().cudnnNormalizationForwardInference)(
             handle,
             mode,
@@ -5812,8 +5865,8 @@ mod loaded {
         reserveSpaceSizeInBytes: usize,
         groupCnt: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xC83F7C10996DB416);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xC83F7C10996DB416);
         (culib().cudnnNormalizationForwardTraining)(
             handle,
             mode,
@@ -5858,8 +5911,8 @@ mod loaded {
         cDesc: cudnnTensorDescriptor_t,
         C: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x00F3C108E1826DB3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x00F3C108E1826DB3);
         (culib().cudnnOpTensor)(
             handle,
             opTensorDesc,
@@ -5875,8 +5928,8 @@ mod loaded {
         )
     }
     pub unsafe fn cudnnOpsVersionCheck() -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xF583CBDE626B9452);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF583CBDE626B9452);
         (culib().cudnnOpsVersionCheck)()
     }
     pub unsafe fn cudnnPoolingBackward(
@@ -5893,8 +5946,8 @@ mod loaded {
         dxDesc: cudnnTensorDescriptor_t,
         dx: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xCEACA39C30A1F7A9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCEACA39C30A1F7A9);
         (culib().cudnnPoolingBackward)(
             handle,
             poolingDesc,
@@ -5920,8 +5973,8 @@ mod loaded {
         yDesc: cudnnTensorDescriptor_t,
         y: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x9DFB9217D3A13243);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9DFB9217D3A13243);
         (culib().cudnnPoolingForward)(handle, poolingDesc, alpha, xDesc, x, beta, yDesc, y)
     }
     pub unsafe fn cudnnQueryRuntimeError(
@@ -5930,8 +5983,8 @@ mod loaded {
         mode: cudnnErrQueryMode_t,
         tag: *mut cudnnRuntimeTag_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x8F096541361D33F6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8F096541361D33F6);
         (culib().cudnnQueryRuntimeError)(handle, rstatus, mode, tag)
     }
     pub unsafe fn cudnnRNNBackwardData_v8(
@@ -5958,8 +6011,8 @@ mod loaded {
         reserveSpaceSize: usize,
         reserveSpace: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x09605526F51838A0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x09605526F51838A0);
         (culib().cudnnRNNBackwardData_v8)(
             handle,
             rnnDesc,
@@ -6003,8 +6056,8 @@ mod loaded {
         reserveSpaceSize: usize,
         reserveSpace: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x0F91FC5AA2EA7E1C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0F91FC5AA2EA7E1C);
         (culib().cudnnRNNBackwardWeights_v8)(
             handle,
             rnnDesc,
@@ -6046,8 +6099,8 @@ mod loaded {
         reserveSpaceSize: usize,
         reserveSpace: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x22B842F5A51127A1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x22B842F5A51127A1);
         (culib().cudnnRNNForward)(
             handle,
             rnnDesc,
@@ -6078,8 +6131,8 @@ mod loaded {
         lclip: *mut f64,
         rclip: *mut f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD44943914916A303);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD44943914916A303);
         (culib().cudnnRNNGetClip_v8)(rnnDesc, clipMode, clipNanOpt, lclip, rclip)
     }
     pub unsafe fn cudnnRNNGetClip_v9(
@@ -6088,8 +6141,8 @@ mod loaded {
         lclip: *mut f64,
         rclip: *mut f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xE4F55222CD529ACD);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xE4F55222CD529ACD);
         (culib().cudnnRNNGetClip_v9)(rnnDesc, clipMode, lclip, rclip)
     }
     pub unsafe fn cudnnRNNSetClip_v8(
@@ -6099,8 +6152,8 @@ mod loaded {
         lclip: f64,
         rclip: f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x0EB4803A939E2506);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x0EB4803A939E2506);
         (culib().cudnnRNNSetClip_v8)(rnnDesc, clipMode, clipNanOpt, lclip, rclip)
     }
     pub unsafe fn cudnnRNNSetClip_v9(
@@ -6109,8 +6162,8 @@ mod loaded {
         lclip: f64,
         rclip: f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xF9244974E6DACA47);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xF9244974E6DACA47);
         (culib().cudnnRNNSetClip_v9)(rnnDesc, clipMode, lclip, rclip)
     }
     pub unsafe fn cudnnReduceTensor(
@@ -6127,8 +6180,8 @@ mod loaded {
         cDesc: cudnnTensorDescriptor_t,
         C: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD0D94DB9E84B0F60);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD0D94DB9E84B0F60);
         (culib().cudnnReduceTensor)(
             handle,
             reduceTensorDesc,
@@ -6154,8 +6207,8 @@ mod loaded {
         biasData: *const ::core::ffi::c_void,
         reorderedBiasData: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xA67897D216106EF6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA67897D216106EF6);
         (culib().cudnnReorderFilterAndBias)(
             handle,
             filterDesc,
@@ -6175,8 +6228,8 @@ mod loaded {
         stateSizeInBytes: usize,
         seed: ::core::ffi::c_ulonglong,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x6AEC24389031E9D1);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6AEC24389031E9D1);
         (culib().cudnnRestoreDropoutDescriptor)(
             dropoutDesc,
             handle,
@@ -6192,8 +6245,8 @@ mod loaded {
         y: *mut ::core::ffi::c_void,
         alpha: *const ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x354E2F5DA48CC169);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x354E2F5DA48CC169);
         (culib().cudnnScaleTensor)(handle, yDesc, y, alpha)
     }
     pub unsafe fn cudnnSetActivationDescriptor(
@@ -6202,16 +6255,16 @@ mod loaded {
         reluNanOpt: cudnnNanPropagation_t,
         coef: f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x88AE2C8C063387B4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x88AE2C8C063387B4);
         (culib().cudnnSetActivationDescriptor)(activationDesc, mode, reluNanOpt, coef)
     }
     pub unsafe fn cudnnSetActivationDescriptorSwishBeta(
         activationDesc: cudnnActivationDescriptor_t,
         swish_beta: f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB0341E3BA925B2F8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB0341E3BA925B2F8);
         (culib().cudnnSetActivationDescriptorSwishBeta)(activationDesc, swish_beta)
     }
     pub unsafe fn cudnnSetAttnDescriptor(
@@ -6236,8 +6289,8 @@ mod loaded {
         maxBatchSize: ::core::ffi::c_int,
         maxBeamSize: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x51440A08B5ADDE61);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x51440A08B5ADDE61);
         (culib().cudnnSetAttnDescriptor)(
             attnDesc,
             attnMode,
@@ -6265,8 +6318,8 @@ mod loaded {
         ctcLossDesc: cudnnCTCLossDescriptor_t,
         compType: cudnnDataType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x54EBA0F75A626509);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x54EBA0F75A626509);
         (culib().cudnnSetCTCLossDescriptor)(ctcLossDesc, compType)
     }
     pub unsafe fn cudnnSetCTCLossDescriptorEx(
@@ -6275,8 +6328,8 @@ mod loaded {
         normMode: cudnnLossNormalizationMode_t,
         gradMode: cudnnNanPropagation_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x8FEB55D43A4A8914);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8FEB55D43A4A8914);
         (culib().cudnnSetCTCLossDescriptorEx)(ctcLossDesc, compType, normMode, gradMode)
     }
     pub unsafe fn cudnnSetCTCLossDescriptor_v8(
@@ -6286,8 +6339,8 @@ mod loaded {
         gradMode: cudnnNanPropagation_t,
         maxLabelLength: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xCE49C36606CC1D6E);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xCE49C36606CC1D6E);
         (culib().cudnnSetCTCLossDescriptor_v8)(
             ctcLossDesc,
             compType,
@@ -6303,8 +6356,8 @@ mod loaded {
         ctcGradMode: cudnnCTCGradMode_t,
         maxLabelLength: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xA056F18303FA714C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA056F18303FA714C);
         (culib().cudnnSetCTCLossDescriptor_v9)(
             ctcLossDesc,
             compType,
@@ -6318,8 +6371,8 @@ mod loaded {
         udata: *mut ::core::ffi::c_void,
         fptr: cudnnCallback_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x4E4E078F428CD4E4);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4E4E078F428CD4E4);
         (culib().cudnnSetCallback)(mask, udata, fptr)
     }
     pub unsafe fn cudnnSetConvolution2dDescriptor(
@@ -6333,8 +6386,8 @@ mod loaded {
         mode: cudnnConvolutionMode_t,
         computeType: cudnnDataType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x99CFA9FE7973A4AA);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x99CFA9FE7973A4AA);
         (culib().cudnnSetConvolution2dDescriptor)(
             convDesc,
             pad_h,
@@ -6351,16 +6404,16 @@ mod loaded {
         convDesc: cudnnConvolutionDescriptor_t,
         groupCount: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xEE2BFE6DF6296E5C);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEE2BFE6DF6296E5C);
         (culib().cudnnSetConvolutionGroupCount)(convDesc, groupCount)
     }
     pub unsafe fn cudnnSetConvolutionMathType(
         convDesc: cudnnConvolutionDescriptor_t,
         mathType: cudnnMathType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x4E501B8644CE4047);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x4E501B8644CE4047);
         (culib().cudnnSetConvolutionMathType)(convDesc, mathType)
     }
     pub unsafe fn cudnnSetConvolutionNdDescriptor(
@@ -6372,8 +6425,8 @@ mod loaded {
         mode: cudnnConvolutionMode_t,
         computeType: cudnnDataType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x2272602F9D522CF3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2272602F9D522CF3);
         (culib().cudnnSetConvolutionNdDescriptor)(
             convDesc,
             arrayLength,
@@ -6388,8 +6441,8 @@ mod loaded {
         convDesc: cudnnConvolutionDescriptor_t,
         reorderType: cudnnReorderType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB8546123291C56C9);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB8546123291C56C9);
         (culib().cudnnSetConvolutionReorderType)(convDesc, reorderType)
     }
     pub unsafe fn cudnnSetDropoutDescriptor(
@@ -6400,8 +6453,8 @@ mod loaded {
         stateSizeInBytes: usize,
         seed: ::core::ffi::c_ulonglong,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD69F97871E408BD5);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD69F97871E408BD5);
         (culib().cudnnSetDropoutDescriptor)(
             dropoutDesc,
             handle,
@@ -6420,8 +6473,8 @@ mod loaded {
         h: ::core::ffi::c_int,
         w: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x2E14141218FE90C8);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2E14141218FE90C8);
         (culib().cudnnSetFilter4dDescriptor)(filterDesc, dataType, format, k, c, h, w)
     }
     pub unsafe fn cudnnSetFilterNdDescriptor(
@@ -6431,8 +6484,8 @@ mod loaded {
         nbDims: ::core::ffi::c_int,
         filterDimA: *const ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x6E0CD3045059B4EC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6E0CD3045059B4EC);
         (culib().cudnnSetFilterNdDescriptor)(filterDesc, dataType, format, nbDims, filterDimA)
     }
     pub unsafe fn cudnnSetFusedOpsConstParamPackAttribute(
@@ -6440,8 +6493,8 @@ mod loaded {
         paramLabel: cudnnFusedOpsConstParamLabel_t,
         param: *const ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x3CEF99BAA779494D);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x3CEF99BAA779494D);
         (culib().cudnnSetFusedOpsConstParamPackAttribute)(constPack, paramLabel, param)
     }
     pub unsafe fn cudnnSetFusedOpsVariantParamPackAttribute(
@@ -6449,8 +6502,8 @@ mod loaded {
         paramLabel: cudnnFusedOpsVariantParamLabel_t,
         ptr: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xA08158991AA66839);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xA08158991AA66839);
         (culib().cudnnSetFusedOpsVariantParamPackAttribute)(varPack, paramLabel, ptr)
     }
     pub unsafe fn cudnnSetLRNDescriptor(
@@ -6460,8 +6513,8 @@ mod loaded {
         lrnBeta: f64,
         lrnK: f64,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x37A743A964631225);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x37A743A964631225);
         (culib().cudnnSetLRNDescriptor)(normDesc, lrnN, lrnAlpha, lrnBeta, lrnK)
     }
     pub unsafe fn cudnnSetOpTensorDescriptor(
@@ -6470,8 +6523,8 @@ mod loaded {
         opTensorCompType: cudnnDataType_t,
         opTensorNanOpt: cudnnNanPropagation_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x63A094879CB0AD75);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x63A094879CB0AD75);
         (culib().cudnnSetOpTensorDescriptor)(
             opTensorDesc,
             opTensorOp,
@@ -6490,8 +6543,8 @@ mod loaded {
         verticalStride: ::core::ffi::c_int,
         horizontalStride: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x2C6C0665D4A432A6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2C6C0665D4A432A6);
         (culib().cudnnSetPooling2dDescriptor)(
             poolingDesc,
             mode,
@@ -6513,8 +6566,8 @@ mod loaded {
         paddingA: *const ::core::ffi::c_int,
         strideA: *const ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xBB43839286B7B628);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBB43839286B7B628);
         (culib().cudnnSetPoolingNdDescriptor)(
             poolingDesc,
             mode,
@@ -6535,8 +6588,8 @@ mod loaded {
         seqLengthArray: *const ::core::ffi::c_int,
         paddingFill: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x5C04B8434C437CF6);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5C04B8434C437CF6);
         (culib().cudnnSetRNNDataDescriptor)(
             rnnDataDesc,
             dataType,
@@ -6565,8 +6618,8 @@ mod loaded {
         dropoutDesc: cudnnDropoutDescriptor_t,
         auxFlags: u32,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xB2BC75F8C6876390);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xB2BC75F8C6876390);
         (culib().cudnnSetRNNDescriptor_v8)(
             rnnDesc,
             algo,
@@ -6593,8 +6646,8 @@ mod loaded {
         reduceTensorIndices: cudnnReduceTensorIndices_t,
         reduceTensorIndicesType: cudnnIndicesType_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x8B64CD1847D4A441);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x8B64CD1847D4A441);
         (culib().cudnnSetReduceTensorDescriptor)(
             reduceTensorDesc,
             reduceTensorOp,
@@ -6614,8 +6667,8 @@ mod loaded {
         seqLengthArray: *const ::core::ffi::c_int,
         paddingFill: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x096BA6C80A34B188);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x096BA6C80A34B188);
         (culib().cudnnSetSeqDataDescriptor)(
             seqDataDesc,
             dataType,
@@ -6634,8 +6687,8 @@ mod loaded {
         nbDims: ::core::ffi::c_int,
         dimA: *const ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xEF224AFF084BDABC);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xEF224AFF084BDABC);
         (culib().cudnnSetSpatialTransformerNdDescriptor)(
             stDesc,
             samplerType,
@@ -6645,8 +6698,8 @@ mod loaded {
         )
     }
     pub unsafe fn cudnnSetStream(handle: cudnnHandle_t, streamId: cudaStream_t) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x493654E1F00FB353);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x493654E1F00FB353);
         (culib().cudnnSetStream)(handle, streamId)
     }
     pub unsafe fn cudnnSetTensor(
@@ -6655,8 +6708,8 @@ mod loaded {
         y: *mut ::core::ffi::c_void,
         valuePtr: *const ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x37477E77A3F51432);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x37477E77A3F51432);
         (culib().cudnnSetTensor)(handle, yDesc, y, valuePtr)
     }
     pub unsafe fn cudnnSetTensor4dDescriptor(
@@ -6668,8 +6721,8 @@ mod loaded {
         h: ::core::ffi::c_int,
         w: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x6C257A487802E52F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x6C257A487802E52F);
         (culib().cudnnSetTensor4dDescriptor)(tensorDesc, format, dataType, n, c, h, w)
     }
     pub unsafe fn cudnnSetTensor4dDescriptorEx(
@@ -6684,8 +6737,8 @@ mod loaded {
         hStride: ::core::ffi::c_int,
         wStride: ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD0E4BC1D7E7ED772);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD0E4BC1D7E7ED772);
         (culib().cudnnSetTensor4dDescriptorEx)(
             tensorDesc, dataType, n, c, h, w, nStride, cStride, hStride, wStride,
         )
@@ -6697,8 +6750,8 @@ mod loaded {
         dimA: *const ::core::ffi::c_int,
         strideA: *const ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x55495CF0FEFE5742);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x55495CF0FEFE5742);
         (culib().cudnnSetTensorNdDescriptor)(tensorDesc, dataType, nbDims, dimA, strideA)
     }
     pub unsafe fn cudnnSetTensorNdDescriptorEx(
@@ -6708,8 +6761,8 @@ mod loaded {
         nbDims: ::core::ffi::c_int,
         dimA: *const ::core::ffi::c_int,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x77D5B01DDDD96C99);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x77D5B01DDDD96C99);
         (culib().cudnnSetTensorNdDescriptorEx)(tensorDesc, format, dataType, nbDims, dimA)
     }
     pub unsafe fn cudnnSetTensorTransformDescriptor(
@@ -6721,8 +6774,8 @@ mod loaded {
         foldA: *const u32,
         direction: cudnnFoldingDirection_t,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x5B8E4DC0D9E29616);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x5B8E4DC0D9E29616);
         (culib().cudnnSetTensorTransformDescriptor)(
             transformDesc,
             nbDims,
@@ -6746,8 +6799,8 @@ mod loaded {
         dxDesc: cudnnTensorDescriptor_t,
         dx: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xDDB9F8912F5330F3);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xDDB9F8912F5330F3);
         (culib().cudnnSoftmaxBackward)(
             handle, algo, mode, alpha, yDesc, y, dyDesc, dy, beta, dxDesc, dx,
         )
@@ -6763,8 +6816,8 @@ mod loaded {
         yDesc: cudnnTensorDescriptor_t,
         y: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x80CA9FB4F3E9F0C0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x80CA9FB4F3E9F0C0);
         (culib().cudnnSoftmaxForward)(handle, algo, mode, alpha, xDesc, x, beta, yDesc, y)
     }
     pub unsafe fn cudnnSpatialTfGridGeneratorBackward(
@@ -6773,8 +6826,8 @@ mod loaded {
         dgrid: *const ::core::ffi::c_void,
         dtheta: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xFBA2E50B45C0BA11);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xFBA2E50B45C0BA11);
         (culib().cudnnSpatialTfGridGeneratorBackward)(handle, stDesc, dgrid, dtheta)
     }
     pub unsafe fn cudnnSpatialTfGridGeneratorForward(
@@ -6783,8 +6836,8 @@ mod loaded {
         theta: *const ::core::ffi::c_void,
         grid: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x2C648B802DD707EE);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2C648B802DD707EE);
         (culib().cudnnSpatialTfGridGeneratorForward)(handle, stDesc, theta, grid)
     }
     pub unsafe fn cudnnSpatialTfSamplerBackward(
@@ -6803,8 +6856,8 @@ mod loaded {
         betaDgrid: *const ::core::ffi::c_void,
         dgrid: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x41170DD3B382F561);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x41170DD3B382F561);
         (culib().cudnnSpatialTfSamplerBackward)(
             handle, stDesc, alpha, xDesc, x, beta, dxDesc, dx, alphaDgrid, dyDesc, dy, grid,
             betaDgrid, dgrid,
@@ -6821,8 +6874,8 @@ mod loaded {
         yDesc: cudnnTensorDescriptor_t,
         y: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xD3A3ED5B77ED96B0);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xD3A3ED5B77ED96B0);
         (culib().cudnnSpatialTfSamplerForward)(
             handle, stDesc, alpha, xDesc, x, grid, beta, yDesc, y,
         )
@@ -6837,8 +6890,8 @@ mod loaded {
         destDesc: cudnnFilterDescriptor_t,
         destData: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x9D976B05120A7206);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x9D976B05120A7206);
         (culib().cudnnTransformFilter)(
             handle, transDesc, alpha, srcDesc, srcData, beta, destDesc, destData,
         )
@@ -6852,8 +6905,8 @@ mod loaded {
         yDesc: cudnnTensorDescriptor_t,
         y: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0xBD466E82DCE9AE05);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0xBD466E82DCE9AE05);
         (culib().cudnnTransformTensor)(handle, alpha, xDesc, x, beta, yDesc, y)
     }
     pub unsafe fn cudnnTransformTensorEx(
@@ -6866,8 +6919,8 @@ mod loaded {
         destDesc: cudnnTensorDescriptor_t,
         destData: *mut ::core::ffi::c_void,
     ) -> cudnnStatus_t {
-        CudnnRegistry::add_fuel(1);
-        CudnnRegistry::mix_runtime_signature(0x2197D768B7ABDB0F);
+        RTSigFuel::add_fuel_used(1);
+        RTSigFuel::mix_runtime_signature(0x2197D768B7ABDB0F);
         (culib().cudnnTransformTensorEx)(
             handle, transDesc, alpha, srcDesc, srcData, beta, destDesc, destData,
         )

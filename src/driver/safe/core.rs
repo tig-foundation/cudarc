@@ -528,7 +528,8 @@ impl<T> Drop for CudaSlice<T> {
         }
         ctx.record_err(unsafe { result::free_async(self.cu_device_ptr, self.stream.cu_stream) });
 
-        if ctx.initial_memory_lock.load(Ordering::Relaxed) && *ctx.memory_usage.read().unwrap() > 0 {
+        if ctx.initial_memory_lock.load(Ordering::Relaxed) && *ctx.memory_usage.read().unwrap() > 0
+        {
             *ctx.memory_usage.write().unwrap() -= self.len * std::mem::size_of::<T>();
             RTSigFuel::remove_device_memory_used(self.len as u64 * std::mem::size_of::<T>() as u64);
         }
@@ -1064,7 +1065,9 @@ impl<T> Drop for PinnedHostSlice<T> {
             *ctx.memory_usage.write().unwrap() -= self.len * std::mem::size_of::<T>();
         }*/
 
-        if ctx.initial_memory_lock.load(Ordering::Relaxed) && *ctx.host_memory_usage.read().unwrap() > 0 {
+        if ctx.initial_memory_lock.load(Ordering::Relaxed)
+            && *ctx.host_memory_usage.read().unwrap() > 0
+        {
             *ctx.host_memory_usage.write().unwrap() -= self.len * std::mem::size_of::<T>();
             RTSigFuel::remove_host_memory_used(self.len as u64 * std::mem::size_of::<T>() as u64);
         }
@@ -1082,7 +1085,7 @@ impl CudaContext {
         self: &Arc<Self>,
         len: usize,
     ) -> Result<PinnedHostSlice<T>, DriverError> {
-        /*if self.initial_memory_lock.load(Ordering::Relaxed) && self.memory_limit.load(Ordering::Relaxed) > 0 
+        /*if self.initial_memory_lock.load(Ordering::Relaxed) && self.memory_limit.load(Ordering::Relaxed) > 0
             && *self.memory_usage.read().unwrap() + len * std::mem::size_of::<T>() > self.memory_limit.load(Ordering::Relaxed) {
                 std::process::exit(82);
         }*/
@@ -1228,9 +1231,12 @@ impl CudaStream {
         self: &Arc<Self>,
         len: usize,
     ) -> Result<CudaSlice<T>, DriverError> {
-        if self.ctx.initial_memory_lock.load(Ordering::Relaxed) && self.ctx.memory_limit.load(Ordering::Relaxed) > 0 
-            && *self.ctx.memory_usage.read().unwrap() + len * std::mem::size_of::<T>() > self.ctx.memory_limit.load(Ordering::Relaxed) {
-                std::process::exit(82);
+        if self.ctx.initial_memory_lock.load(Ordering::Relaxed)
+            && self.ctx.memory_limit.load(Ordering::Relaxed) > 0
+            && *self.ctx.memory_usage.read().unwrap() + len * std::mem::size_of::<T>()
+                > self.ctx.memory_limit.load(Ordering::Relaxed)
+        {
+            std::process::exit(82);
         }
 
         self.ctx.bind_to_thread()?;
