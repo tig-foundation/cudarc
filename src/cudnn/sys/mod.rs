@@ -3257,7 +3257,7 @@ mod loaded {
     ) -> cudnnStatus_t {
         match get_tensor_nd_info(xDesc) {
             Ok((_, dims, _)) => {
-                RTSigFuel::add_fuel_used(dims.into_iter().map(|x| x as u64).product::<u64>());
+                RTSigFuel::add_fuel_used(dims.into_iter().map(|x| x as u64).product::<u64>() * 3);
             }
             Err(e) => return e.0,
         };
@@ -3369,7 +3369,7 @@ mod loaded {
     ) -> cudnnStatus_t {
         match get_tensor_nd_info(xDesc) {
             Ok((_, dims, _)) => {
-                RTSigFuel::add_fuel_used(dims.into_iter().map(|x| x as u64).product::<u64>());
+                RTSigFuel::add_fuel_used(dims.into_iter().map(|x| x as u64).product::<u64>() * 3);
             }
             Err(e) => return e.0,
         };
@@ -3450,7 +3450,7 @@ mod loaded {
     ) -> cudnnStatus_t {
         match get_tensor_nd_info(xDesc) {
             Ok((_, dims, _)) => {
-                RTSigFuel::add_fuel_used(dims.into_iter().map(|x| x as u64).product::<u64>());
+                RTSigFuel::add_fuel_used(dims.into_iter().map(|x| x as u64).product::<u64>() * 3);
             }
             Err(e) => return e.0,
         };
